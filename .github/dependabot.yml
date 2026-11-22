@@ -1,0 +1,14 @@
+# Dependabot configuration
+# Keeps GitHub Actions pinned versions up to date.
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    commit-message:
+      prefix: "ci"
+    labels:
+      - "type:ci"
+      - "area:devops"

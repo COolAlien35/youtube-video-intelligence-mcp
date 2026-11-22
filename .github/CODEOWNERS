@@ -1,0 +1,50 @@
+# ── CODEOWNERS ────────────────────────────────────────────────────────────────
+# Review routing: each person's paths route to their review partner.
+#   A ↔ B    (A-owned paths → B reviews, B-owned paths → A reviews)
+#   C ↔ D    (C-owned paths → D reviews, D-owned paths → C reviews)
+#
+# Last matching pattern wins. Broad rules come first, specific rules after.
+#
+# ⚠️  Replace @B_HANDLE, @C_HANDLE, @D_HANDLE with real GitHub usernames
+#     before merging this file. Placeholders must NOT reach main.
+# ─────────────────────────────────────────────────────────────────────────────
+
+# ── Default: A owns most things; B reviews ───────────────────────────────────
+*                                       @B_HANDLE
+
+# ── A-owned paths → B reviews ────────────────────────────────────────────────
+/README.md                              @B_HANDLE
+/.gitignore                             @B_HANDLE
+/.python-version                        @B_HANDLE
+/pyproject.toml                         @B_HANDLE
+/uv.lock                                @B_HANDLE
+/.env.example                           @B_HANDLE
+/.gitleaks.toml                         @B_HANDLE
+/.github/                               @B_HANDLE
+/src/yt_intel/__init__.py               @B_HANDLE
+/tests/test_smoke.py                    @B_HANDLE
+/scripts/local_check.sh                 @B_HANDLE
+/scripts/local_check.ps1                @B_HANDLE
+/docs/ops/                              @B_HANDLE
+/docs/SRS_v1.0.docx                     @B_HANDLE
+
+# ── B-owned paths → A reviews ────────────────────────────────────────────────
+/docs/Architecture_Decision_Records_v1.0.md  @COolAlien35
+/docs/architecture/                     @COolAlien35
+
+# ── C-owned paths → D reviews ────────────────────────────────────────────────
+/docs/rtm/                              @D_HANDLE
+/docs/testing/                          @D_HANDLE
+/scripts/validate_traceability.py       @D_HANDLE
+/tests/test_validate_traceability.py    @D_HANDLE
+/tests/fixtures/                        @D_HANDLE
+
+# ── D-owned paths → C reviews ────────────────────────────────────────────────
+/AGENTS.md                              @C_HANDLE
+/CONTRIBUTING.md                        @C_HANDLE
+/docs/Engineering_Governance_Specification_v1.0.md  @C_HANDLE
+/docs/stage_reviews/                    @C_HANDLE
+/.claude/                               @C_HANDLE
+
+# ── Second brain → C reviews (D11, revisit when C starts) ────────────────────
+/second-brain/                          @C_HANDLE

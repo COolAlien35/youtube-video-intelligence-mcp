@@ -1,0 +1,15 @@
+# Auto-detect text files and normalise line endings to LF on commit.
+* text=auto eol=lf
+
+# Explicitly mark shell scripts as LF (critical for CI and local_check.sh).
+*.sh text eol=lf
+
+# PowerShell scripts can stay CRLF on Windows checkouts but are stored as LF.
+*.ps1 text eol=lf
+
+# Mark binary files so git doesn't try to diff or normalise them.
+*.docx binary
+*.png binary
+*.jpg binary
+*.ico binary
+*.woff2 binary

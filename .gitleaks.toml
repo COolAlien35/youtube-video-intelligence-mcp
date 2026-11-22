@@ -1,0 +1,16 @@
+# ── gitleaks configuration ────────────────────────────────────────────────────
+# Extends the default ruleset. Only allows clearly fake tokens.
+# Never allowlist paths — fixtures must still be scanned.
+# ─────────────────────────────────────────────────────────────────────────────
+
+title = "yt-intel gitleaks config"
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Allow clearly fake tokens (FAKE_ prefix only)"
+regexTarget = "match"
+regexes = [
+    '''FAKE_[A-Za-z0-9_-]+''',
+]

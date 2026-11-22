@@ -1,0 +1,159 @@
+# ── CI Pipeline ──────────────────────────────────────────────────────────────
+# Job IDs and name: fields are identical so branch-protection check names
+# are stable. No YouTube API calls; no repo secrets referenced.
+# ─────────────────────────────────────────────────────────────────────────────
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+# Top-level least-privilege (TQ-28)
+permissions:
+  contents: read
+
+# Cancel superseded PR runs only; every push to main gets a full run.
+concurrency:
+  group: ci-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  # ── Lint ──────────────────────────────────────────────────────────────────
+  lint:
+    name: lint
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Setup project
+        uses: ./.github/actions/setup-project
+
+      - name: Ruff check
+        run: uv run ruff check .
+
+      - name: Ruff format check
+        run: uv run ruff format --check .
+
+  # ── Type check ────────────────────────────────────────────────────────────
+  typecheck:
+    name: typecheck
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Setup project
+        uses: ./.github/actions/setup-project
+
+      - name: mypy
+        run: uv run mypy src scripts
+
+  # ── Test (Linux) ──────────────────────────────────────────────────────────
+  test:
+    name: test
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Setup project
+        uses: ./.github/actions/setup-project
+
+      - name: pytest
+        run: uv run pytest
+
+  # ── Test (Windows) ────────────────────────────────────────────────────────
+  test-windows:
+    name: test-windows
+    runs-on: windows-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Setup project
+        uses: ./.github/actions/setup-project
+
+      - name: pytest
+        run: uv run pytest
+
+  # ── Secret scan ───────────────────────────────────────────────────────────
+  secret-scan:
+    name: secret-scan
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout (full history for gitleaks)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Gitleaks
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  # ── RTM check ─────────────────────────────────────────────────────────────
+  rtm-check:
+    name: rtm-check
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Setup project
+        uses: ./.github/actions/setup-project
+
+      - name: Validate RTM (skips until scripts/validate_traceability.py exists)
+        run: |
+          if [ -f scripts/validate_traceability.py ]; then
+            uv run python scripts/validate_traceability.py
+          elif [ -f docs/rtm/requirements_rtm.csv ]; then
+            echo "::error::RTM CSV exists but validator script is missing"
+            exit 1
+          else
+            echo "RTM validator not present yet — skipping"
+          fi
+
+  # ── PR title (Conventional Commits) ───────────────────────────────────────
+  pr-title:
+    name: pr-title
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    if: github.event_name == 'pull_request'
+    steps:
+      - name: Check PR title
+        uses: amannn/action-semantic-pull-request@v5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          types: |
+            feat
+            fix
+            docs
+            chore
+            ci
+            test
+            refactor
+            perf
+            build
+            style
+          requireScope: false
