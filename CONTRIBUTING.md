@@ -28,3 +28,7 @@ Open the failing job and expand its first failing step. Reproduce its command fr
 Use the [change request template](.github/ISSUE_TEMPLATE/change_request.md) for baseline changes. Include the affected SRS text, ADRs, RTM, tests and owners. Follow Proposed → Under Review → Approved → Implemented → Verified. Record the approval before changing the baseline.
 
 A deliverable is done when its acceptance evidence, relevant tests, linked documentation and traceability updates have passed review and merged. For a phase transition, D assembles the [stage review](docs/stage_reviews/TEMPLATE.md) and the team verifies every gate on main. Begin Phase N+1 only after sign-off.
+
+## Phase 2 working agreements
+
+A owns pyproject.toml and uv.lock. Request a dependency on the Phase 2 dependency requests issue with its package name, purpose and verified licence. Keep test filenames unique across the repository, such as test_common_logging.py. Put tests in tests/unit/<module>/ or tests/integration/<module>/. Mark them explicitly until C’s directory-based markers merge, and mark security-relevant cases with pytest.mark.security. Server, tools and provider APIs are async. Storage and quota are synchronous; async callers run them via anyio.to_thread.run_sync.

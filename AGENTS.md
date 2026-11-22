@@ -35,3 +35,18 @@ uv run pytest
 ```
 
 Use pytest markers unit, integration, e2e and security for targeted runs. Report skipped steps separately. [Contributor guide](CONTRIBUTING.md)
+
+## Phase 2 modules and local development
+
+Person D owns the shared contracts in `src/yt_intel/common/`. Import these in new modules:
+
+- `common.errors` supplies AppError and ErrorCode. Pass public messages and JSON details.
+- `common.types` supplies Principal. `common.request_context` manages the task-local request ID.
+- `common.ids` canonicalizes video and playlist IDs and resolves channel references to a typed lookup key.
+- `common.durations` distinguishes a known zero from unknown duration. `common.timeutil` normalizes aware timestamps to UTC.
+- Accept a `common.clock.Clock`. In tests inject `FakeClock(datetime(2026, 11, 23, tzinfo=UTC))` and call `advance(60)` to cross a boundary without sleeping.
+- At application startup use `common.logging.configure_logging(settings.log_level)`. Use named standard-library loggers and pass public structured fields.
+
+A owns config/, storage/ and quota/; B owns server/ and tools/; C owns provider/ and synthetic fixtures. These directories are added by their respective PRs. Keep the live provider disabled. Once C’s infrastructure merges, construct FixtureProvider with the synthetic fixture directory, or use its pytest fixture from tests/conftest.py.
+
+Run one suite with `uv run pytest tests/unit/common/`. After B’s server merges, run `uv run uvicorn yt_intel.server.app:create_app --factory --port 8000` and check the local /health route.
