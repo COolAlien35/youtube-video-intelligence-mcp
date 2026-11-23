@@ -74,13 +74,13 @@ IF-08,IF,Purpose-specific MCP tools and principal-scoped resources,3.1,M,2,TQ-1�
 IF-09,IF,Purpose-specific MCP tools and principal-scoped resources,3.1,M,2,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 2. class TBC
 IF-10,IF,Purpose-specific MCP tools and principal-scoped resources,3.1,M,2,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 2. class TBC
 IF-11,IF,Purpose-specific MCP tools and principal-scoped resources,3.1,M,2,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 2. class TBC
-IF-12,IF,"Official provider, normalized results, bounded requests and exact channel resolution",3.1,M,2,TQ-5–TQ-8,TBD,Under Review,range-only,,expand in Phase 2. class TBC
-IF-13,IF,"Official provider, normalized results, bounded requests and exact channel resolution",3.1,M,2,TQ-5–TQ-8,TBD,Under Review,range-only,,expand in Phase 2. class TBC
-IF-14,IF,"Official provider, normalized results, bounded requests and exact channel resolution",3.1,M,2,TQ-5–TQ-8,TBD,Under Review,range-only,,expand in Phase 2. class TBC
-IF-15,IF,"Official provider, normalized results, bounded requests and exact channel resolution",3.1,M,2,TQ-5–TQ-8,TBD,Under Review,range-only,,expand in Phase 2. class TBC
-IF-16,IF,"Official provider, normalized results, bounded requests and exact channel resolution",3.1,M,2,TQ-5–TQ-8,TBD,Under Review,range-only,,expand in Phase 2. class TBC
-IF-16a,IF,"Official provider, normalized results, bounded requests and exact channel resolution",3.1,M,2,TQ-5–TQ-8,TBD,Under Review,range-only,,expand in Phase 2. class TBC
-IF-16b,IF,"Official provider, normalized results, bounded requests and exact channel resolution",3.1,M,2,TQ-5–TQ-8,TBD,Under Review,range-only,,expand in Phase 2. class TBC
+IF-12,IF,"Official provider, normalized results, bounded requests and exact channel resolution",3.1,M,2,TQ-5–TQ-8,Harsh (C),Under Review,range-only,,expand in Phase 2. class TBC. Local provider evidence: tests/unit/provider and tests/integration/provider. Issue pending.
+IF-13,IF,"Official provider, normalized results, bounded requests and exact channel resolution",3.1,M,2,TQ-5–TQ-8,Harsh (C),Under Review,range-only,,expand in Phase 2. class TBC. Local provider evidence: tests/unit/provider and tests/integration/provider. Issue pending.
+IF-14,IF,"Official provider, normalized results, bounded requests and exact channel resolution",3.1,M,2,TQ-5–TQ-8,Harsh (C),Under Review,range-only,,expand in Phase 2. class TBC. Local provider evidence: tests/unit/provider and tests/integration/provider. Issue pending.
+IF-15,IF,"Official provider, normalized results, bounded requests and exact channel resolution",3.1,M,2,TQ-5–TQ-8,Harsh (C),Under Review,range-only,,expand in Phase 2. class TBC. Local provider evidence: tests/unit/provider and tests/integration/provider. Issue pending.
+IF-16,IF,"Official provider, normalized results, bounded requests and exact channel resolution",3.1,M,2,TQ-5–TQ-8,Harsh (C),Under Review,range-only,,expand in Phase 2. class TBC. Local provider evidence: tests/unit/provider and tests/integration/provider. Issue pending.
+IF-16a,IF,"Official provider, normalized results, bounded requests and exact channel resolution",3.1,M,2,TQ-5–TQ-8,Harsh (C),Under Review,range-only,,expand in Phase 2. class TBC. Local provider evidence: tests/unit/provider and tests/integration/provider. Issue pending.
+IF-16b,IF,"Official provider, normalized results, bounded requests and exact channel resolution",3.1,M,2,TQ-5–TQ-8,Harsh (C),Under Review,range-only,,expand in Phase 2. class TBC. Local provider evidence: tests/unit/provider and tests/integration/provider. Issue pending.
 IF-17,IF,"Separate service and Google authorization, channel checks and write reconciliation",3.2,M,3,TQ-9–TQ-13,TBD,Under Review,range-only,,expand in Phase 3. class TBC
 IF-18,IF,"Separate service and Google authorization, channel checks and write reconciliation",3.2,M,3,TQ-9–TQ-13,TBD,Under Review,range-only,,expand in Phase 3. class TBC
 IF-19,IF,"Separate service and Google authorization, channel checks and write reconciliation",3.2,M,3,TQ-9–TQ-13,TBD,Under Review,range-only,,expand in Phase 3. class TBC
@@ -125,12 +125,12 @@ NFR-29,NFR,"AI provenance, deterministic constraints and server-side policy gate
 NFR-30,NFR,"AI provenance, deterministic constraints and server-side policy gates",6.2,M,6,TQ-9–TQ-13,TBD,Under Review,range-only,,expand in Phase 6. class TBC
 NFR-31,NFR,"AI provenance, deterministic constraints and server-side policy gates",6.2,M,6,TQ-9–TQ-13,TBD,Under Review,range-only,,expand in Phase 6. class TBC
 NFR-32,NFR,"AI provenance, deterministic constraints and server-side policy gates",6.2,M,6,TQ-9–TQ-13,TBD,Under Review,range-only,,expand in Phase 6. class TBC
-DATA-01,DATA,"Input validation, metadata states and timestamp semantics",5.1,D,2,TQ-19–TQ-27,TBD,Under Review,range-only,,expand in Phase 2
-DATA-02,DATA,"Input validation, metadata states and timestamp semantics",5.1,D,2,TQ-19–TQ-27,TBD,Under Review,range-only,,expand in Phase 2
-DATA-03,DATA,"Input validation, metadata states and timestamp semantics",5.1,D,2,TQ-19–TQ-27,TBD,Under Review,range-only,,expand in Phase 2
-DATA-04,DATA,"Input validation, metadata states and timestamp semantics",5.1,D,2,TQ-19–TQ-27,TBD,Under Review,range-only,,expand in Phase 2
-DATA-05,DATA,"Input validation, metadata states and timestamp semantics",5.1,D,2,TQ-19–TQ-27,TBD,Under Review,range-only,,expand in Phase 2
-DATA-06,DATA,"Input validation, metadata states and timestamp semantics",5.1,D,2,TQ-19–TQ-27,TBD,Under Review,range-only,,expand in Phase 2
+DATA-01,DATA,"Input validation, metadata states and timestamp semantics",5.1,D,2,TQ-19–TQ-27,TBD,Under Review,range-only,,expand in Phase 2. Parsing dependency: PR #4. Provider mapping evidence: tests/unit/provider/test_provider_mapping.py.
+DATA-02,DATA,"Input validation, metadata states and timestamp semantics",5.1,D,2,TQ-19–TQ-27,TBD,Under Review,range-only,,expand in Phase 2. Parsing dependency: PR #4. Provider mapping evidence: tests/unit/provider/test_provider_mapping.py.
+DATA-03,DATA,"Input validation, metadata states and timestamp semantics",5.1,D,2,TQ-19–TQ-27,TBD,Under Review,range-only,,expand in Phase 2. Parsing dependency: PR #4. Provider mapping evidence: tests/unit/provider/test_provider_mapping.py.
+DATA-04,DATA,"Input validation, metadata states and timestamp semantics",5.1,D,2,TQ-19–TQ-27,TBD,Under Review,range-only,,expand in Phase 2. Parsing dependency: PR #4. Provider mapping evidence: tests/unit/provider/test_provider_mapping.py.
+DATA-05,DATA,"Input validation, metadata states and timestamp semantics",5.1,D,2,TQ-19–TQ-27,TBD,Under Review,range-only,,expand in Phase 2. Parsing dependency: PR #4. Provider mapping evidence: tests/unit/provider/test_provider_mapping.py.
+DATA-06,DATA,"Input validation, metadata states and timestamp semantics",5.1,D,2,TQ-19–TQ-27,TBD,Under Review,range-only,,expand in Phase 2. Parsing dependency: PR #4. Provider mapping evidence: tests/unit/provider/test_provider_mapping.py.
 DATA-16,DATA,"Input validation, metadata states and timestamp semantics",5.1,D,5,TQ-19–TQ-27,TBD,Under Review,range-only,,expand in Phase 5
 DATA-17,DATA,"Input validation, metadata states and timestamp semantics",5.1,D,5,TQ-19–TQ-27,TBD,Under Review,range-only,,expand in Phase 5
 DATA-18,DATA,"Input validation, metadata states and timestamp semantics",5.1,D,5,TQ-19–TQ-27,TBD,Under Review,range-only,,expand in Phase 5
@@ -237,7 +237,7 @@ TQ-1,TQ,"Unit, integration, MCP end-to-end and negative tests",9,D,4,TQ-1,TBD,Un
 TQ-2,TQ,"Unit, integration, MCP end-to-end and negative tests",9,D,4,TQ-2,TBD,Under Review,range-only,,expand in Phase 4. Test planning allocation
 TQ-3,TQ,"Unit, integration, MCP end-to-end and negative tests",9,D,4,TQ-3,TBD,Under Review,range-only,,expand in Phase 4. Test planning allocation
 TQ-4,TQ,"Unit, integration, MCP end-to-end and negative tests",9,D,4,TQ-4,TBD,Under Review,range-only,,expand in Phase 4. Test planning allocation
-TQ-5,TQ,"Fixture-isolated CI, quota, skill and regression testing",9,D,2,TQ-5,TBD,Under Review,range-only,,expand in Phase 2. Test planning allocation
+TQ-5,TQ,"Fixture-isolated CI, quota, skill and regression testing",9,D,2,TQ-5,Harsh (C),Under Review,range-only,,expand in Phase 2. Test planning allocation. Local provider evidence: tests/unit/provider and tests/integration/provider. Issue pending.
 TQ-6,TQ,"Fixture-isolated CI, quota, skill and regression testing",9,D,2,TQ-6,TBD,Under Review,range-only,,expand in Phase 2. Test planning allocation
 TQ-7,TQ,"Fixture-isolated CI, quota, skill and regression testing",9,D,6,TQ-7,TBD,Under Review,range-only,,expand in Phase 6. Test planning allocation
 TQ-8,TQ,"Fixture-isolated CI, quota, skill and regression testing",9,D,6,TQ-8,TBD,Under Review,range-only,,expand in Phase 6. Test planning allocation
