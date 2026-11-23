@@ -31,3 +31,7 @@ Paths in the table are relative to tests/. Group obligations follow the SRS. Pro
 ## Phase 7 ranking evaluation
 
 Freeze a synthetic query set, candidate catalogue and relevance judgments before tuning. Record graded relevance (0–3) per query and video, corpus version, K and canonical-ID tie-break. Calculate Precision@K with relevance above zero and denominator K. For NDCG@K use gain 2^grade − 1 and log2(rank + 1) discount; divide by ideal DCG for the same pool. Report queries with zero ideal gain separately. Publish per-query scores, macro averages and comparison against a fixed baseline. Keep tuning queries separate from the reported set.
+
+## Phase 2 collection
+
+Use tests/unit/<module>/, tests/integration/<module>/ and tests/e2e/ with unique test_<module>_<topic>.py names. The shared conftest assigns markers from the path and rejects unclassified tests except the two Phase 1 root files. Use fixture_provider for independent per-test writes, fixtures_dir for raw responses, frozen_clock for deterministic UTC and settings_factory for test-only Settings overrides.
