@@ -1,0 +1,271 @@
+req_id,group,title,srs_section,class,planned_phase,verification,owner,status,text_status,issue,notes
+FR-1a,FR,Similar-video discovery and deterministic weighted metadata ranking,4.1,M,4,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 4
+FR-1b,FR,Similar-video discovery and deterministic weighted metadata ranking,4.1,M,4,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 4
+FR-1c,FR,Similar-video discovery and deterministic weighted metadata ranking,4.1,M,4,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 4
+FR-1d,FR,Similar-video discovery and deterministic weighted metadata ranking,4.1,M,4,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 4
+FR-1e,FR,Similar-video discovery and deterministic weighted metadata ranking,4.1,M,4,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 4
+FR-1f,FR,Similar-video discovery and deterministic weighted metadata ranking,4.1,M,4,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 4
+FR-1g,FR,Similar-video discovery and deterministic weighted metadata ranking,4.1,M,4,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 4
+FR-1h,FR,Similar-video discovery and deterministic weighted metadata ranking,4.1,M,4,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 4
+FR-1i,FR,Similar-video discovery and deterministic weighted metadata ranking,4.1,M,4,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 4
+FR-1j,FR,Similar-video discovery and deterministic weighted metadata ranking,4.1,M,4,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 4
+FR-2a,FR,Exact channel resolution and explained channel similarity,4.1,M,4,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 4
+FR-2b,FR,Exact channel resolution and explained channel similarity,4.1,M,4,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 4
+FR-2c,FR,Exact channel resolution and explained channel similarity,4.1,M,4,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 4
+FR-2d,FR,Exact channel resolution and explained channel similarity,4.1,M,4,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 4
+FR-2e,FR,Exact channel resolution and explained channel similarity,4.1,M,4,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 4
+FR-2f,FR,Exact channel resolution and explained channel similarity,4.1,M,4,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 4
+FR-2g,FR,Exact channel resolution and explained channel similarity,4.1,M,4,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 4
+FR-2h,FR,Exact channel resolution and explained channel similarity,4.1,M,4,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 4
+FR-3a,FR,Account-scoped recommendations from accessible user signals,4.2,M,5,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 5
+FR-3b,FR,Account-scoped recommendations from accessible user signals,4.2,M,5,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 5
+FR-3c,FR,Account-scoped recommendations from accessible user signals,4.2,M,5,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 5
+FR-3d,FR,Account-scoped recommendations from accessible user signals,4.2,M,5,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 5
+FR-3e,FR,Account-scoped recommendations from accessible user signals,4.2,M,5,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 5
+FR-3f,FR,Account-scoped recommendations from accessible user signals,4.2,M,5,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 5
+FR-3g,FR,Account-scoped recommendations from accessible user signals,4.2,M,5,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 5
+FR-3h,FR,Account-scoped recommendations from accessible user signals,4.2,M,5,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 5
+FR-3i,FR,Account-scoped recommendations from accessible user signals,4.2,M,5,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 5
+FR-3j,FR,Account-scoped recommendations from accessible user signals,4.2,M,5,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 5
+FR-4a,FR,Descriptive engagement analysis with UTC signal provenance,4.2,M,5,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 5
+FR-4b,FR,Descriptive engagement analysis with UTC signal provenance,4.2,M,5,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 5
+FR-4c,FR,Descriptive engagement analysis with UTC signal provenance,4.2,M,5,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 5
+FR-4d,FR,Descriptive engagement analysis with UTC signal provenance,4.2,M,5,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 5
+FR-4e,FR,Descriptive engagement analysis with UTC signal provenance,4.2,M,5,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 5
+FR-4f,FR,Descriptive engagement analysis with UTC signal provenance,4.2,M,5,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 5
+FR-4g,FR,Descriptive engagement analysis with UTC signal provenance,4.2,M,5,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 5
+FR-4h,FR,Descriptive engagement analysis with UTC signal provenance,4.2,M,5,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 5
+FR-4i,FR,Descriptive engagement analysis with UTC signal provenance,4.2,M,5,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 5
+FR-4j,FR,Descriptive engagement analysis with UTC signal provenance,4.2,M,5,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 5
+FR-4k,FR,Descriptive engagement analysis with UTC signal provenance,4.2,M,5,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 5
+FR-5a,FR,Constraint-checked playlist proposal and confirmed execution,4.3,M,6,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 6
+FR-5b,FR,Constraint-checked playlist proposal and confirmed execution,4.3,M,6,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 6
+FR-5c,FR,Constraint-checked playlist proposal and confirmed execution,4.3,M,6,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 6
+FR-5d,FR,Constraint-checked playlist proposal and confirmed execution,4.3,M,6,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 6
+FR-5e,FR,Constraint-checked playlist proposal and confirmed execution,4.3,M,6,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 6
+FR-5f,FR,Constraint-checked playlist proposal and confirmed execution,4.3,M,6,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 6
+FR-5g,FR,Constraint-checked playlist proposal and confirmed execution,4.3,M,6,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 6
+FR-5h,FR,Constraint-checked playlist proposal and confirmed execution,4.3,M,6,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 6
+FR-5i,FR,Constraint-checked playlist proposal and confirmed execution,4.3,M,6,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 6
+FR-5j,FR,Constraint-checked playlist proposal and confirmed execution,4.3,M,6,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 6
+FR-5k,FR,Constraint-checked playlist proposal and confirmed execution,4.3,M,6,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 6
+FR-5l,FR,Constraint-checked playlist proposal and confirmed execution,4.3,M,6,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 6
+FR-5m,FR,Constraint-checked playlist proposal and confirmed execution,4.3,M,6,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 6
+FR-5n,FR,Constraint-checked playlist proposal and confirmed execution,4.3,M,6,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 6
+FR-5o,FR,Constraint-checked playlist proposal and confirmed execution,4.3,M,6,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 6
+FR-5p,FR,Constraint-checked playlist proposal and confirmed execution,4.3,M,6,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 6
+FR-5q,FR,Constraint-checked playlist proposal and confirmed execution,4.3,M,6,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 6
+FR-5r,FR,Constraint-checked playlist proposal and confirmed execution,4.3,M,6,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 6
+FR-5s,FR,Constraint-checked playlist proposal and confirmed execution,4.3,M,6,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 6
+FR-5t,FR,Constraint-checked playlist proposal and confirmed execution,4.3,M,6,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 6
+FR-CROSS-01,FR-CROSS,"Playlist acceptance, immutable approval and untrusted metadata",4.3,M,6,TQ-9–TQ-13,TBD,Under Review,range-only,,expand in Phase 6
+FR-CROSS-02,FR-CROSS,"Playlist acceptance, immutable approval and untrusted metadata",4.3,M,6,TQ-9–TQ-13,TBD,Under Review,range-only,,expand in Phase 6
+FR-CROSS-03,FR-CROSS,"Playlist acceptance, immutable approval and untrusted metadata",4.3,M,6,TQ-9–TQ-13,TBD,Under Review,range-only,,expand in Phase 6
+FR-CROSS-04,FR-CROSS,"Playlist acceptance, immutable approval and untrusted metadata",4.3,M,6,TQ-9–TQ-13,TBD,Under Review,range-only,,expand in Phase 6
+IF-01,IF,"Client schemas, attribution, preview, confirmation and deletion path",3.1,M,6,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 6. class TBC
+IF-02,IF,"Client schemas, attribution, preview, confirmation and deletion path",3.1,M,6,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 6. class TBC
+IF-03,IF,"Client schemas, attribution, preview, confirmation and deletion path",3.1,M,6,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 6. class TBC
+IF-04,IF,"Client schemas, attribution, preview, confirmation and deletion path",3.1,M,6,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 6. class TBC
+IF-05,IF,"Client schemas, attribution, preview, confirmation and deletion path",3.1,M,6,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 6. class TBC
+IF-06,IF,"Client schemas, attribution, preview, confirmation and deletion path",3.1,M,6,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 6. class TBC
+IF-06a,IF,"Client schemas, attribution, preview, confirmation and deletion path",3.1,M,6,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 6. class TBC
+IF-07,IF,Purpose-specific MCP tools and principal-scoped resources,3.1,M,2,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 2. class TBC
+IF-08,IF,Purpose-specific MCP tools and principal-scoped resources,3.1,M,2,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 2. class TBC
+IF-09,IF,Purpose-specific MCP tools and principal-scoped resources,3.1,M,2,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 2. class TBC
+IF-10,IF,Purpose-specific MCP tools and principal-scoped resources,3.1,M,2,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 2. class TBC
+IF-11,IF,Purpose-specific MCP tools and principal-scoped resources,3.1,M,2,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 2. class TBC
+IF-12,IF,"Official provider, normalized results, bounded requests and exact channel resolution",3.1,M,2,TQ-5–TQ-8,TBD,Under Review,range-only,,expand in Phase 2. class TBC
+IF-13,IF,"Official provider, normalized results, bounded requests and exact channel resolution",3.1,M,2,TQ-5–TQ-8,TBD,Under Review,range-only,,expand in Phase 2. class TBC
+IF-14,IF,"Official provider, normalized results, bounded requests and exact channel resolution",3.1,M,2,TQ-5–TQ-8,TBD,Under Review,range-only,,expand in Phase 2. class TBC
+IF-15,IF,"Official provider, normalized results, bounded requests and exact channel resolution",3.1,M,2,TQ-5–TQ-8,TBD,Under Review,range-only,,expand in Phase 2. class TBC
+IF-16,IF,"Official provider, normalized results, bounded requests and exact channel resolution",3.1,M,2,TQ-5–TQ-8,TBD,Under Review,range-only,,expand in Phase 2. class TBC
+IF-16a,IF,"Official provider, normalized results, bounded requests and exact channel resolution",3.1,M,2,TQ-5–TQ-8,TBD,Under Review,range-only,,expand in Phase 2. class TBC
+IF-16b,IF,"Official provider, normalized results, bounded requests and exact channel resolution",3.1,M,2,TQ-5–TQ-8,TBD,Under Review,range-only,,expand in Phase 2. class TBC
+IF-17,IF,"Separate service and Google authorization, channel checks and write reconciliation",3.2,M,3,TQ-9–TQ-13,TBD,Under Review,range-only,,expand in Phase 3. class TBC
+IF-18,IF,"Separate service and Google authorization, channel checks and write reconciliation",3.2,M,3,TQ-9–TQ-13,TBD,Under Review,range-only,,expand in Phase 3. class TBC
+IF-19,IF,"Separate service and Google authorization, channel checks and write reconciliation",3.2,M,3,TQ-9–TQ-13,TBD,Under Review,range-only,,expand in Phase 3. class TBC
+IF-20,IF,"Separate service and Google authorization, channel checks and write reconciliation",3.2,M,3,TQ-9–TQ-13,TBD,Under Review,range-only,,expand in Phase 3. class TBC
+IF-21,IF,"Separate service and Google authorization, channel checks and write reconciliation",3.2,M,3,TQ-9–TQ-13,TBD,Under Review,range-only,,expand in Phase 3. class TBC
+IF-22,IF,"Separate service and Google authorization, channel checks and write reconciliation",3.2,M,3,TQ-9–TQ-13,TBD,Under Review,range-only,,expand in Phase 3. class TBC
+IF-23,IF,"Separate service and Google authorization, channel checks and write reconciliation",3.2,M,3,TQ-9–TQ-13,TBD,Under Review,range-only,,expand in Phase 3. class TBC
+NFR-01,NFR,"Atomic quota budgeting, Pacific reset and zero-call rejection",6.1,M,2,TQ-5–TQ-8,TBD,Under Review,range-only,,expand in Phase 2. class TBC
+NFR-02,NFR,"Atomic quota budgeting, Pacific reset and zero-call rejection",6.1,M,2,TQ-5–TQ-8,TBD,Under Review,range-only,,expand in Phase 2. class TBC
+NFR-03,NFR,"Atomic quota budgeting, Pacific reset and zero-call rejection",6.1,M,2,TQ-5–TQ-8,TBD,Under Review,range-only,,expand in Phase 2. class TBC
+NFR-04,NFR,"Atomic quota budgeting, Pacific reset and zero-call rejection",6.1,M,2,TQ-5–TQ-8,TBD,Under Review,range-only,,expand in Phase 2. class TBC
+NFR-05,NFR,"Atomic quota budgeting, Pacific reset and zero-call rejection",6.1,M,2,TQ-5–TQ-8,TBD,Under Review,range-only,,expand in Phase 2. class TBC
+NFR-06,NFR,"Atomic quota budgeting, Pacific reset and zero-call rejection",6.1,M,2,TQ-5–TQ-8,TBD,Under Review,range-only,,expand in Phase 2. class TBC
+NFR-07,NFR,"Atomic quota budgeting, Pacific reset and zero-call rejection",6.1,M,2,TQ-5–TQ-8,TBD,Under Review,range-only,,expand in Phase 2. class TBC
+NFR-07a,NFR,"Atomic quota budgeting, Pacific reset and zero-call rejection",6.1,M,2,TQ-5–TQ-8,TBD,Under Review,range-only,,expand in Phase 2. class TBC
+NFR-07b,NFR,"Atomic quota budgeting, Pacific reset and zero-call rejection",6.1,M,2,TQ-5–TQ-8,TBD,Under Review,range-only,,expand in Phase 2. class TBC
+NFR-07c,NFR,Ranking latency and per-principal fairness,6.1,M,4,TQ-28–TQ-34,TBD,Under Review,range-only,,expand in Phase 4. class TBC
+NFR-07d,NFR,Ranking latency and per-principal fairness,6.1,M,4,TQ-28–TQ-34,TBD,Under Review,range-only,,expand in Phase 4. class TBC
+NFR-07e,NFR,Ranking latency and per-principal fairness,6.1,M,4,TQ-28–TQ-34,TBD,Under Review,range-only,,expand in Phase 4. class TBC
+NFR-08,NFR,"Bounded retries, reconciliation and workflow deadlines",6.1,M,2,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 2. class TBC
+NFR-09,NFR,"Bounded retries, reconciliation and workflow deadlines",6.1,M,2,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 2. class TBC
+NFR-10,NFR,"Bounded retries, reconciliation and workflow deadlines",6.1,M,2,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 2. class TBC
+NFR-11,NFR,"Bounded retries, reconciliation and workflow deadlines",6.1,M,2,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 2. class TBC
+NFR-12,NFR,"Bounded retries, reconciliation and workflow deadlines",6.1,M,2,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 2. class TBC
+NFR-13,NFR,"Maintainability, MCP compatibility and correlated secret-free diagnostics",6.2,M,2,TQ-28–TQ-34,TBD,Under Review,range-only,,expand in Phase 2. class TBC
+NFR-14,NFR,"Maintainability, MCP compatibility and correlated secret-free diagnostics",6.2,M,2,TQ-28–TQ-34,TBD,Under Review,range-only,,expand in Phase 2. class TBC
+NFR-15,NFR,"Maintainability, MCP compatibility and correlated secret-free diagnostics",6.2,M,2,TQ-28–TQ-34,TBD,Under Review,range-only,,expand in Phase 2. class TBC
+NFR-16,NFR,"Maintainability, MCP compatibility and correlated secret-free diagnostics",6.2,M,2,TQ-28–TQ-34,TBD,Under Review,range-only,,expand in Phase 2. class TBC
+NFR-17,NFR,"Maintainability, MCP compatibility and correlated secret-free diagnostics",6.2,M,2,TQ-28–TQ-34,TBD,Under Review,range-only,,expand in Phase 2. class TBC
+NFR-18,NFR,"Maintainability, MCP compatibility and correlated secret-free diagnostics",6.2,M,2,TQ-28–TQ-34,TBD,Under Review,range-only,,expand in Phase 2. class TBC
+NFR-19,NFR,"Maintainability, MCP compatibility and correlated secret-free diagnostics",6.2,M,2,TQ-28–TQ-34,TBD,Under Review,range-only,,expand in Phase 2. class TBC
+NFR-20,NFR,"Maintainability, MCP compatibility and correlated secret-free diagnostics",6.2,M,2,TQ-28–TQ-34,TBD,Under Review,range-only,,expand in Phase 2. class TBC
+NFR-21,NFR,"Maintainability, MCP compatibility and correlated secret-free diagnostics",6.2,M,2,TQ-28–TQ-34,TBD,Under Review,range-only,,expand in Phase 2. class TBC
+NFR-22,NFR,"Maintainability, MCP compatibility and correlated secret-free diagnostics",6.2,M,2,TQ-28–TQ-34,TBD,Under Review,range-only,,expand in Phase 2. class TBC
+NFR-23,NFR,"Maintainability, MCP compatibility and correlated secret-free diagnostics",6.2,M,2,TQ-28–TQ-34,TBD,Under Review,range-only,,expand in Phase 2. class TBC
+NFR-24,NFR,"Maintainability, MCP compatibility and correlated secret-free diagnostics",6.2,M,2,TQ-28–TQ-34,TBD,Under Review,range-only,,expand in Phase 2. class TBC
+NFR-25,NFR,"AI provenance, deterministic constraints and server-side policy gates",6.2,M,6,TQ-9–TQ-13,TBD,Under Review,range-only,,expand in Phase 6. class TBC
+NFR-26,NFR,"AI provenance, deterministic constraints and server-side policy gates",6.2,M,6,TQ-9–TQ-13,TBD,Under Review,range-only,,expand in Phase 6. class TBC
+NFR-27,NFR,"AI provenance, deterministic constraints and server-side policy gates",6.2,M,6,TQ-9–TQ-13,TBD,Under Review,range-only,,expand in Phase 6. class TBC
+NFR-28,NFR,"AI provenance, deterministic constraints and server-side policy gates",6.2,M,6,TQ-9–TQ-13,TBD,Under Review,range-only,,expand in Phase 6. class TBC
+NFR-29,NFR,"AI provenance, deterministic constraints and server-side policy gates",6.2,M,6,TQ-9–TQ-13,TBD,Under Review,range-only,,expand in Phase 6. class TBC
+NFR-30,NFR,"AI provenance, deterministic constraints and server-side policy gates",6.2,M,6,TQ-9–TQ-13,TBD,Under Review,range-only,,expand in Phase 6. class TBC
+NFR-31,NFR,"AI provenance, deterministic constraints and server-side policy gates",6.2,M,6,TQ-9–TQ-13,TBD,Under Review,range-only,,expand in Phase 6. class TBC
+NFR-32,NFR,"AI provenance, deterministic constraints and server-side policy gates",6.2,M,6,TQ-9–TQ-13,TBD,Under Review,range-only,,expand in Phase 6. class TBC
+DATA-01,DATA,"Input validation, metadata states and timestamp semantics",5.1,D,2,TQ-19–TQ-27,TBD,Under Review,range-only,,expand in Phase 2
+DATA-02,DATA,"Input validation, metadata states and timestamp semantics",5.1,D,2,TQ-19–TQ-27,TBD,Under Review,range-only,,expand in Phase 2
+DATA-03,DATA,"Input validation, metadata states and timestamp semantics",5.1,D,2,TQ-19–TQ-27,TBD,Under Review,range-only,,expand in Phase 2
+DATA-04,DATA,"Input validation, metadata states and timestamp semantics",5.1,D,2,TQ-19–TQ-27,TBD,Under Review,range-only,,expand in Phase 2
+DATA-05,DATA,"Input validation, metadata states and timestamp semantics",5.1,D,2,TQ-19–TQ-27,TBD,Under Review,range-only,,expand in Phase 2
+DATA-06,DATA,"Input validation, metadata states and timestamp semantics",5.1,D,2,TQ-19–TQ-27,TBD,Under Review,range-only,,expand in Phase 2
+DATA-16,DATA,"Input validation, metadata states and timestamp semantics",5.1,D,5,TQ-19–TQ-27,TBD,Under Review,range-only,,expand in Phase 5
+DATA-17,DATA,"Input validation, metadata states and timestamp semantics",5.1,D,5,TQ-19–TQ-27,TBD,Under Review,range-only,,expand in Phase 5
+DATA-18,DATA,"Input validation, metadata states and timestamp semantics",5.1,D,5,TQ-19–TQ-27,TBD,Under Review,range-only,,expand in Phase 5
+DATA-19,DATA,"Input validation, metadata states and timestamp semantics",5.1,D,5,TQ-19–TQ-27,TBD,Under Review,range-only,,expand in Phase 5
+DATA-20,DATA,"Input validation, metadata states and timestamp semantics",5.1,D,5,TQ-19–TQ-27,TBD,Under Review,range-only,,expand in Phase 5
+DATA-21,DATA,"Input validation, metadata states and timestamp semantics",5.1,D,5,TQ-19–TQ-27,TBD,Under Review,range-only,,expand in Phase 5
+DATA-07,DATA,"Proposal lifecycle, retention and deletion",5.2,D,6,TQ-19–TQ-27,TBD,Under Review,range-only,,expand in Phase 6
+DATA-08,DATA,"Proposal lifecycle, retention and deletion",5.2,D,6,TQ-19–TQ-27,TBD,Under Review,range-only,,expand in Phase 6
+DATA-09,DATA,"Proposal lifecycle, retention and deletion",5.2,D,6,TQ-19–TQ-27,TBD,Under Review,range-only,,expand in Phase 6
+DATA-10,DATA,"Proposal lifecycle, retention and deletion",5.2,D,6,TQ-19–TQ-27,TBD,Under Review,range-only,,expand in Phase 6
+DATA-11,DATA,"Proposal lifecycle, retention and deletion",5.2,D,6,TQ-19–TQ-27,TBD,Under Review,range-only,,expand in Phase 6
+DATA-12,DATA,"Proposal lifecycle, retention and deletion",5.2,D,6,TQ-19–TQ-27,TBD,Under Review,range-only,,expand in Phase 6
+DATA-13,DATA,"Proposal lifecycle, retention and deletion",5.2,D,6,TQ-19–TQ-27,TBD,Under Review,range-only,,expand in Phase 6
+DATA-14,DATA,"Proposal lifecycle, retention and deletion",5.2,D,6,TQ-19–TQ-27,TBD,Under Review,range-only,,expand in Phase 6
+DATA-15,DATA,"Proposal lifecycle, retention and deletion",5.2,D,6,TQ-19–TQ-27,TBD,Under Review,range-only,,expand in Phase 6
+DATA-22,DATA,"Proposal lifecycle, retention and deletion",5.2,D,7,TQ-19–TQ-27,TBD,Under Review,range-only,,expand in Phase 7
+DATA-23,DATA,"Proposal lifecycle, retention and deletion",5.2,D,7,TQ-19–TQ-27,TBD,Under Review,range-only,,expand in Phase 7
+DATA-24,DATA,"Proposal lifecycle, retention and deletion",5.2,D,7,TQ-19–TQ-27,TBD,Under Review,range-only,,expand in Phase 7
+DATA-25,DATA,"Proposal lifecycle, retention and deletion",5.2,D,7,TQ-19–TQ-27,TBD,Under Review,range-only,,expand in Phase 7
+DATA-26,DATA,"Proposal lifecycle, retention and deletion",5.2,D,7,TQ-19–TQ-27,TBD,Under Review,range-only,,expand in Phase 7
+SEC-01,SEC,"Authentication, transport and separation of grants",7,M,3,TQ-28–TQ-34,TBD,Under Review,range-only,,expand in Phase 3. class TBC
+SEC-02,SEC,"Authentication, transport and separation of grants",7,M,3,TQ-28–TQ-34,TBD,Under Review,range-only,,expand in Phase 3. class TBC
+SEC-03,SEC,"Authentication, transport and separation of grants",7,M,3,TQ-28–TQ-34,TBD,Under Review,range-only,,expand in Phase 3. class TBC
+SEC-04,SEC,"Authentication, transport and separation of grants",7,M,3,TQ-28–TQ-34,TBD,Under Review,range-only,,expand in Phase 3. class TBC
+SEC-05,SEC,"Authentication, transport and separation of grants",7,M,3,TQ-28–TQ-34,TBD,Under Review,range-only,,expand in Phase 3. class TBC
+SEC-20,SEC,"Authentication, transport and separation of grants",7,M,3,TQ-28–TQ-34,TBD,Under Review,range-only,,expand in Phase 3. class TBC
+SEC-22,SEC,"Authentication, transport and separation of grants",7,M,3,TQ-28–TQ-34,TBD,Under Review,range-only,,expand in Phase 3. class TBC
+SEC-23,SEC,"Authentication, transport and separation of grants",7,M,3,TQ-28–TQ-34,TBD,Under Review,range-only,,expand in Phase 3. class TBC
+SEC-24,SEC,"Authentication, transport and separation of grants",7,M,3,TQ-28–TQ-34,TBD,Under Review,range-only,,expand in Phase 3. class TBC
+SEC-25,SEC,"Authentication, transport and separation of grants",7,M,3,TQ-28–TQ-34,TBD,Under Review,range-only,,expand in Phase 3. class TBC
+SEC-26,SEC,"Authentication, transport and separation of grants",7,M,3,TQ-28–TQ-34,TBD,Under Review,range-only,,expand in Phase 3. class TBC
+SEC-06,SEC,Secret handling and encrypted grants,7,M,3,TQ-9–TQ-13,TBD,Under Review,range-only,,expand in Phase 3. class TBC
+SEC-07,SEC,Secret handling and encrypted grants,7,M,3,TQ-9–TQ-13,TBD,Under Review,range-only,,expand in Phase 3. class TBC
+SEC-08,SEC,Secret handling and encrypted grants,7,M,3,TQ-9–TQ-13,TBD,Under Review,range-only,,expand in Phase 3. class TBC
+SEC-09,SEC,Secret handling and encrypted grants,7,M,3,TQ-9–TQ-13,TBD,Under Review,range-only,,expand in Phase 3. class TBC
+SEC-10,SEC,"Tenant isolation, input validation and immutable approval",7,M,3,TQ-9–TQ-13,TBD,Under Review,range-only,,expand in Phase 3. class TBC
+SEC-11,SEC,"Tenant isolation, input validation and immutable approval",7,M,3,TQ-9–TQ-13,TBD,Under Review,range-only,,expand in Phase 3. class TBC
+SEC-12,SEC,"Tenant isolation, input validation and immutable approval",7,M,3,TQ-9–TQ-13,TBD,Under Review,range-only,,expand in Phase 3. class TBC
+SEC-13,SEC,"Tenant isolation, input validation and immutable approval",7,M,3,TQ-9–TQ-13,TBD,Under Review,range-only,,expand in Phase 3. class TBC
+SEC-14,SEC,"Tenant isolation, input validation and immutable approval",7,M,3,TQ-9–TQ-13,TBD,Under Review,range-only,,expand in Phase 3. class TBC
+SEC-15,SEC,"Tenant isolation, input validation and immutable approval",7,M,3,TQ-9–TQ-13,TBD,Under Review,range-only,,expand in Phase 3. class TBC
+SEC-16,SEC,"Tenant isolation, input validation and immutable approval",7,M,3,TQ-9–TQ-13,TBD,Under Review,range-only,,expand in Phase 3. class TBC
+SEC-17,SEC,"Tenant isolation, input validation and immutable approval",7,M,3,TQ-9–TQ-13,TBD,Under Review,range-only,,expand in Phase 3. class TBC
+SEC-18,SEC,"Tenant isolation, input validation and immutable approval",7,M,3,TQ-9–TQ-13,TBD,Under Review,range-only,,expand in Phase 3. class TBC
+SEC-19,SEC,"Tenant isolation, input validation and immutable approval",7,M,3,TQ-9–TQ-13,TBD,Under Review,range-only,,expand in Phase 3. class TBC
+SEC-21,SEC,Defense in depth for a remote multi-user service,7,M,3,TQ-28–TQ-34,TBD,Under Review,range-only,,expand in Phase 3. class TBC. No subgroup assignment in §7
+SK-01,SK,Video-to-playlist skill with gated confirmation and failure handling,8,D,6,TQ-5–TQ-8,TBD,Under Review,range-only,,expand in Phase 6
+SK-02,SK,Video-to-playlist skill with gated confirmation and failure handling,8,D,6,TQ-5–TQ-8,TBD,Under Review,range-only,,expand in Phase 6
+SK-03,SK,Video-to-playlist skill with gated confirmation and failure handling,8,D,6,TQ-5–TQ-8,TBD,Under Review,range-only,,expand in Phase 6
+SK-04,SK,Video-to-playlist skill with gated confirmation and failure handling,8,D,6,TQ-5–TQ-8,TBD,Under Review,range-only,,expand in Phase 6
+SK-05,SK,Video-to-playlist skill with gated confirmation and failure handling,8,D,6,TQ-5–TQ-8,TBD,Under Review,range-only,,expand in Phase 6
+OPS-01,OPS,"Configuration, startup validation and health reporting",10,D,2,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 2. Phase split TBC
+OPS-02,OPS,"Configuration, startup validation and health reporting",10,D,2,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 2. Phase split TBC
+OPS-03,OPS,"Configuration, startup validation and health reporting",10,D,2,TQ-1–TQ-4,TBD,Under Review,range-only,,expand in Phase 2. Phase split TBC
+OPS-04,OPS,"Operations, retention, deployment and change control",10,D,7,TQ-19–TQ-27,TBD,Under Review,range-only,,expand in Phase 7. Phase split TBC
+OPS-05,OPS,"Operations, retention, deployment and change control",10,D,7,TQ-19–TQ-27,TBD,Under Review,range-only,,expand in Phase 7. Phase split TBC
+OPS-06,OPS,"Operations, retention, deployment and change control",10,D,7,TQ-19–TQ-27,TBD,Under Review,range-only,,expand in Phase 7. Phase split TBC
+OPS-07,OPS,"Operations, retention, deployment and change control",10,D,7,TQ-19–TQ-27,TBD,Under Review,range-only,,expand in Phase 7. Phase split TBC
+OPS-08,OPS,"Operations, retention, deployment and change control",10,D,7,TQ-19–TQ-27,TBD,Under Review,range-only,,expand in Phase 7. Phase split TBC
+OPS-09,OPS,"Operations, retention, deployment and change control",10,D,7,TQ-19–TQ-27,TBD,Under Review,range-only,,expand in Phase 7. Phase split TBC
+OPS-10,OPS,"Operations, retention, deployment and change control",10,D,7,TQ-19–TQ-27,TBD,Under Review,range-only,,expand in Phase 7. Phase split TBC
+OPS-11,OPS,"Operations, retention, deployment and change control",10,D,7,TQ-19–TQ-27,TBD,Under Review,range-only,,expand in Phase 7. Phase split TBC
+OPS-12,OPS,"Operations, retention, deployment and change control",10,D,7,TQ-19–TQ-27,TBD,Under Review,range-only,,expand in Phase 7. Phase split TBC
+DEV-AI-01,DEV-AI,See Engineering_Governance_Specification,8,D,1,TQ-14–TQ-18,TBD,Under Review,range-only,,expand in Phase 1
+DEV-AI-02,DEV-AI,See Engineering_Governance_Specification,8,D,1,TQ-14–TQ-18,TBD,Under Review,range-only,,expand in Phase 1
+DEV-AI-03,DEV-AI,See Engineering_Governance_Specification,8,D,1,TQ-14–TQ-18,TBD,Under Review,range-only,,expand in Phase 1
+DEV-AI-04,DEV-AI,See Engineering_Governance_Specification,8,D,1,TQ-14–TQ-18,TBD,Under Review,range-only,,expand in Phase 1
+DEV-AI-05,DEV-AI,See Engineering_Governance_Specification,8,D,1,TQ-14–TQ-18,TBD,Under Review,range-only,,expand in Phase 1
+DEV-AI-06,DEV-AI,See Engineering_Governance_Specification,8,D,1,TQ-14–TQ-18,TBD,Under Review,range-only,,expand in Phase 1
+DEV-AI-07,DEV-AI,See Engineering_Governance_Specification,8,D,1,TQ-14–TQ-18,TBD,Under Review,range-only,,expand in Phase 1
+DEV-AI-08,DEV-AI,See Engineering_Governance_Specification,8,D,1,TQ-14–TQ-18,TBD,Under Review,range-only,,expand in Phase 1
+DEV-AI-09,DEV-AI,See Engineering_Governance_Specification,8,D,1,TQ-14–TQ-18,TBD,Under Review,range-only,,expand in Phase 1
+DEV-AI-10,DEV-AI,See Engineering_Governance_Specification,8,D,1,TQ-14–TQ-18,TBD,Under Review,range-only,,expand in Phase 1
+DEV-AI-11,DEV-AI,See Engineering_Governance_Specification,8,D,1,TQ-14–TQ-18,TBD,Under Review,range-only,,expand in Phase 1
+DEV-AI-12,DEV-AI,See Engineering_Governance_Specification,8,D,1,TQ-14–TQ-18,TBD,Under Review,range-only,,expand in Phase 1
+DEV-AI-13,DEV-AI,See Engineering_Governance_Specification,8,D,1,TQ-14–TQ-18,TBD,Under Review,range-only,,expand in Phase 1
+DEV-AI-14,DEV-AI,See Engineering_Governance_Specification,8,D,1,TQ-14–TQ-18,TBD,Under Review,range-only,,expand in Phase 1
+DEV-AI-15,DEV-AI,See Engineering_Governance_Specification,8,D,1,TQ-14–TQ-18,TBD,Under Review,range-only,,expand in Phase 1
+DEV-AI-16,DEV-AI,See Engineering_Governance_Specification,8,D,1,TQ-14–TQ-18,TBD,Under Review,range-only,,expand in Phase 1
+DEV-AI-17,DEV-AI,See Engineering_Governance_Specification,8,D,1,TQ-14–TQ-18,TBD,Under Review,range-only,,expand in Phase 1
+DEV-AI-18,DEV-AI,See Engineering_Governance_Specification,8,D,1,TQ-14–TQ-18,TBD,Under Review,range-only,,expand in Phase 1
+DEV-AI-19,DEV-AI,See Engineering_Governance_Specification,8,D,1,TQ-14–TQ-18,TBD,Under Review,range-only,,expand in Phase 1
+DEV-AI-20,DEV-AI,See Engineering_Governance_Specification,8,D,1,TQ-14–TQ-18,TBD,Under Review,range-only,,expand in Phase 1
+DEV-AI-21,DEV-AI,See Engineering_Governance_Specification,8,D,1,TQ-14–TQ-18,TBD,Under Review,range-only,,expand in Phase 1
+DEV-AI-22,DEV-AI,See Engineering_Governance_Specification,8,D,1,TQ-14–TQ-18,TBD,Under Review,range-only,,expand in Phase 1
+DEV-AI-23,DEV-AI,See Engineering_Governance_Specification,8,D,1,TQ-14–TQ-18,TBD,Under Review,range-only,,expand in Phase 1
+DEV-AI-24,DEV-AI,See Engineering_Governance_Specification,8,D,1,TQ-14–TQ-18,TBD,Under Review,range-only,,expand in Phase 1
+DEV-AI-25,DEV-AI,See Engineering_Governance_Specification,8,D,1,TQ-14–TQ-18,TBD,Under Review,range-only,,expand in Phase 1
+DEV-AI-26,DEV-AI,See Engineering_Governance_Specification,8,D,1,TQ-14–TQ-18,TBD,Under Review,range-only,,expand in Phase 1
+DEV-AI-27,DEV-AI,See Engineering_Governance_Specification,8,D,1,TQ-14–TQ-18,TBD,Under Review,range-only,,expand in Phase 1
+DEV-AI-28,DEV-AI,See Engineering_Governance_Specification,8,D,1,TQ-14–TQ-18,TBD,Under Review,range-only,,expand in Phase 1
+DEV-AI-29,DEV-AI,See Engineering_Governance_Specification,8,D,1,TQ-14–TQ-18,TBD,Under Review,range-only,,expand in Phase 1
+DEV-AI-30,DEV-AI,See Engineering_Governance_Specification,8,D,1,TQ-14–TQ-18,TBD,Under Review,range-only,,expand in Phase 1
+IF-09a,IF,Prohibit generic API forwarding and bulk raw-data export,3.1,M,2,TQ-1–TQ-4,TBD,Under Review,stated,,class TBC
+POL-01,POL,Written determination and accepted audit for derived capabilities,2.3,M,3,TQ-19–TQ-27,TBD,Under Review,range-only,,expand in Phase 3. class TBC
+POL-02,POL,Written determination and accepted audit for derived capabilities,2.3,M,3,TQ-19–TQ-27,TBD,Under Review,range-only,,expand in Phase 3. class TBC
+POL-03,POL,Written determination and accepted audit for derived capabilities,2.3,M,3,TQ-19–TQ-27,TBD,Under Review,range-only,,expand in Phase 3. class TBC
+POL-04,POL,Consented account data use and compliance ledger,2.3,M,3,TQ-19–TQ-27,TBD,Under Review,range-only,,expand in Phase 3. class TBC
+POL-05,POL,Consented account data use and compliance ledger,2.3,M,3,TQ-19–TQ-27,TBD,Under Review,range-only,,expand in Phase 3. class TBC
+POL-06,POL,Require written cross-owner scoring permission or published exception,2.3,M,3,TQ-19–TQ-27,TBD,Under Review,stated,,class TBC
+POL-07,POL,"Visible YouTube branding, canonical links and independent educational value",2.3,M,3,TQ-19–TQ-27,TBD,Under Review,stated,,class TBC
+POL-08,POL,Obtain written guidance for the remote MCP service,2.3,M,3,TQ-19–TQ-27,TBD,Under Review,stated,,class TBC
+TQ-1,TQ,"Unit, integration, MCP end-to-end and negative tests",9,D,4,TQ-1,TBD,Under Review,range-only,,expand in Phase 4. Test planning allocation
+TQ-2,TQ,"Unit, integration, MCP end-to-end and negative tests",9,D,4,TQ-2,TBD,Under Review,range-only,,expand in Phase 4. Test planning allocation
+TQ-3,TQ,"Unit, integration, MCP end-to-end and negative tests",9,D,4,TQ-3,TBD,Under Review,range-only,,expand in Phase 4. Test planning allocation
+TQ-4,TQ,"Unit, integration, MCP end-to-end and negative tests",9,D,4,TQ-4,TBD,Under Review,range-only,,expand in Phase 4. Test planning allocation
+TQ-5,TQ,"Fixture-isolated CI, quota, skill and regression testing",9,D,2,TQ-5,TBD,Under Review,range-only,,expand in Phase 2. Test planning allocation
+TQ-6,TQ,"Fixture-isolated CI, quota, skill and regression testing",9,D,2,TQ-6,TBD,Under Review,range-only,,expand in Phase 2. Test planning allocation
+TQ-7,TQ,"Fixture-isolated CI, quota, skill and regression testing",9,D,6,TQ-7,TBD,Under Review,range-only,,expand in Phase 6. Test planning allocation
+TQ-8,TQ,"Fixture-isolated CI, quota, skill and regression testing",9,D,6,TQ-8,TBD,Under Review,range-only,,expand in Phase 6. Test planning allocation
+TQ-9,TQ,"Encryption, approvals, injection, eligibility, recovery and provenance",9,D,3,TQ-9,TBD,Under Review,range-only,,expand in Phase 3. Test planning allocation
+TQ-10,TQ,"Encryption, approvals, injection, eligibility, recovery and provenance",9,D,6,TQ-10,TBD,Under Review,range-only,,expand in Phase 6. Test planning allocation
+TQ-11,TQ,"Encryption, approvals, injection, eligibility, recovery and provenance",9,D,6,TQ-11,TBD,Under Review,range-only,,expand in Phase 6. Test planning allocation
+TQ-12,TQ,"Encryption, approvals, injection, eligibility, recovery and provenance",9,D,6,TQ-12,TBD,Under Review,range-only,,expand in Phase 6. Test planning allocation
+TQ-13,TQ,"Encryption, approvals, injection, eligibility, recovery and provenance",9,D,6,TQ-13,TBD,Under Review,range-only,,expand in Phase 6. Test planning allocation
+TQ-14,TQ,"CI checks, human review and branch protection",9,D,1,TQ-14,TBD,Under Review,range-only,,expand in Phase 1. Test planning allocation
+TQ-15,TQ,"CI checks, human review and branch protection",9,D,1,TQ-15,TBD,Under Review,range-only,,expand in Phase 1. Test planning allocation
+TQ-16,TQ,"CI checks, human review and branch protection",9,D,1,TQ-16,TBD,Under Review,range-only,,expand in Phase 1. Test planning allocation
+TQ-17,TQ,"CI checks, human review and branch protection",9,D,1,TQ-17,TBD,Under Review,range-only,,expand in Phase 1. Test planning allocation
+TQ-18,TQ,"CI checks, human review and branch protection",9,D,1,TQ-18,TBD,Under Review,range-only,,expand in Phase 1. Test planning allocation
+TQ-19,TQ,"Policy, retention, quota, language, likes, OAuth and branding",9,D,7,TQ-19,TBD,Under Review,range-only,,expand in Phase 7. Test planning allocation
+TQ-20,TQ,"Policy, retention, quota, language, likes, OAuth and branding",9,D,7,TQ-20,TBD,Under Review,range-only,,expand in Phase 7. Test planning allocation
+TQ-21,TQ,"Policy, retention, quota, language, likes, OAuth and branding",9,D,7,TQ-21,TBD,Under Review,range-only,,expand in Phase 7. Test planning allocation
+TQ-22,TQ,"Policy, retention, quota, language, likes, OAuth and branding",9,D,7,TQ-22,TBD,Under Review,range-only,,expand in Phase 7. Test planning allocation
+TQ-23,TQ,"Policy, retention, quota, language, likes, OAuth and branding",9,D,7,TQ-23,TBD,Under Review,range-only,,expand in Phase 7. Test planning allocation
+TQ-24,TQ,"Policy, retention, quota, language, likes, OAuth and branding",9,D,7,TQ-24,TBD,Under Review,range-only,,expand in Phase 7. Test planning allocation
+TQ-25,TQ,"Policy, retention, quota, language, likes, OAuth and branding",9,D,7,TQ-25,TBD,Under Review,range-only,,expand in Phase 7. Test planning allocation
+TQ-26,TQ,"Policy, retention, quota, language, likes, OAuth and branding",9,D,7,TQ-26,TBD,Under Review,range-only,,expand in Phase 7. Test planning allocation
+TQ-27,TQ,"Policy, retention, quota, language, likes, OAuth and branding",9,D,7,TQ-27,TBD,Under Review,range-only,,expand in Phase 7. Test planning allocation
+TQ-28,TQ,"CI permissions, isolation, transport, quota, ranking and traceability",9,D,7,TQ-28,TBD,Under Review,range-only,,expand in Phase 7. Test planning allocation
+TQ-29,TQ,"CI permissions, isolation, transport, quota, ranking and traceability",9,D,7,TQ-29,TBD,Under Review,range-only,,expand in Phase 7. Test planning allocation
+TQ-30,TQ,"CI permissions, isolation, transport, quota, ranking and traceability",9,D,7,TQ-30,TBD,Under Review,range-only,,expand in Phase 7. Test planning allocation
+TQ-31,TQ,"CI permissions, isolation, transport, quota, ranking and traceability",9,D,7,TQ-31,TBD,Under Review,range-only,,expand in Phase 7. Test planning allocation
+TQ-32,TQ,"CI permissions, isolation, transport, quota, ranking and traceability",9,D,7,TQ-32,TBD,Under Review,range-only,,expand in Phase 7. Test planning allocation
+TQ-33,TQ,"CI permissions, isolation, transport, quota, ranking and traceability",9,D,7,TQ-33,TBD,Under Review,range-only,,expand in Phase 7. Test planning allocation
+TQ-34,TQ,"CI permissions, isolation, transport, quota, ranking and traceability",9,D,7,TQ-34,TBD,Under Review,range-only,,expand in Phase 7. Test planning allocation
+TQ-35,TQ,"CI checks, human review and branch protection",9,D,1,TQ-35,TBD,Under Review,range-only,,expand in Phase 1. Test planning allocation
+TQ-36,TQ,Traceability validator,9,D,1,TQ-36,TBD,Under Review,range-only,,expand in Phase 1. Test planning allocation
