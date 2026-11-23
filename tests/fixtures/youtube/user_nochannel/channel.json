@@ -1,0 +1,10 @@
+{
+  "error": {
+    "code": 401,
+    "errors": [
+      {
+        "reason": "youtubeSignupRequired"
+      }
+    ]
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "items": [
+    {
+      "id": "UCSYN0000000000000000000",
+      "snippet": {
+        "title": "Studio 0",
+        "description": "Synthetic studio",
+        "customUrl": "@syn_studio_0",
+        "publishedAt": "2026-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "UCSYN0000000000000000001",
+      "snippet": {
+        "title": "Studio 1",
+        "description": "Synthetic studio",
+        "customUrl": "@syn_studio_1",
+        "publishedAt": "2026-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "UCSYN0000000000000000002",
+      "snippet": {
+        "title": "Studio 2",
+        "description": "Synthetic studio",
+        "customUrl": "@syn_studio_2",
+        "publishedAt": "2026-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "UCSYN0000000000000000003",
+      "snippet": {
+        "title": "Studio 3",
+        "description": "Synthetic studio",
+        "customUrl": "@syn_studio_3",
+        "publishedAt": "2026-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "UCSYN0000000000000000004",
+      "snippet": {
+        "title": "Studio 4",
+        "description": "Synthetic studio",
+        "customUrl": "@syn_studio_4",
+        "publishedAt": "2026-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "UCSYN0000000000000000005",
+      "snippet": {
+        "title": "Studio 5",
+        "description": "Synthetic studio",
+        "customUrl": "@syn_studio_5",
+        "publishedAt": "2026-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "UCSYN0000000000000000006",
+      "snippet": {
+        "title": "Studio 6",
+        "description": "Synthetic studio",
+        "customUrl": "@syn_studio_6",
+        "publishedAt": "2026-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "UCSYN0000000000000000007",
+      "snippet": {
+        "title": "Studio 7",
+        "description": "Synthetic studio",
+        "customUrl": "@syn_studio_7",
+        "publishedAt": "2026-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "UCSYN0000000000000000008",
+      "snippet": {
+        "title": "Studio 8",
+        "description": "Synthetic studio",
+        "customUrl": "@syn_studio_8",
+        "publishedAt": "2026-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "UCSYN0000000000000000009",
+      "snippet": {
+        "title": "Studio 9",
+        "description": "Synthetic studio",
+        "customUrl": "@syn_studio_9",
+        "publishedAt": "2026-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "UCSYN0000000000000000010",
+      "snippet": {
+        "title": "Studio 10",
+        "description": "Synthetic studio",
+        "customUrl": "@syn_studio_10",
+        "publishedAt": "2026-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "UCSYN0000000000000000011",
+      "snippet": {
+        "title": "Studio 11",
+        "description": "Synthetic studio",
+        "customUrl": "@syn_studio_11",
+        "publishedAt": "2026-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "UCSYN0000000000000000012",
+      "snippet": {
+        "title": "Studio 12",
+        "description": "Synthetic studio",
+        "customUrl": "@syn_studio_12",
+        "publishedAt": "2026-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "UCSYN0000000000000000013",
+      "snippet": {
+        "title": "Studio 13",
+        "description": "Synthetic studio",
+        "customUrl": "@syn_studio_13",
+        "publishedAt": "2026-01-01T00:00:00Z"
+      }
+    },
+    {
+      "id": "UCSYN0000000000000000014",
+      "snippet": {
+        "title": "Studio 14",
+        "description": "Synthetic studio",
+        "customUrl": "@syn_studio_14",
+        "publishedAt": "2026-01-01T00:00:00Z"
+      }
+    }
+  ],
+  "pageInfo": {
+    "totalResults": 15,
+    "resultsPerPage": 15
+  }
+}

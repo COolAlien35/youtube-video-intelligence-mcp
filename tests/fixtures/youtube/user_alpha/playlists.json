@@ -1,0 +1,48 @@
+{
+  "items": [
+    {
+      "id": "PLSYN_user_alpha_0",
+      "snippet": {
+        "title": "Collection 0",
+        "description": ""
+      },
+      "status": {
+        "privacyStatus": "private"
+      }
+    },
+    {
+      "id": "PLSYN_user_alpha_1",
+      "snippet": {
+        "title": "Collection 1",
+        "description": ""
+      },
+      "status": {
+        "privacyStatus": "private"
+      }
+    },
+    {
+      "id": "PLSYN_user_alpha_2",
+      "snippet": {
+        "title": "Collection 2",
+        "description": ""
+      },
+      "status": {
+        "privacyStatus": "private"
+      }
+    },
+    {
+      "id": "PLSYN_user_alpha_3",
+      "snippet": {
+        "title": "Collection 3",
+        "description": ""
+      },
+      "status": {
+        "privacyStatus": "private"
+      }
+    }
+  ],
+  "pageInfo": {
+    "totalResults": 4,
+    "resultsPerPage": 4
+  }
+}

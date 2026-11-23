@@ -1,0 +1,10 @@
+{
+  "error": {
+    "code": 404,
+    "errors": [
+      {
+        "reason": "videoNotFound"
+      }
+    ]
+  }
+}

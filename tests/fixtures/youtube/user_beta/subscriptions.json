@@ -1,0 +1,24 @@
+{
+  "items": [
+    {
+      "snippet": {
+        "resourceId": {
+          "channelId": "UCSYN0000000000000000010"
+        },
+        "publishedAt": "2026-01-01T00:00:00Z"
+      }
+    },
+    {
+      "snippet": {
+        "resourceId": {
+          "channelId": "UCSYN0000000000000000011"
+        },
+        "publishedAt": "2026-01-01T00:00:00Z"
+      }
+    }
+  ],
+  "pageInfo": {
+    "totalResults": 2,
+    "resultsPerPage": 2
+  }
+}

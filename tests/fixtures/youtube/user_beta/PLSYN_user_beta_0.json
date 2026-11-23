@@ -1,0 +1,41 @@
+{
+  "items": [
+    {
+      "id": "SYNITEM_55_0",
+      "snippet": {
+        "resourceId": {
+          "videoId": "SYNV_000055"
+        },
+        "publishedAt": "2026-01-01T00:00:00Z",
+        "playlistId": "PLSYN_user_beta_0",
+        "position": 0
+      }
+    },
+    {
+      "id": "SYNITEM_55_1",
+      "snippet": {
+        "resourceId": {
+          "videoId": "SYNV_000056"
+        },
+        "publishedAt": "2026-01-01T00:00:00Z",
+        "playlistId": "PLSYN_user_beta_0",
+        "position": 1
+      }
+    },
+    {
+      "id": "SYNITEM_55_2",
+      "snippet": {
+        "resourceId": {
+          "videoId": "SYNV_000057"
+        },
+        "publishedAt": "2026-01-01T00:00:00Z",
+        "playlistId": "PLSYN_user_beta_0",
+        "position": 2
+      }
+    }
+  ],
+  "pageInfo": {
+    "totalResults": 3,
+    "resultsPerPage": 3
+  }
+}
