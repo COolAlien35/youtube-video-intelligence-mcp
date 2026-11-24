@@ -13,6 +13,29 @@ The left column preserves the source’s group boundaries. ADR associations are 
 | DEC-13–16 | GitHub/Obsidian workflow; own-channel check; MRTR confirmation; portable video-to-playlist skill. | 05 (channel eligibility), 01/07 (confirmation). Governance and skill packaging trace directly to §8. |
 | DEC-17–22 | Fail-closed policy gates; canonical URL/handle resolution; bounded search; single-instance WAL ledger. | 01/05 (exposure and access), 08 (canonical inputs), 09 (search budget), 04/07 (ledger). Appendix B gives four summaries for six IDs. Individual assignments: TBC — confirm with team. |
 
+### Individual lookup for DEC-01–16
+
+Proposed by order within each source row. TBC — confirm with team. For DEC-17–22 use the grouped entry above until the individual definitions are supplied.
+
+| ID | Summary | Related ADR number or SRS reference |
+|---|---|---|
+| DEC-01 | Remote Streamable HTTP | 01 |
+| DEC-02 | Purpose-specific tools | 01, IF-07–11 |
+| DEC-03 | TF-IDF and cosine similarity | 08 |
+| DEC-04 | Descriptive UTC analytics | 11 |
+| DEC-05 | Strict playlist caps and private default | FR-5 |
+| DEC-06 | Metadata-based synopsis | NFR-25–32 |
+| DEC-07 | 20% quota caps | 09 |
+| DEC-08 | CSV traceability matrix | SRS §9 |
+| DEC-09 | 24-hour cleanup and five-minute expiry | 10 |
+| DEC-10 | Separate MCP and Google authorization | 03, 05 |
+| DEC-11 | Offline Precision@K and NDCG@K | 08 |
+| DEC-12 | Ranking P95 target for 100 items | 08, NFR-07c–07e |
+| DEC-13 | GitHub and Obsidian workflow | SRS §8 |
+| DEC-14 | Check the account’s own channel | 05 |
+| DEC-15 | MRTR confirmation | 01, 07 |
+| DEC-16 | Portable video-to-playlist skill | SRS §8 |
+
 ## ADR-01 — MCP transport and target client
 
 - Status: Closed (design decision recorded 9 Nov 2026)
