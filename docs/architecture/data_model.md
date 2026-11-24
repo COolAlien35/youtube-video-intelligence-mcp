@@ -46,3 +46,7 @@ Rejected and Superseded appear as destinations in SRS §5.2. Their detailed clea
 ## Open questions
 
 Which migration tool and recovery procedure will A adopt? What is the maximum reconciliation lifetime? Which cache TTLs and evidence/receipt retention periods meet policy without retaining deleted personal data? What physical representation and constraints protect approval digests and prevent duplicate reservation settlement? Record agreed answers in the ADR/RTM change process.
+
+## Phase 2 changes · 25 November 2026
+
+The stateless MCP mount stores no protocol session or approval. The Phase 2 stubs do not open a database, consume a quota reservation, or persist a proposal. Request IDs correlate diagnostics only. A’s migration decision, physical schema and any deviations from this logical model are TBC — confirm with team. No storage or quota implementation PR was available for review at this checkpoint.

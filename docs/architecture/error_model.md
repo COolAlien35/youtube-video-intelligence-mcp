@@ -27,3 +27,7 @@ Return exactly code, message, details, retryable, retry_after and request_id. Us
 | INTERNAL_ERROR | No by default | Server boundary | Return generic public message and correlate private diagnostics | Report the request ID |
 
 For partial success, report the known playlist ID, per-item outcomes and operation reference to the authorized caller. A known partial outcome uses operation state; a lost write response uses WRITE_UNCERTAIN. Never treat either as permission to repeat all inserts.
+
+## Phase 2 changes · 25 November 2026
+
+The server HTTP adapter maps each of the 15 common ErrorCode values in one table. A disallowed Origin returns HTTP 403 with FORBIDDEN and the diagnostic request ID. Unexpected application exceptions receive a generic INTERNAL_ERROR response. Tool stubs return NOT_IMPLEMENTED inside the structured result delivered by MCP; its HTTP transport can succeed while the application envelope has ok=false. The registry and HTTP tests check the distinction. The existing code catalogue already contains NOT_IMPLEMENTED. [Server adapter](https://github.com/COolAlien35/youtube-video-intelligence-mcp/pull/14) · [Tool implementation](https://github.com/COolAlien35/youtube-video-intelligence-mcp/pull/15)

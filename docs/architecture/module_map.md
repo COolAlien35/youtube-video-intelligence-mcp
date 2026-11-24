@@ -68,3 +68,9 @@ The asynchronous contract batches video IDs, fetches channels, resolves exact ch
 ## Cross-cutting behavior
 
 Validate non-secret configuration at startup. Keep raw credentials, user payloads and exception chains out of diagnostics. Correlate public errors and logs using the request ID. Use one canonical reference per entity for deduplication. Use UTC for stored instants and reporting; compute the quota-day label at midnight in America/Los_Angeles, including daylight-saving changes. See the [data model](data_model.md).
+
+## Phase 2 changes · 25 November 2026
+
+The [server skeleton](https://github.com/COolAlien35/youtube-video-intelligence-mcp/pull/14) mounts /mcp and exposes /health. Its outer request-ID middleware wraps Origin rejection, tool dispatch and HTTP errors. The factory refuses production startup before auth exists. Phase 3 replaces server.guards.get_principal; the SDK injects the principal without adding it to tool input schemas.
+
+The [tool registry](https://github.com/COolAlien35/youtube-video-intelligence-mcp/pull/15) preserves all nine catalogue names. Each stub returns the same typed envelope with NOT_IMPLEMENTED. The SDK smoke tests exercise July discovery and legacy initialize separately. Neither flow invokes the provider. The frozen package dependency and real config integration await A. [SDK verification](https://github.com/COolAlien35/youtube-video-intelligence-mcp/pull/13)
