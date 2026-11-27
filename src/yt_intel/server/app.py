@@ -11,13 +11,14 @@ from yt_intel.common.logging import configure_logging
 from yt_intel.config import Settings, get_settings, validate_settings
 from yt_intel.tools.registry import register_tools
 
+from .auth import AuthMiddleware, JwtVerifier
 from .errors import handle_app_error
 from .guards import require_local_environment
 from .origin import OriginMiddleware
 from .request_id import RequestIDMiddleware
 
 
-def create_app(settings: Settings | None = None) -> FastAPI:
+def create_app(settings: Settings | None = None, *, verifier: JwtVerifier | None = None) -> FastAPI:
     config = get_settings() if settings is None else settings
     require_local_environment(config.environment)
     validate_settings(config)
@@ -41,6 +42,9 @@ def create_app(settings: Settings | None = None) -> FastAPI:
 
     app = FastAPI(lifespan=lifespan, docs_url=None, redoc_url=None, openapi_url=None)
     app.add_exception_handler(AppError, handle_app_error)
+    app.add_middleware(
+        AuthMiddleware, verifier=verifier or JwtVerifier.from_settings(config), config=config
+    )
     app.add_middleware(OriginMiddleware, allowed=config.allowed_origins)
     app.add_middleware(RequestIDMiddleware)
 
