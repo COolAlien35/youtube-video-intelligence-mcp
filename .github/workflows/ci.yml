@@ -71,8 +71,33 @@ jobs:
       - name: Setup project
         uses: ./.github/actions/setup-project
 
-      - name: pytest
-        run: uv run pytest
+      - name: pytest with coverage
+        run: uv run pytest --cov=src --cov-report=term-missing --cov-report=xml:coverage.xml
+
+      - name: Write coverage to job summary
+        if: always()
+        run: |
+          echo "## Test Coverage" >> $GITHUB_STEP_SUMMARY
+          uv run python -c "
+          import xml.etree.ElementTree as ET, sys
+          try:
+              tree = ET.parse('coverage.xml')
+              rate = float(tree.getroot().get('line-rate', 0)) * 100
+              print(f'Overall line coverage: **{rate:.1f}%**', file=open('/dev/stderr', 'w'))
+              print(f'| Metric | Value |', flush=True)
+              print(f'|--------|-------|', flush=True)
+              print(f'| Line coverage | {rate:.1f}% |', flush=True)
+          except Exception as e:
+              print(f'Could not parse coverage.xml: {e}', file=sys.stderr)
+          " >> \$GITHUB_STEP_SUMMARY 2>/dev/null || echo "Coverage report unavailable" >> \$GITHUB_STEP_SUMMARY
+
+      - name: Upload coverage XML
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-xml
+          path: coverage.xml
+          if-no-files-found: ignore
 
   # ── Test (Windows) ────────────────────────────────────────────────────────
   test-windows:

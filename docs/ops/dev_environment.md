@@ -88,6 +88,54 @@ The checks are, in order:
 4. `uv run mypy src scripts` — type checking (strict)
 5. `uv run pytest` — test suite
 
+## Running the Server Locally (Phase 2+)
+
+> **Note:** The server requires B's `feat/server-skeleton` PR to be merged first.
+> Until then, `yt_intel.server` does not exist and the command below will fail.
+
+Once B's server PR is merged into `main` and you have pulled:
+
+```bash
+uv run uvicorn yt_intel.server.app:create_app --factory --port 8000 --reload
+```
+
+The `--factory` flag tells uvicorn to call `create_app()` to construct the ASGI app.
+`--reload` enables hot-reloading during development (do not use in production).
+
+The server reads all settings from environment variables with the `YT_INTEL_` prefix.
+Copy `.env.example` to `.env` and edit it before starting:
+
+```bash
+cp .env.example .env
+# edit .env as needed, then:
+uv run uvicorn yt_intel.server.app:create_app --factory --port 8000
+```
+
+See `docs/ops/runtime_config.md` for a full list of settings.
+
+## Running a Single Test Directory
+
+To run only a specific test module or directory (faster feedback loop):
+
+```bash
+# All quota tests:
+uv run pytest tests/unit/quota/ -v
+
+# All config tests:
+uv run pytest tests/unit/config/ -v
+
+# All storage tests:
+uv run pytest tests/unit/storage/ -v
+
+# A single test file:
+uv run pytest tests/unit/quota/test_quota_ledger.py -v
+
+# A single test by name (substring match):
+uv run pytest -k "test_reserve_success" -v
+```
+
+Add `--cov=src --cov-report=term-missing` to any of the above to see line-level coverage.
+
 ## Common Problems
 
 ### `uv sync --locked` fails
