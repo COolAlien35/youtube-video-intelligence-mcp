@@ -94,12 +94,19 @@ def test_validate_settings_rejects_relative_data_dir_in_prod() -> None:
 
 @pytest.mark.unit
 def test_validate_settings_accepts_absolute_data_dir_in_prod(tmp_path: Path) -> None:
-    """Prod environment with absolute data_dir and valid origins passes."""
+    """Prod environment with absolute data_dir, HTTPS, and valid auth/keys passes."""
     settings = Settings(
         _env_file=None,
         environment="prod",
         data_dir=tmp_path.resolve(),
         allowed_origins=["https://example.com"],
+        require_https=True,
+        supabase_issuer="https://proj.supabase.co/auth/v1",
+        supabase_jwks_url="https://proj.supabase.co/auth/v1/.well-known/jwks.json",
+        google_client_id="client-id.apps.googleusercontent.com",
+        google_client_secret=SecretStr("fake-google-secret"),
+        google_redirect_uri="https://mcp.example.com/oauth/google/callback",
+        token_keys=SecretStr('{"1": "ERERERERERERERERERERERERERERERERERERERERERE="}'),
     )
     validate_settings(settings)
 
