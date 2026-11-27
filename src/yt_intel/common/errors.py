@@ -1,9 +1,8 @@
-"""Error codes and AppError — §0.4 interface contract (stub for D's implementation)."""
-
-from __future__ import annotations
-
+import json
 from enum import StrEnum
 from typing import Any
+
+from ._redaction import redact, redact_text
 
 
 class ErrorCode(StrEnum):
@@ -25,7 +24,7 @@ class ErrorCode(StrEnum):
 
 
 class AppError(Exception):
-    """Application-level error with structured code and optional retry hint."""
+    """Supply a public message and JSON details, never raw exception output."""
 
     def __init__(
         self,
@@ -36,19 +35,19 @@ class AppError(Exception):
         retryable: bool = False,
         retry_after: int | None = None,
     ) -> None:
-        super().__init__(message)
+        self.message = redact_text(message)
+        super().__init__(self.message)
         self.code = code
-        self.message = message
-        self.details = details
+        self.details = redact(json.loads(json.dumps(details, allow_nan=False)))
         self.retryable = retryable
         self.retry_after = retry_after
 
     def to_dict(self, request_id: str | None = None) -> dict[str, Any]:
         return {
-            "code": self.code,
+            "code": self.code.value,
             "message": self.message,
-            "details": self.details,
+            "details": redact(self.details),
             "retryable": self.retryable,
             "retry_after": self.retry_after,
-            "request_id": request_id,
+            "request_id": redact_text(request_id) if request_id else request_id,
         }
