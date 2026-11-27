@@ -7,8 +7,8 @@ from datetime import UTC, datetime, timedelta
 from typing import TYPE_CHECKING
 
 import pytest
-from yt_intel.common import AppError, ErrorCode, FakeClock
 
+from yt_intel.common import AppError, ErrorCode, FakeClock
 from yt_intel.config import Settings
 from yt_intel.quota import QuotaService, WorkflowCost, cost_of
 from yt_intel.storage import get_engine, init_db

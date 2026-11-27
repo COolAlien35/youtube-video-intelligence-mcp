@@ -4,8 +4,8 @@ import httpx2
 import pytest
 from mcp.client import ClientSession
 from mcp.client.streamable_http import streamable_http_client
-from yt_intel.config import Settings
 
+from yt_intel.config import Settings
 from yt_intel.server.app import create_app
 
 pytestmark = pytest.mark.e2e

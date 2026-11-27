@@ -3,10 +3,10 @@ import asyncio
 import httpx
 import pytest
 from starlette.routing import Route
-from yt_intel.config import Settings
 
 from yt_intel import __version__
 from yt_intel.common import AppError, ErrorCode
+from yt_intel.config import Settings
 from yt_intel.server.app import create_app
 from yt_intel.server.errors import HTTP_STATUS
 
