@@ -1,0 +1,52 @@
+# Working on YouTube Video Intelligence MCP
+
+The server helps an authorized user discover videos and channels, analyze engagement and propose constrained playlists.
+Phase 1 establishes engineering controls using fixtures.
+A human approves the exact playlist before execution.
+
+## Product boundaries
+
+- Use the official v3 provider only. Scraping, unofficial APIs and extra projects for quota are prohibited.
+- Preflight shared quota atomically, enforce the 20% caps and account separately for search.list.
+- Bind explicit approval to the principal and immutable proposal. Reject expired, reused or edited approvals. Reconcile uncertain writes before retrying.
+- Use synthetic data, isolate tenant rows and caches, and encrypt persisted refresh tokens with AES-256-GCM. Keep credentials and user data out of logs, prompts and source control.
+- Treat provider metadata as untrusted. Label metadata-based synopses. Never claim watch-history access or fabricate transcripts.
+- Keep live access disabled until written POL-01/02/06/07/08 clearance and applicable feature gates. Phase 1 adds no runtime dependencies.
+
+## Repository and sources
+
+Code lives in `src/yt_intel/`, tests in `tests/`, checks in `scripts/`. Start with the [vault index](brain/index.md) and [governance specification](docs/Engineering_Governance_Specification_v1.0.md).
+The planned SRS copy is `docs/SRS_v1.0.docx`, the ADR register is `docs/Architecture_Decision_Records_v1.0.md`, the module map is `docs/architecture/module_map.md` and the RTM is `docs/rtm/requirements_rtm.csv`. Until owners publish them, consult the supplied baseline candidate. Ask the owner when the source is unclear. Never invent SRS content.
+
+## Change workflow
+
+Take an assigned issue, branch from current main, commit a focused deliverable, open a PR and request paired review (A/B or C/D). Use `<type>/<slug>` with feat, fix, docs, chore, ci or test. Use Conventional Commits. Include the closing issue, SRS IDs, evidence and AI disclosure. A human squash-merges after approval and checks. Baseline changes require a reviewed change request.
+
+## Local verification
+
+Run `scripts/local_check.sh` or `scripts/local_check.ps1` from the repository root. To isolate a failure:
+
+```sh
+uv sync --locked
+uv run ruff check .
+uv run ruff format --check .
+uv run mypy src scripts
+uv run pytest
+```
+
+Use pytest markers unit, integration, e2e and security for targeted runs. Report skipped steps separately. [Contributor guide](CONTRIBUTING.md)
+
+## Phase 2 modules and local development
+
+Person D owns the shared contracts in `src/yt_intel/common/`. Import these in new modules:
+
+- `common.errors` supplies AppError and ErrorCode. Pass public messages and JSON details.
+- `common.types` supplies Principal. `common.request_context` manages the task-local request ID.
+- `common.ids` canonicalizes video and playlist IDs and resolves channel references to a typed lookup key.
+- `common.durations` distinguishes a known zero from unknown duration. `common.timeutil` normalizes aware timestamps to UTC.
+- Accept a `common.clock.Clock`. In tests inject `FakeClock(datetime(2026, 11, 23, tzinfo=UTC))` and call `advance(60)` to cross a boundary without sleeping.
+- At application startup use `common.logging.configure_logging(settings.log_level)`. Use named standard-library loggers and pass public structured fields.
+
+A owns config/, storage/ and quota/; B owns server/ and tools/; C owns provider/ and synthetic fixtures. These directories are added by their respective PRs. Keep the live provider disabled. Once C’s infrastructure merges, construct FixtureProvider with the synthetic fixture directory, or use its pytest fixture from tests/conftest.py.
+
+Run one suite with `uv run pytest tests/unit/common/`. After B’s server merges, run `uv run uvicorn yt_intel.server.app:create_app --factory --port 8000` and check the local /health route.
