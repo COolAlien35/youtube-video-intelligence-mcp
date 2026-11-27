@@ -9,6 +9,7 @@ from yt_intel import __version__
 from yt_intel.common import AppError
 from yt_intel.common.logging import configure_logging
 from yt_intel.config import Settings, get_settings, validate_settings
+from yt_intel.tools.registry import register_tools
 
 from .errors import handle_app_error
 from .guards import require_local_environment
@@ -22,6 +23,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     validate_settings(config)
     configure_logging(config.log_level)
     server: MCPServer[None] = MCPServer("YouTube Video Intelligence", version=__version__)
+    register_tools(server)
     loopback = ["localhost", "127.0.0.1", "[::1]"]
     transport = server.streamable_http_app(
         stateless_http=True,
