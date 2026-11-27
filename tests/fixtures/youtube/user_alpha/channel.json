@@ -1,0 +1,17 @@
+{
+  "items": [
+    {
+      "id": "UCSYN0000000000000000000",
+      "snippet": {
+        "title": "Studio 0",
+        "description": "Synthetic studio",
+        "customUrl": "@syn_studio_0",
+        "publishedAt": "2026-01-01T00:00:00Z"
+      }
+    }
+  ],
+  "pageInfo": {
+    "totalResults": 1,
+    "resultsPerPage": 1
+  }
+}

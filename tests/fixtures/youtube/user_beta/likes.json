@@ -1,0 +1,148 @@
+{
+  "items": [
+    {
+      "id": "SYNV_000055",
+      "snippet": {
+        "title": "async programming lesson 55",
+        "description": "A synthetic async programming example.",
+        "channelId": "UCSYN0000000000000000010",
+        "publishedAt": "2026-01-01T00:00:00Z",
+        "categoryId": "27",
+        "tags": [
+          "async programming"
+        ],
+        "defaultAudioLanguage": "en"
+      },
+      "contentDetails": {
+        "duration": "PT56M"
+      },
+      "statistics": {
+        "viewCount": "654"
+      }
+    },
+    {
+      "id": "SYNV_000056",
+      "snippet": {
+        "title": "async programming lesson 56",
+        "description": "A synthetic async programming example.",
+        "channelId": "UCSYN0000000000000000011",
+        "publishedAt": "2026-01-01T00:00:00Z",
+        "categoryId": "27",
+        "tags": [
+          "async programming"
+        ],
+        "defaultAudioLanguage": "en"
+      },
+      "contentDetails": {
+        "duration": "PT57M"
+      },
+      "statistics": {
+        "viewCount": "70"
+      }
+    },
+    {
+      "id": "SYNV_000057",
+      "snippet": {
+        "title": "async programming lesson 57",
+        "description": "A synthetic async programming example.",
+        "channelId": "UCSYN0000000000000000012",
+        "publishedAt": "2026-01-01T00:00:00Z",
+        "categoryId": "27",
+        "tags": [
+          "async programming"
+        ],
+        "defaultAudioLanguage": "en"
+      },
+      "contentDetails": {
+        "duration": "PT58M"
+      },
+      "statistics": {
+        "viewCount": "316"
+      }
+    },
+    {
+      "id": "SYNV_000058",
+      "snippet": {
+        "title": "async programming lesson 58",
+        "description": "A synthetic async programming example.",
+        "channelId": "UCSYN0000000000000000013",
+        "publishedAt": "2026-01-01T00:00:00Z",
+        "categoryId": "27",
+        "tags": [
+          "async programming"
+        ],
+        "defaultAudioLanguage": "en"
+      },
+      "contentDetails": {
+        "duration": "PT59M"
+      },
+      "statistics": {
+        "viewCount": "419"
+      }
+    },
+    {
+      "id": "SYNV_000059",
+      "snippet": {
+        "title": "async programming lesson 59",
+        "description": "A synthetic async programming example.",
+        "channelId": "UCSYN0000000000000000014",
+        "publishedAt": "2026-01-01T00:00:00Z",
+        "categoryId": "27",
+        "tags": [
+          "async programming"
+        ],
+        "defaultAudioLanguage": "en"
+      },
+      "contentDetails": {
+        "duration": "PT1M"
+      },
+      "statistics": {
+        "viewCount": "83"
+      }
+    },
+    {
+      "id": "SYNV_000060",
+      "snippet": {
+        "title": "async programming lesson 60",
+        "description": "A synthetic async programming example.",
+        "channelId": "UCSYN0000000000000000000",
+        "publishedAt": "2026-01-01T00:00:00Z",
+        "categoryId": "27",
+        "tags": [
+          "async programming"
+        ],
+        "defaultAudioLanguage": "en"
+      },
+      "contentDetails": {
+        "duration": "PT2M"
+      },
+      "statistics": {
+        "viewCount": "519"
+      }
+    },
+    {
+      "id": "SYNV_000061",
+      "snippet": {
+        "title": "async programming lesson 61",
+        "description": "A synthetic async programming example.",
+        "channelId": "UCSYN0000000000000000001",
+        "publishedAt": "2026-01-01T00:00:00Z",
+        "categoryId": "27",
+        "tags": [
+          "async programming"
+        ],
+        "defaultAudioLanguage": "en"
+      },
+      "contentDetails": {
+        "duration": "PT3M"
+      },
+      "statistics": {
+        "viewCount": "962"
+      }
+    }
+  ],
+  "pageInfo": {
+    "totalResults": 7,
+    "resultsPerPage": 7
+  }
+}

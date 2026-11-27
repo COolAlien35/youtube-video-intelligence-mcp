@@ -1,0 +1,104 @@
+{
+  "items": [
+    {
+      "snippet": {
+        "resourceId": {
+          "channelId": "UCSYN0000000000000000000"
+        },
+        "publishedAt": "2026-01-01T00:00:00Z"
+      }
+    },
+    {
+      "snippet": {
+        "resourceId": {
+          "channelId": "UCSYN0000000000000000001"
+        },
+        "publishedAt": "2026-01-01T00:00:00Z"
+      }
+    },
+    {
+      "snippet": {
+        "resourceId": {
+          "channelId": "UCSYN0000000000000000002"
+        },
+        "publishedAt": "2026-01-01T00:00:00Z"
+      }
+    },
+    {
+      "snippet": {
+        "resourceId": {
+          "channelId": "UCSYN0000000000000000003"
+        },
+        "publishedAt": "2026-01-01T00:00:00Z"
+      }
+    },
+    {
+      "snippet": {
+        "resourceId": {
+          "channelId": "UCSYN0000000000000000004"
+        },
+        "publishedAt": "2026-01-01T00:00:00Z"
+      }
+    },
+    {
+      "snippet": {
+        "resourceId": {
+          "channelId": "UCSYN0000000000000000005"
+        },
+        "publishedAt": "2026-01-01T00:00:00Z"
+      }
+    },
+    {
+      "snippet": {
+        "resourceId": {
+          "channelId": "UCSYN0000000000000000006"
+        },
+        "publishedAt": "2026-01-01T00:00:00Z"
+      }
+    },
+    {
+      "snippet": {
+        "resourceId": {
+          "channelId": "UCSYN0000000000000000007"
+        },
+        "publishedAt": "2026-01-01T00:00:00Z"
+      }
+    },
+    {
+      "snippet": {
+        "resourceId": {
+          "channelId": "UCSYN0000000000000000008"
+        },
+        "publishedAt": "2026-01-01T00:00:00Z"
+      }
+    },
+    {
+      "snippet": {
+        "resourceId": {
+          "channelId": "UCSYN0000000000000000009"
+        },
+        "publishedAt": "2026-01-01T00:00:00Z"
+      }
+    },
+    {
+      "snippet": {
+        "resourceId": {
+          "channelId": "UCSYN0000000000000000010"
+        },
+        "publishedAt": "2026-01-01T00:00:00Z"
+      }
+    },
+    {
+      "snippet": {
+        "resourceId": {
+          "channelId": "UCSYN0000000000000000011"
+        },
+        "publishedAt": "2026-01-01T00:00:00Z"
+      }
+    }
+  ],
+  "pageInfo": {
+    "totalResults": 12,
+    "resultsPerPage": 12
+  }
+}

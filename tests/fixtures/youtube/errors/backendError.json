@@ -1,0 +1,10 @@
+{
+  "error": {
+    "code": 500,
+    "errors": [
+      {
+        "reason": "backendError"
+      }
+    ]
+  }
+}

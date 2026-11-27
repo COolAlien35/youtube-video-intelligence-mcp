@@ -1,0 +1,18 @@
+{
+  "items": [
+    {
+      "id": "PLSYN_user_beta_0",
+      "snippet": {
+        "title": "Collection 0",
+        "description": ""
+      },
+      "status": {
+        "privacyStatus": "private"
+      }
+    }
+  ],
+  "pageInfo": {
+    "totalResults": 1,
+    "resultsPerPage": 1
+  }
+}
