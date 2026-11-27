@@ -68,6 +68,12 @@ packages = ["yt_intel"]
 module = "tests.*"
 disallow_untyped_defs = false
 
+[[tool.mypy.overrides]]
+# backports.zoneinfo fallback branch is dead on Python 3.12 (zoneinfo is stdlib);
+# suppress unused-ignore noise for the try/except import pattern.
+module = "yt_intel.quota.service"
+warn_unused_ignores = false
+
 # ---------------------------------------------------------------------------
 # pytest
 # ---------------------------------------------------------------------------
