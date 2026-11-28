@@ -64,6 +64,22 @@ class Settings(BaseSettings):
     pol_07_open: bool = False
     pol_08_open: bool = False
 
+    # Phase 5: Account-scoped signals, caps, and cache TTL
+    account_cache_ttl_hours: int = 24
+    account_like_cap: int = 1000
+    account_subscription_cap: int = 500
+    account_playlist_cap: int = 200
+    account_playlist_items_cap: int = 500
+    max_playlists_per_run: int = 5
+
+    # Phase 6: Playlist creation, write path, reconciliation, and approvals
+    playlist_writes_enabled: bool = False
+    max_playlist_items: int = 10
+    workflow_deadline_seconds: int = 120
+    write_max_resumes: int = 2
+    read_retry_attempts: int = 3
+    approval_ttl_seconds: int = 300
+
     @model_validator(mode="after")
     def _derive_database_url(self) -> Settings:
         """Derive SQLite database_url from data_dir unless explicitly overridden."""
@@ -151,6 +167,39 @@ def validate_settings(settings: Settings) -> None:
 
     if settings.max_workflow_starts_per_minute <= 0:
         raise ValueError("max_workflow_starts_per_minute must be greater than 0")
+
+    if settings.account_cache_ttl_hours <= 0:
+        raise ValueError("account_cache_ttl_hours must be greater than 0")
+
+    if settings.account_like_cap <= 0:
+        raise ValueError("account_like_cap must be greater than 0")
+
+    if settings.account_subscription_cap <= 0:
+        raise ValueError("account_subscription_cap must be greater than 0")
+
+    if settings.account_playlist_cap <= 0:
+        raise ValueError("account_playlist_cap must be greater than 0")
+
+    if settings.account_playlist_items_cap <= 0:
+        raise ValueError("account_playlist_items_cap must be greater than 0")
+
+    if settings.max_playlists_per_run <= 0:
+        raise ValueError("max_playlists_per_run must be greater than 0")
+
+    if settings.max_playlist_items <= 0 or settings.max_playlist_items > 20:
+        raise ValueError("max_playlist_items must be between 1 and 20")
+
+    if settings.workflow_deadline_seconds <= 0:
+        raise ValueError("workflow_deadline_seconds must be greater than 0")
+
+    if settings.write_max_resumes < 0:
+        raise ValueError("write_max_resumes must be >= 0")
+
+    if settings.read_retry_attempts <= 0:
+        raise ValueError("read_retry_attempts must be greater than 0")
+
+    if settings.approval_ttl_seconds <= 0:
+        raise ValueError("approval_ttl_seconds must be greater than 0")
 
     if settings.environment == "prod" and not settings.data_dir.is_absolute():
         raise ValueError("data_dir must be an absolute path in prod")

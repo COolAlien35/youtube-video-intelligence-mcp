@@ -6,7 +6,7 @@ from typing import Any
 _MASK = "[REDACTED]"
 _FIELD = (
     r"(?:refresh[_-]?token|access[_-]?token|client[_-]?secret"
-    r"|api[_-]?key|token|secret|password|authorization)"
+    r"|api[_-]?key|token|secret|password|authorization|code|state|code_verifier)"
 )
 _SECRET_FIELDS = re.compile(_FIELD + r"|stack[_-]?trace|traceback|exc_info", re.I)
 _TOKEN = re.compile(
