@@ -1,12 +1,12 @@
 # Privacy policy for YouTube Video Intelligence
 
-**Phase 3 development edition · 27 November 2026.** The current service runs with synthetic fixtures. Live YouTube access is disabled. The information below describes the authorized service design and the rights users must have before a live release.
+**Phase 6 development edition · 28 November 2026.** The current service runs with synthetic fixtures. Live YouTube access and live playlist writes (`PLAYLIST_WRITES_ENABLED=false`) are disabled. The information below describes the authorized service design and the rights users must have before a live release.
 
 ## What the service uses
 
-The service uses the issuer and subject from your verified sign-in to separate your records from other users. Connecting Google links your account to that identity. The authorized design stores the scopes you grant and an encrypted refresh token to maintain your connection. Read access is requested first. Playlist creation requires an additional write scope and your approval of the exact preview.
+The service uses the issuer and subject from your verified sign-in to separate your records from other users. Connecting Google links your account to that identity. The authorized design stores the scopes you grant and an encrypted refresh token to maintain your connection. Read access is requested first. Playlist creation requires an additional write scope (requested via incremental consent) and your explicit per-proposal approval of the exact preview via `propose_playlist` and `confirm_execute_playlist`.
 
-With permission, the service can use video and channel metadata, liked videos, subscriptions and playlist items to find related educational material, describe engagement and prepare playlists. It also records your constraints, selected items, operation outcomes and consent or deletion events. YouTube does not provide watch history through this workflow. Request identifiers support diagnostics. Credentials, OAuth codes, callback state and raw account payloads must stay out of logs.
+With permission, the service can use video and channel metadata, liked videos, subscriptions and playlist items to find related educational material, describe engagement and prepare playlists. For playlist workflows, the service stores proposal snapshots (title, description, visibility, target channel ID, ordered video IDs, constraints, and SHA-256 digest), single-use approval handles, and operation status records (per-item execution state and outcomes for `operation_status`). YouTube does not provide watch history through this workflow. Request identifiers support diagnostics. Credentials, OAuth codes, callback state and raw account payloads must stay out of logs.
 
 ## Storage, access and deadlines
 
