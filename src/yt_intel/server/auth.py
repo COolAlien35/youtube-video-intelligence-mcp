@@ -10,7 +10,7 @@ from urllib.parse import urlsplit
 import httpx
 import jwt
 from anyio import to_thread
-from starlette.datastructures import Headers
+from starlette.datastructures import Headers, State
 from starlette.types import ASGIApp, Receive, Scope, Send
 
 from yt_intel.common import AppError, ErrorCode, Principal
@@ -20,6 +20,7 @@ from yt_intel.config import Settings
 from .errors import error_response
 
 principal_var: ContextVar[Principal | None] = ContextVar("verified_principal", default=None)
+application_state: ContextVar[State] = ContextVar("authenticated_application_state")
 _ALGS = ("ES256", "RS256")
 
 
@@ -149,7 +150,9 @@ class AuthMiddleware:
             return
         scope.setdefault("state", {})["principal"] = principal
         binding = principal_var.set(principal)
+        scope_binding = application_state.set(scope["app"].state)
         try:
             await self.app(scope, receive, send)
         finally:
+            application_state.reset(scope_binding)
             principal_var.reset(binding)

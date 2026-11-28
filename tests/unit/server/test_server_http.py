@@ -72,9 +72,9 @@ def test_reject_origin(path, headers):
 
 
 @pytest.mark.security
-def test_prod_refused():
-    with pytest.raises(RuntimeError, match="authentication"):
-        create_app(settings(environment="prod"))
+def test_prod_requires_auth_settings(tmp_path):
+    with pytest.raises(ValueError, match="missing required prod settings"):
+        create_app(settings(environment="prod", data_dir=tmp_path))
 
 
 def test_all_error_codes_mapped():
