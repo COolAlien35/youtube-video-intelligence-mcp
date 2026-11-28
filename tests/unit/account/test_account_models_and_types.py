@@ -6,8 +6,7 @@ from datetime import UTC, datetime
 
 import pytest
 
-from yt_intel.account import AccountSignals, AccountSignalsLoader, Coverage, SignalKind, SignalSet
-from yt_intel.common.types import Principal
+from yt_intel.account import AccountSignals, Coverage, SignalSet
 from yt_intel.config.settings import Settings, validate_settings
 from yt_intel.provider.account_models import (
     LikedVideo,
@@ -67,13 +66,6 @@ def test_account_models_have_no_liked_at_and_are_frozen() -> None:
     )
     assert signals.liked_videos is not None
     assert len(signals.liked_videos.items) == 1
-
-
-async def test_loader_stub_raises_not_implemented() -> None:
-    loader = AccountSignalsLoader()
-    principal = Principal(issuer="https://issuer.example", subject="sub-1")
-    with pytest.raises(NotImplementedError):
-        await loader.load(principal, frozenset({SignalKind.LIKED_VIDEOS}))
 
 
 def test_account_settings_defaults_and_validation() -> None:
