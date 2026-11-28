@@ -1,80 +1,63 @@
 # YouTube Video Intelligence MCP
 
-A Model Context Protocol (MCP) server that analyses YouTube video content — extracting metadata, transcripts, and intelligent summaries — and exposes them as structured tool outputs for LLM-powered applications.
+A Model Context Protocol (MCP) server that discovers related YouTube videos and channels, summarizes authorized account engagement, and creates constrained, user-approved playlists using official YouTube Data API v3 semantics and deterministic offline fixtures.
 
-> **Status:** Phase 1 — Foundation & Governance.
-> Live YouTube API access is disabled until POL-01–08 gates clear.
+> **Live YouTube access is disabled** (`YT_INTEL_LIVE_YOUTUBE_ENABLED=false`, `YT_INTEL_PLAYLIST_WRITES_ENABLED=false`) until written `POL-01`–`POL-08` determinations arrive. See [`docs/policy/gate_status.md`](docs/policy/gate_status.md) and [`docs/policy/evidence_requests.md`](docs/policy/evidence_requests.md).
 
-## Quickstart
+## What It Is (and Is Not)
 
-### Prerequisites
+- **Is:** A multi-tenant, authenticated MCP server (`mcp==2.3.0`, FastAPI, SQLite/WAL) with principal-scoped storage and caching, atomic Pacific-day quota preflight, encrypted delegated Google OAuth grants, and human-in-the-loop playlist creation.
+- **Is not:** A scraper, an unauthenticated proxy, a transcript fabricator, or a watch-history reader (YouTube Data API v3 does not expose watch history). Metadata similarity measures text/tag overlap, not factual quality or accuracy.
 
-- **Python 3.12** (installed automatically by uv from `.python-version`)
-- **[uv](https://docs.astral.sh/uv/) 0.11.32** — the pinned version for this project
+## MCP Tool Catalog
 
-Install uv 0.11.32:
+| Tool | Purpose | Auth / Scope | Writes |
+|---|---|---|---|
+| `similar_videos` | Seed resolution (`seed.metadata`, untrusted) & bounded ranked video discovery | MCP Bearer | None |
+| `similar_channels` | Exact channel ref parsing & ranked similar channels | MCP Bearer | None |
+| `recommendations` | Personalized video recommendations from linked account signals | MCP Bearer + Google Read | None |
+| `engagement_analysis` | Descriptive UTC-window metrics & duration bands over account signals | MCP Bearer + Google Read | None |
+| `propose_playlist` | Constraint-filtered preview (`50 + 50N` quota estimate) + SHA-256 digest | MCP Bearer + Google Read | Local proposal only |
+| `confirm_execute_playlist` | Single-use 5-min MRTR approval bound to principal, channel & digest | MCP Bearer + Google Write | Approved playlist & items |
+| `operation_status` | Principal-scoped execution progress & per-item reconciliation status | MCP Bearer | None |
+| `disconnect_google` (`disconnect`) | Revoke Google grant, delete local grant, purge account cache | MCP Bearer | Revokes/unlinks grant |
+| `delete_data` | Principal-scoped local data deletion request & 7-day purge receipt | MCP Bearer | Deletes local account data |
 
-```bash
-# macOS / Linux / Git Bash
-curl -LsSf https://astral.sh/uv/0.11.32/install.sh | sh
+## Security, Approval & Limitations
 
-# Windows PowerShell
-powershell -ExecutionPolicy Bypass -c "irm https://astral.sh/uv/0.11.32/install.ps1 | iex"
-```
+- **Zero writes before approval:** `propose_playlist` produces an immutable snapshot (`5`-minute expiry). Editing title, description, visibility (`private` default), channel, or video order supersedes the proposal and invalidates prior approvals.
+- **Write-before-call journaling:** Every `playlists.insert` / `playlistItems.insert` is journaled (`INSERTING`) before the upstream call and reconciled before any resume.
+- **Quota & API limits:** Shared daily cap of `2,000` common units (`50 + 50N` per playlist) and `20` `search.list` calls/day; account signal caps include `1,000` liked videos, `500` subscriptions, and `200` playlists.
+- **Retention windows:** `5` min (unexecuted proposals/handles/OAuth state), `24` h (terminal proposals & operations), `7` days (deletion & revocation backstop), `30` days (API cache ceiling from `fetched_at`).
 
-### Setup
+## Quickstart & Checks
+
+Prerequisites: Python `3.12` and pinned [`uv` `0.11.32`](https://docs.astral.sh/uv/).
 
 ```bash
 git clone https://github.com/COolAlien35/youtube-video-intelligence-mcp.git
 cd youtube-video-intelligence-mcp
 uv sync --locked
-```
 
-### Run checks
-
-```bash
-# macOS / Linux / Git Bash
+# Full check suite: ruff lint + format, mypy, pytest
 scripts/local_check.sh
+# Windows PowerShell:
+# powershell -ExecutionPolicy Bypass -File scripts\local_check.ps1
 
-# Windows PowerShell
-powershell -ExecutionPolicy Bypass -File scripts\local_check.ps1
+# Skill, trace, docs, and policy checks
+uv run python scripts/validate_skill.py
+uv run python scripts/check_skill_traces.py skills/video-to-playlist/evals/traces/good_happy.json
+uv run python scripts/check_docs.py
+uv run python scripts/policy_status.py
 ```
-
-The script runs, in order: **lint** (ruff) → **format check** (ruff) → **type check** (mypy) → **tests** (pytest).
-
-## Documentation
-
-- [`docs/ops/dev_environment.md`](docs/ops/dev_environment.md) — full setup guide (macOS, Linux, Windows)
-- [`docs/ops/ci_overview.md`](docs/ops/ci_overview.md) — CI jobs, required checks, and policies
-- [`docs/ops/infra_prerequisites.md`](docs/ops/infra_prerequisites.md) — infrastructure checklist (Phase 2+)
-- [`docs/tools/playlist_workflow.md`](docs/tools/playlist_workflow.md) — FR-5 playlist creation, approval flow, and `video-to-playlist` skill
-- [`docs/policy/write_gating.md`](docs/policy/write_gating.md) — `POL-04/05/07/08` and `PLAYLIST_WRITES_ENABLED` write gating
-- [`docs/skill_eval.md`](docs/skill_eval.md) — manual skill evaluation protocol and scenario matrix
 
 ## Playlist Skill (`video-to-playlist`)
 
-The packaged skill at [`skills/video-to-playlist/SKILL.md`](skills/video-to-playlist/SKILL.md) guides an MCP client through `similar_videos` → `propose_playlist` (immutable preview, zero writes) → explicit user confirmation → `confirm_execute_playlist` → `operation_status`. Live playlist writes remain disabled (`PLAYLIST_WRITES_ENABLED=false`) until policy gates clear. Validate the skill and evaluation traces with:
+Install or load [`skills/video-to-playlist/SKILL.md`](skills/video-to-playlist/SKILL.md) into your MCP client. It enforces the six-step workflow (`similar_videos` → metadata synopsis → `propose_playlist` preview → explicit user confirmation → `confirm_execute_playlist` → `operation_status`) and stops without writes on any failure, denial, or untrusted metadata injection attempt.
 
-```bash
-uv run python scripts/validate_skill.py
-uv run python scripts/check_skill_traces.py skills/video-to-playlist/evals/traces/good_happy.json
-```
+## Documentation & Contributing
 
-## Project structure
-
-```
-src/yt_intel/          # Main package (src layout)
-tests/                 # Test suite
-scripts/               # Helper scripts (local checks, validators)
-docs/                  # Documentation, ADRs, ops guides
-second-brain/          # Knowledge base (ingest notes, refined notes)
-.github/               # Workflows, templates, CODEOWNERS
-```
-
-## Contributing
-
-See [`CONTRIBUTING.md`](CONTRIBUTING.md) (coming in Phase 1).
-
-## License
-
-License: TBD (see [decision D3](docs/plan.md#3-decisions)).
+- [`docs/index.md`](docs/index.md) — full documentation index
+- [`docs/ops/render_secrets_and_https.md`](docs/ops/render_secrets_and_https.md) & [`docs/ops/infra_prerequisites.md`](docs/ops/infra_prerequisites.md) — deployment & ops guides
+- [`CONTRIBUTING.md`](CONTRIBUTING.md) & [`AGENTS.md`](AGENTS.md) — workflow, paired reviews (`A↔B`, `C↔D`), and conventions
+- [`RELEASE_NOTES.md`](RELEASE_NOTES.md) — release candidate notes
