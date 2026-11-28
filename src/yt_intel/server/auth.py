@@ -130,8 +130,12 @@ class AuthMiddleware:
         }:
             await self.app(scope, receive, send)
             return
+        values = Headers(scope=scope).getlist("authorization")
+        if scope["path"] == "/oauth/google/callback" and not values:
+            # Browser redirect authenticates via the single-use bound state and cookie.
+            await self.app(scope, receive, send)
+            return
         try:
-            values = Headers(scope=scope).getlist("authorization")
             if len(values) != 1:
                 raise AuthRequiredError()
             scheme, _, token = values[0].partition(" ")
