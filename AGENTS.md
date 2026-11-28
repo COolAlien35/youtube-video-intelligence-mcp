@@ -15,7 +15,7 @@ A human approves the exact playlist before execution.
 
 ## Repository and sources
 
-Code lives in `src/yt_intel/`, tests in `tests/`, checks in `scripts/`. Start with the [vault index](brain/index.md) and [governance specification](docs/Engineering_Governance_Specification_v1.0.md).
+Code lives in `src/yt_intel/`, tests in `tests/`, checks in `scripts/`. Start with the [documentation index](docs/index.md), [second-brain README](second-brain/README.md), and [governance specification](docs/Engineering_Governance_Specification_v1.0.md).
 The planned SRS copy is `docs/SRS_v1.0.docx`, the ADR register is `docs/Architecture_Decision_Records_v1.0.md`, the module map is `docs/architecture/module_map.md` and the RTM is `docs/rtm/requirements_rtm.csv`. Until owners publish them, consult the supplied baseline candidate. Ask the owner when the source is unclear. Never invent SRS content.
 
 ## Change workflow
@@ -32,6 +32,9 @@ uv run ruff check .
 uv run ruff format --check .
 uv run mypy src scripts
 uv run pytest
+uv run python scripts/validate_skill.py
+uv run python scripts/check_docs.py
+uv run python scripts/policy_status.py
 ```
 
 Use pytest markers unit, integration, e2e and security for targeted runs. Report skipped steps separately. [Contributor guide](CONTRIBUTING.md)
