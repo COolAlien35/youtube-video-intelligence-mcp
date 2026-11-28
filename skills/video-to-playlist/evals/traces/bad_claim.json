@@ -1,0 +1,20 @@
+{
+  "scenario": "partial",
+  "events": [
+    "similar_videos:ok",
+    "propose_playlist:preview",
+    "user:confirmed",
+    "confirm_execute_playlist:accepted",
+    "operation_status:partial"
+  ],
+  "report": {
+    "status": "completed",
+    "requested": 2,
+    "inserted": 1,
+    "skipped": [],
+    "reasons": [
+      "partial"
+    ],
+    "derived_topical_coverage": "unknown"
+  }
+}

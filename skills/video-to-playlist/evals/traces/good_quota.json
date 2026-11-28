@@ -1,0 +1,17 @@
+{
+  "scenario": "quota",
+  "events": [
+    "similar_videos:ok",
+    "propose_playlist:quota_exceeded"
+  ],
+  "report": {
+    "status": "quota_exceeded",
+    "requested": 2,
+    "inserted": 0,
+    "skipped": [],
+    "reasons": [
+      "quota_exceeded"
+    ],
+    "derived_topical_coverage": "unknown"
+  }
+}
