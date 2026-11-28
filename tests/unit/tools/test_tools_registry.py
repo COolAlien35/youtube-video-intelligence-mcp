@@ -34,7 +34,12 @@ def test_tool_catalogue():
 
 
 @pytest.mark.parametrize(
-    "handler", [handler for handler in TOOLS if handler.__name__ != "disconnect_google"]
+    "handler",
+    [
+        handler
+        for handler in TOOLS
+        if handler.__name__ not in {"disconnect_google", "engagement_analysis"}
+    ],
 )
 def test_stub(handler):
     token = request_id_var.set("synthetic-request")

@@ -4,6 +4,7 @@ from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
 
 import httpx
+from sqlalchemy import delete
 from sqlalchemy.engine import Engine
 
 from yt_intel.common import Principal
@@ -13,6 +14,7 @@ from yt_intel.policy.ledger import ComplianceLedger
 from yt_intel.security.crypto import EncryptedBlob, KeyRing
 from yt_intel.storage import get_engine, init_db, session_scope
 from yt_intel.storage.grants import GrantRepo
+from yt_intel.storage.models import CacheEntryRecord
 from yt_intel.storage.scoped import ScopedSession
 
 from .oauth_routes import GoogleLink
@@ -42,6 +44,14 @@ class StoredGrants:
     def delete(self, principal: Principal, account_ref: str) -> None:
         with session_scope(self.engine) as session:
             GrantRepo(ScopedSession(session, principal)).delete(principal, account_ref=account_ref)
+            session.execute(
+                delete(CacheEntryRecord).where(
+                    CacheEntryRecord.principal_key == principal.key,
+                    CacheEntryRecord.category.in_(
+                        ("engagement_signals", "engagement_video_details")
+                    ),
+                )
+            )
 
 
 @asynccontextmanager

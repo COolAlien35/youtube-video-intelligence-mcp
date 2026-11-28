@@ -1,0 +1,428 @@
+{
+  "$defs": {
+    "Bucket": {
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "count": {
+          "title": "Count",
+          "type": "integer"
+        },
+        "share": {
+          "title": "Share",
+          "type": "number"
+        },
+        "name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Name"
+        }
+      },
+      "required": [
+        "id",
+        "count",
+        "share"
+      ],
+      "title": "Bucket",
+      "type": "object"
+    },
+    "Comparison": {
+      "properties": {
+        "period": {
+          "$ref": "#/$defs/Window"
+        },
+        "earlier_count": {
+          "title": "Earlier Count",
+          "type": "integer"
+        },
+        "absolute_change": {
+          "title": "Absolute Change",
+          "type": "integer"
+        },
+        "relative_change": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Relative Change"
+        }
+      },
+      "required": [
+        "period",
+        "earlier_count",
+        "absolute_change",
+        "relative_change"
+      ],
+      "title": "Comparison",
+      "type": "object"
+    },
+    "Coverage": {
+      "properties": {
+        "source": {
+          "enum": [
+            "liked_videos",
+            "subscriptions",
+            "playlist_items"
+          ],
+          "title": "Source",
+          "type": "string"
+        },
+        "unit": {
+          "title": "Unit",
+          "type": "string"
+        },
+        "time_basis": {
+          "title": "Time Basis",
+          "type": "string"
+        },
+        "fetched_count": {
+          "minimum": 0,
+          "title": "Fetched Count",
+          "type": "integer"
+        },
+        "reported_total": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Reported Total"
+        },
+        "cap": {
+          "minimum": 0,
+          "title": "Cap",
+          "type": "integer"
+        },
+        "truncated": {
+          "title": "Truncated",
+          "type": "boolean"
+        },
+        "truncation_reason": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Truncation Reason"
+        },
+        "fetched_at": {
+          "format": "date-time",
+          "title": "Fetched At",
+          "type": "string"
+        },
+        "from_cache": {
+          "title": "From Cache",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "source",
+        "unit",
+        "time_basis",
+        "fetched_count",
+        "reported_total",
+        "cap",
+        "truncated",
+        "truncation_reason",
+        "fetched_at",
+        "from_cache"
+      ],
+      "title": "Coverage",
+      "type": "object"
+    },
+    "Distribution": {
+      "properties": {
+        "buckets": {
+          "items": {
+            "$ref": "#/$defs/Bucket"
+          },
+          "title": "Buckets",
+          "type": "array"
+        },
+        "other_count": {
+          "title": "Other Count",
+          "type": "integer"
+        },
+        "other_share": {
+          "title": "Other Share",
+          "type": "number"
+        },
+        "distinct_known": {
+          "title": "Distinct Known",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "buckets",
+        "other_count",
+        "other_share",
+        "distinct_known"
+      ],
+      "title": "Distribution",
+      "type": "object"
+    },
+    "EngagementResult": {
+      "properties": {
+        "source": {
+          "enum": [
+            "liked_videos",
+            "subscriptions",
+            "playlist_items"
+          ],
+          "title": "Source",
+          "type": "string"
+        },
+        "unit": {
+          "title": "Unit",
+          "type": "string"
+        },
+        "time_basis": {
+          "title": "Time Basis",
+          "type": "string"
+        },
+        "timezone": {
+          "const": "UTC",
+          "default": "UTC",
+          "title": "Timezone",
+          "type": "string"
+        },
+        "period": {
+          "$ref": "#/$defs/Window"
+        },
+        "coverage": {
+          "$ref": "#/$defs/Coverage"
+        },
+        "enrichment": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EnrichmentCoverage"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "metrics": {
+          "$ref": "#/$defs/Metrics"
+        },
+        "qualifiers": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Qualifiers",
+          "type": "array"
+        },
+        "insufficient_data": {
+          "title": "Insufficient Data",
+          "type": "boolean"
+        },
+        "insufficient_reason": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Insufficient Reason"
+        },
+        "provenance": {
+          "default": "Descriptive statistics for the authorized account sample. These counts do not measure watch time or quality.",
+          "title": "Provenance",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source",
+        "unit",
+        "time_basis",
+        "period",
+        "coverage",
+        "enrichment",
+        "metrics",
+        "qualifiers",
+        "insufficient_data",
+        "insufficient_reason"
+      ],
+      "title": "EngagementResult",
+      "type": "object"
+    },
+    "EnrichmentCoverage": {
+      "properties": {
+        "distinct_video_ids": {
+          "title": "Distinct Video Ids",
+          "type": "integer"
+        },
+        "selected": {
+          "title": "Selected",
+          "type": "integer"
+        },
+        "available": {
+          "title": "Available",
+          "type": "integer"
+        },
+        "cap": {
+          "default": 100,
+          "title": "Cap",
+          "type": "integer"
+        },
+        "truncated": {
+          "title": "Truncated",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "distinct_video_ids",
+        "selected",
+        "available",
+        "truncated"
+      ],
+      "title": "EnrichmentCoverage",
+      "type": "object"
+    },
+    "Metrics": {
+      "properties": {
+        "count": {
+          "title": "Count",
+          "type": "integer"
+        },
+        "excluded_invalid_timestamp": {
+          "title": "Excluded Invalid Timestamp",
+          "type": "integer"
+        },
+        "daily_counts": {
+          "additionalProperties": {
+            "type": "integer"
+          },
+          "title": "Daily Counts",
+          "type": "object"
+        },
+        "channels": {
+          "$ref": "#/$defs/Distribution"
+        },
+        "categories": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Distribution"
+            },
+            {
+              "const": "not_applicable",
+              "type": "string"
+            }
+          ],
+          "title": "Categories"
+        },
+        "duration_bands": {
+          "anyOf": [
+            {
+              "additionalProperties": {
+                "type": "integer"
+              },
+              "type": "object"
+            },
+            {
+              "const": "not_applicable",
+              "type": "string"
+            }
+          ],
+          "title": "Duration Bands"
+        },
+        "comparison": {
+          "$ref": "#/$defs/Comparison"
+        }
+      },
+      "required": [
+        "count",
+        "excluded_invalid_timestamp",
+        "daily_counts",
+        "channels",
+        "categories",
+        "duration_bands",
+        "comparison"
+      ],
+      "title": "Metrics",
+      "type": "object"
+    },
+    "Window": {
+      "properties": {
+        "start": {
+          "format": "date-time",
+          "title": "Start",
+          "type": "string"
+        },
+        "end": {
+          "format": "date-time",
+          "title": "End",
+          "type": "string"
+        }
+      },
+      "required": [
+        "start",
+        "end"
+      ],
+      "title": "Window",
+      "type": "object"
+    }
+  },
+  "properties": {
+    "ok": {
+      "title": "Ok",
+      "type": "boolean"
+    },
+    "data": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/EngagementResult"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "error": {
+      "anyOf": [
+        {
+          "additionalProperties": true,
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Error"
+    },
+    "request_id": {
+      "title": "Request Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "ok",
+    "data",
+    "error",
+    "request_id"
+  ],
+  "title": "EngagementEnvelope",
+  "type": "object"
+}

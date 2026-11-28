@@ -11,6 +11,11 @@ from yt_intel import __version__
 from yt_intel.common import AppError
 from yt_intel.common.logging import configure_logging
 from yt_intel.config import Settings, get_settings, validate_settings
+from yt_intel.provider.factory import build_provider
+from yt_intel.quota import PrincipalLimiter, QuotaPlanner, QuotaService
+from yt_intel.services.engagement import AccountSignalsLoader, EngagementService
+from yt_intel.services.engagement_fixture import FixtureSignalsLoader
+from yt_intel.storage import get_engine, init_db
 from yt_intel.tools.registry import register_tools
 
 from .auth import AuthMiddleware, JwtVerifier
@@ -26,6 +31,7 @@ def create_app(
     *,
     verifier: JwtVerifier | None = None,
     google_link: GoogleLink | None = None,
+    account_loader: AccountSignalsLoader | None = None,
 ) -> FastAPI:
     config = get_settings() if settings is None else settings
     validate_settings(config)
@@ -63,7 +69,22 @@ def create_app(
             transport.router.lifespan_context(transport),
         ):
             app.state.google_link = link
-            yield
+            engine = get_engine(config)
+            try:
+                init_db(engine)
+                provider = build_provider(config)
+                planner = QuotaPlanner(QuotaService(engine, config))
+                app.state.engagement = EngagementService(
+                    account_loader or FixtureSignalsLoader(engine, link, provider, planner),
+                    provider,
+                    engine,
+                    planner,
+                    PrincipalLimiter(engine, config),
+                    link.lock if link else None,
+                )
+                yield
+            finally:
+                engine.dispose()
 
     app = FastAPI(lifespan=lifespan, docs_url=None, redoc_url=None, openapi_url=None)
     app.add_exception_handler(AppError, handle_app_error)

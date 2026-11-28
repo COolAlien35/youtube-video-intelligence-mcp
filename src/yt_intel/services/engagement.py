@@ -1,19 +1,27 @@
 """FR-4 orchestration. Account authorization and coverage belong to the signal loader."""
 
+from asyncio import Lock
 from collections.abc import Sequence
+from contextlib import nullcontext
 from dataclasses import replace
 from datetime import datetime
 from typing import Literal, Protocol
 
 from fastapi.concurrency import contextmanager_in_threadpool
-from pydantic import BaseModel, Field, model_validator
+from pydantic import BaseModel, Field, PrivateAttr, model_validator
 from sqlalchemy.engine import Engine
 
 from yt_intel.analytics.engine import Metrics, Observation, Source, Window, analyze
 from yt_intel.cache.store import CacheStore
 from yt_intel.common import Principal
 from yt_intel.provider.base import YouTubeProvider
-from yt_intel.quota import PrincipalLimiter, QuotaPlan, QuotaPlanner, batched_lookup_units
+from yt_intel.quota import (
+    PrincipalLimiter,
+    QuotaPlan,
+    QuotaPlanner,
+    Reservation,
+    batched_lookup_units,
+)
 from yt_intel.storage import session_scope
 from yt_intel.storage.scoped import ScopedSession
 
@@ -58,6 +66,7 @@ class Coverage(BaseModel):
 
 
 class LoadedSignals(BaseModel):
+    _detail_reservation: Reservation | None = PrivateAttr(default=None)
     items: list[Observation]
     coverage: Coverage
 
@@ -107,7 +116,9 @@ class EngagementService:
         engine: Engine,
         planner: QuotaPlanner,
         limiter: PrincipalLimiter,
+        consent_lock: Lock | None = None,
     ) -> None:
+        self.consent_lock = consent_lock
         self.loader = loader
         self.provider = provider
         self.engine = engine
@@ -115,21 +126,21 @@ class EngagementService:
         self.limiter = limiter
 
     async def enrich(
-        self, principal: Principal, rows: list[Observation]
+        self, principal: Principal, rows: list[Observation], reservation: Reservation | None = None
     ) -> tuple[list[Observation], EnrichmentCoverage]:
         ids = list(dict.fromkeys(r.video_id for r in rows if r.video_id))
         selected = ids[:DETAIL_CAP]
-        with session_scope(self.engine) as session:
-            cache = CacheStore(ScopedSession(session, principal))
-            cached = cache.get_many(DETAIL_KIND, selected)
-        details = {key: value.value for key, value in cached.items()}
-        missing = [key for key in selected if key not in cached]
-        if missing:
-            reservation = self.planner.reserve(
-                principal, QuotaPlan(batched_lookup_units(len(missing)))
-            )
-            calls = 0
-            try:
+        calls = 0
+        try:
+            with session_scope(self.engine) as session:
+                cache = CacheStore(ScopedSession(session, principal))
+                cached = cache.get_many(DETAIL_KIND, selected)
+            details = {key: value.value for key, value in cached.items()}
+            missing = [key for key in selected if key not in cached]
+            if missing:
+                reservation = reservation or self.planner.reserve(
+                    principal, QuotaPlan(batched_lookup_units(len(missing)))
+                )
                 for start in range(0, len(missing), 50):
                     batch = missing[start : start + 50]
                     calls += 1
@@ -141,8 +152,10 @@ class EngagementService:
                                 "category_id": video.category_id,
                                 "duration_seconds": video.duration_seconds,
                             }
-            finally:
+        finally:
+            if reservation:
                 reservation.commit(QuotaPlan(calls))
+        if missing:
             with session_scope(self.engine) as session:
                 cache = CacheStore(ScopedSession(session, principal))
                 for key in missing:
@@ -160,7 +173,10 @@ class EngagementService:
         )
 
     async def run(self, principal: Principal, request: EngagementRequest) -> EngagementResult:
-        async with contextmanager_in_threadpool(self.limiter.acquire_workflow(principal)):
+        async with (
+            contextmanager_in_threadpool(self.limiter.acquire_workflow(principal)),
+            self.consent_lock or nullcontext(),
+        ):
             source = request.source
             sets = await self.loader.load(
                 principal,
@@ -171,7 +187,9 @@ class EngagementService:
             enrichment = None
             notes = []
             if source == "playlist_items":
-                rows, enrichment = await self.enrich(principal, rows)
+                rows, enrichment = await self.enrich(
+                    principal, rows, sets[source]._detail_reservation
+                )
                 if enrichment.truncated or enrichment.available < enrichment.selected:
                     notes.append(
                         "Some video details are unavailable or outside the enrichment cap. "
