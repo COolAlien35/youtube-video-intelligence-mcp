@@ -177,3 +177,23 @@ class CacheStore:
             self._scoped.delete(record)
         self._scoped.flush()
         return len(expired)
+
+    def purge_principal(self) -> int:
+        """Delete all cache entries for the scoped principal."""
+        stmt = self._scoped.select(CacheEntryRecord)
+        records = self._scoped.scalars(stmt)
+        for record in records:
+            self._scoped.delete(record)
+        self._scoped.flush()
+        return len(records)
+
+    def purge_kind(self, kind: str) -> int:
+        """Delete all cache entries of *kind* for the scoped principal."""
+        if not kind.strip():
+            return 0
+        stmt = self._scoped.select(CacheEntryRecord).where(CacheEntryRecord.category == kind)
+        records = self._scoped.scalars(stmt)
+        for record in records:
+            self._scoped.delete(record)
+        self._scoped.flush()
+        return len(records)
