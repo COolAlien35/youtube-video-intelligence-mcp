@@ -1,0 +1,173 @@
+{
+  "$defs": {
+    "ChannelSummary": {
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "canonical_link": {
+          "title": "Canonical Link",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "canonical_link"
+      ],
+      "title": "ChannelSummary",
+      "type": "object"
+    },
+    "SimilarChannel": {
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "canonical_link": {
+          "title": "Canonical Link",
+          "type": "string"
+        },
+        "score": {
+          "title": "Score",
+          "type": "number"
+        },
+        "explanation": {
+          "title": "Explanation",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "canonical_link",
+        "score",
+        "explanation"
+      ],
+      "title": "SimilarChannel",
+      "type": "object"
+    },
+    "SimilarChannelsResult": {
+      "properties": {
+        "seed": {
+          "$ref": "#/$defs/ChannelSummary"
+        },
+        "items": {
+          "items": {
+            "$ref": "#/$defs/SimilarChannel"
+          },
+          "title": "Items",
+          "type": "array"
+        },
+        "candidates_considered": {
+          "title": "Candidates Considered",
+          "type": "integer"
+        },
+        "pool_limited": {
+          "default": true,
+          "title": "Pool Limited",
+          "type": "boolean"
+        },
+        "pool_limit": {
+          "default": 50,
+          "title": "Pool Limit",
+          "type": "integer"
+        },
+        "empty_reason": {
+          "anyOf": [
+            {
+              "enum": [
+                "no_candidates_found",
+                "all_candidates_excluded"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Empty Reason"
+        },
+        "empty_explanation": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Empty Explanation"
+        },
+        "provenance": {
+          "default": "Similarity reflects channel metadata. It does not assess quality or accuracy.",
+          "title": "Provenance",
+          "type": "string"
+        },
+        "source": {
+          "default": "YouTube (synthetic fixture data)",
+          "title": "Source",
+          "type": "string"
+        }
+      },
+      "required": [
+        "seed",
+        "items",
+        "candidates_considered"
+      ],
+      "title": "SimilarChannelsResult",
+      "type": "object"
+    }
+  },
+  "properties": {
+    "ok": {
+      "title": "Ok",
+      "type": "boolean"
+    },
+    "data": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/SimilarChannelsResult"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "error": {
+      "anyOf": [
+        {
+          "additionalProperties": true,
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Error"
+    },
+    "request_id": {
+      "title": "Request Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "ok",
+    "data",
+    "error",
+    "request_id"
+  ],
+  "title": "SimilarChannelsEnvelope",
+  "type": "object"
+}
