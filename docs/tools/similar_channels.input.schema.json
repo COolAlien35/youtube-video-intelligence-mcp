@@ -1,0 +1,13 @@
+{
+  "properties": {
+    "channel": {
+      "title": "Channel",
+      "type": "string"
+    }
+  },
+  "required": [
+    "channel"
+  ],
+  "title": "similar_channelsArguments",
+  "type": "object"
+}
