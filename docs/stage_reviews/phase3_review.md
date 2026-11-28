@@ -1,6 +1,30 @@
 # Phase 3 review · Auth and security
 
-**27 November 2026 · Hold Phase 4.** The goal is authenticated MCP access, principal-bound encrypted Google grants, isolation testing, audited policy decisions and reachable privacy/deletion information. D’s implementation has been exercised on branches. The integrated team gate remains open.
+**28 November 2026 · Gate remains on hold.** The goal is authenticated MCP access, principal-bound encrypted Google grants, isolation testing, audited policy decisions and reachable privacy/deletion information. The integrated team gate remains open.
+
+## Updated evidence snapshot
+
+This update records main at 9adf71f. A's versioned AES-GCM, scoped grants and
+configuration are merged. D's shared OAuth helpers (#42), compliance journal
+(#43), privacy guidance (#45) and threat model (#46) are merged. Policy gates
+(#44) and B's authentication/OAuth stack (#49, #51, #52, #59) are under review.
+
+C's repaired issuer (#58), tenant suite (#70), encryption suite (#71),
+transport suite (#72), injection/leakage suite (#74) and RTM update (#77)
+are published. The combined branch passed 302 tests, lint, typing, RTM
+validation and secret scan on Linux and Windows in
+[CI run 46143621970](https://github.com/COolAlien35/youtube-video-intelligence-mcp/actions/runs/46143621970).
+This run proves branch integration. Independent approval of C's PRs and
+the final main build remain pending. Full playlist/MRTR execution and
+approval mutation tests belong to Phase 6.
+
+The original observations below describe the 27 November probe. Its 404s and
+missing components are historical observations. Before team sign-off, replace
+them with final-main results for service JWTs, OAuth, encrypted grants,
+Origin/HTTPS, policy gates, reachable privacy/deletion guidance and scoped
+deletion. A working deletion path and an operator contact still need evidence.
+
+## Historical snapshot from 27 November
 
 | Owner | Deliverable and observed status | Remaining evidence |
 |---|---|---|

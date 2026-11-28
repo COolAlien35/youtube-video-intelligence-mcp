@@ -10,7 +10,7 @@ Main b43b779 includes config, SQLite storage, quota, fixture provider, the commo
 | Server, transport and auth handoff | Health, invalid-Origin response, typed discovery and stub call are covered by tests/unit/server and tests/e2e/test_mcp_smoke.py. server.guards.get_principal is the Phase 3 hook. |
 | Storage, quota and provider | Merged suites cover WAL, scoped reads, Pacific rollover, parallel reservation, fixture safety and fail-closed provider selection. Phase 2 review findings on settlement bounds and parent/child tenant integrity still need owner disposition. |
 | Traceability | The validator runs on main. A green validator does not certify implementation or human acceptance of every row. |
-| Delivery | This review and the implementation are on main. Team sign-off, final issue links and RTM acceptance remain outstanding. |
+| Delivery | The implementation is on main. The corrected review is delivered by PR #47. Team sign-off, final issue links and RTM acceptance remain outstanding. |
 
 ## Historical pre-gate snapshot · 23 November 2026
 
