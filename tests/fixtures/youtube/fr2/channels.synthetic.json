@@ -1,0 +1,80 @@
+{
+  "items": [
+    {
+      "id": "UCSYN0000000000000000000",
+      "snippet": {
+        "title": "Synthetic Prism Studio",
+        "description": "Prism optics and lenses",
+        "customUrl": "@syn_prism"
+      },
+      "keywords": [
+        "optics",
+        "lenses"
+      ]
+    },
+    {
+      "id": "UCSYN0000000000000000001",
+      "snippet": {
+        "title": "Synthetic Lens Bench",
+        "description": "Experiments in optics and lenses",
+        "customUrl": "@syn_lens"
+      },
+      "keywords": [
+        "optics",
+        "lenses"
+      ]
+    },
+    {
+      "id": "UCSYN0000000000000000002",
+      "snippet": {
+        "title": "Synthetic Prism Workshop",
+        "description": "Prism optics and spectra",
+        "customUrl": "@syn_spectra"
+      },
+      "keywords": [
+        "optics",
+        "spectra"
+      ]
+    },
+    {
+      "id": "UCSYN0000000000000000003",
+      "snippet": {
+        "title": "Synthetic Prism Studio",
+        "description": "Synthetic paper folding",
+        "customUrl": "@syn_paper"
+      },
+      "keywords": [
+        "paper"
+      ]
+    },
+    {
+      "id": "UCSYN0000000000000000004",
+      "snippet": {
+        "title": "Synthetic Lens Notes",
+        "description": "",
+        "customUrl": "@syn_notes"
+      },
+      "keywords": [
+        "lenses"
+      ]
+    },
+    {
+      "id": "UCSYN0000000000000000005",
+      "snippet": {
+        "title": "Synthetic Remote Station",
+        "description": "Isolated archive",
+        "customUrl": "@syn_remote"
+      },
+      "keywords": []
+    },
+    {
+      "id": "UCSYN0000000000000000006",
+      "snippet": {
+        "title": "Synthetic Quiet Station",
+        "description": "Closed archive",
+        "customUrl": "@syn_quiet"
+      },
+      "keywords": []
+    }
+  ]
+}
