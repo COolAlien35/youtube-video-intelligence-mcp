@@ -34,8 +34,8 @@ class GrantStorage(Protocol):
     def save(
         self, principal: Principal, sub: str, scopes: frozenset[str], blob: EncryptedBlob
     ) -> None: ...
-    def get(self, principal: Principal) -> tuple[str, EncryptedBlob] | None: ...
-    def delete(self, principal: Principal) -> None: ...
+    def get(self, principal: Principal, account_ref: str) -> tuple[str, EncryptedBlob] | None: ...
+    def delete(self, principal: Principal, account_ref: str) -> None: ...
 
 
 @dataclass(frozen=True)
@@ -126,7 +126,7 @@ class GoogleLink:
 
     async def disconnect(self, principal: Principal, account_ref: str) -> dict[str, bool]:
         async with self.lock:
-            row = await to_thread.run_sync(self.store.get, principal)
+            row = await to_thread.run_sync(self.store.get, principal, account_ref)
             if not row or row[0] != account_ref:
                 raise AppError(ErrorCode.NOT_FOUND_OR_UNAVAILABLE, "Account unavailable")
             revoked = False
@@ -137,7 +137,7 @@ class GoogleLink:
             except AppError:
                 pass  # The response reports unconfirmed remote revocation.
             finally:
-                await to_thread.run_sync(self.store.delete, principal)
+                await to_thread.run_sync(self.store.delete, principal, account_ref)
                 await to_thread.run_sync(self.audit, "consent_revoked", principal)
         return {"disconnected": True, "remote_revocation_confirmed": revoked}
 
