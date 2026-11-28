@@ -1,0 +1,17 @@
+{
+  "scenario": "no_channel",
+  "events": [
+    "similar_videos:ok",
+    "propose_playlist:channel_required"
+  ],
+  "report": {
+    "status": "channel_required",
+    "requested": 2,
+    "inserted": 0,
+    "skipped": [],
+    "reasons": [
+      "channel_required"
+    ],
+    "derived_topical_coverage": "unknown"
+  }
+}

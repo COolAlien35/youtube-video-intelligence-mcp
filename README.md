@@ -47,6 +47,18 @@ The script runs, in order: **lint** (ruff) → **format check** (ruff) → **typ
 - [`docs/ops/dev_environment.md`](docs/ops/dev_environment.md) — full setup guide (macOS, Linux, Windows)
 - [`docs/ops/ci_overview.md`](docs/ops/ci_overview.md) — CI jobs, required checks, and policies
 - [`docs/ops/infra_prerequisites.md`](docs/ops/infra_prerequisites.md) — infrastructure checklist (Phase 2+)
+- [`docs/tools/playlist_workflow.md`](docs/tools/playlist_workflow.md) — FR-5 playlist creation, approval flow, and `video-to-playlist` skill
+- [`docs/policy/write_gating.md`](docs/policy/write_gating.md) — `POL-04/05/07/08` and `PLAYLIST_WRITES_ENABLED` write gating
+- [`docs/skill_eval.md`](docs/skill_eval.md) — manual skill evaluation protocol and scenario matrix
+
+## Playlist Skill (`video-to-playlist`)
+
+The packaged skill at [`skills/video-to-playlist/SKILL.md`](skills/video-to-playlist/SKILL.md) guides an MCP client through `similar_videos` → `propose_playlist` (immutable preview, zero writes) → explicit user confirmation → `confirm_execute_playlist` → `operation_status`. Live playlist writes remain disabled (`PLAYLIST_WRITES_ENABLED=false`) until policy gates clear. Validate the skill and evaluation traces with:
+
+```bash
+uv run python scripts/validate_skill.py
+uv run python scripts/check_skill_traces.py skills/video-to-playlist/evals/traces/good_happy.json
+```
 
 ## Project structure
 

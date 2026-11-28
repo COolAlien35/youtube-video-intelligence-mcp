@@ -4,6 +4,13 @@ from starlette.responses import JSONResponse
 from yt_intel.common import AppError, ErrorCode, get_request_id
 
 HTTP_STATUS = {
+    ErrorCode.RECONCILIATION_AMBIGUOUS: 409,
+    ErrorCode.CONSTRAINT_VIOLATION: 422,
+    ErrorCode.INVALID_TRANSITION: 409,
+    ErrorCode.APPROVAL_INVALID: 403,
+    ErrorCode.PROPOSAL_EXPIRED: 410,
+    ErrorCode.PROPOSAL_NOT_FOUND: 404,
+    ErrorCode.WRITE_SCOPE_REQUIRED: 403,
     ErrorCode.INVALID_INPUT: 400,
     ErrorCode.NOT_FOUND_OR_UNAVAILABLE: 404,
     ErrorCode.AUTH_REQUIRED: 401,
