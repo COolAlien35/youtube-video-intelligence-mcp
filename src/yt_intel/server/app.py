@@ -11,6 +11,11 @@ from yt_intel import __version__
 from yt_intel.common import AppError
 from yt_intel.common.logging import configure_logging
 from yt_intel.config import Settings, get_settings, validate_settings
+from yt_intel.provider.factory import build_provider
+from yt_intel.quota import PrincipalLimiter, QuotaPlanner, QuotaService
+from yt_intel.services.channel_ranking import RankingEngine
+from yt_intel.services.similar_channels import ChannelResultCache, SimilarChannelsService
+from yt_intel.storage import get_engine, init_db
 from yt_intel.tools.registry import register_tools
 
 from .auth import AuthMiddleware, JwtVerifier
@@ -63,7 +68,19 @@ def create_app(
             transport.router.lifespan_context(transport),
         ):
             app.state.google_link = link
-            yield
+            engine = get_engine(config)
+            try:
+                init_db(engine)
+                app.state.similar_channels = SimilarChannelsService(
+                    build_provider(config),
+                    QuotaPlanner(QuotaService(engine, config)),
+                    PrincipalLimiter(engine, config),
+                    ChannelResultCache(engine),
+                    RankingEngine(),
+                )
+                yield
+            finally:
+                engine.dispose()
 
     app = FastAPI(lifespan=lifespan, docs_url=None, redoc_url=None, openapi_url=None)
     app.add_exception_handler(AppError, handle_app_error)
