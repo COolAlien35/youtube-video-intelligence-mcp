@@ -6,7 +6,7 @@ from pydantic import BaseModel
 from yt_intel.common import AppError, ErrorCode, Principal, get_request_id
 from yt_intel.server.guards import get_principal
 
-BoundPrincipal = Annotated[Principal | None, Resolve(get_principal)]
+BoundPrincipal = Annotated[Principal, Resolve(get_principal)]
 
 
 class ToolEnvelope(BaseModel):
