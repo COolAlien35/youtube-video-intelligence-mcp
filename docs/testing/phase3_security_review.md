@@ -5,13 +5,24 @@ scoped cache and AES-GCM implementation. Google and the service issuer are
 synthetic. The security directory blocks socket connections after the event
 loop starts. No live account is required.
 
+## Review status after dependency merges
+
+The Phase 3 owner dependencies #42, #43, #44, #45, #46, #47, #49, #51,
+#52, #59 and #60 are merged. The C stack has been synchronized with main
+6f5c4a0. All 315 combined tests, lint, formatting, strict typing and RTM
+validation pass locally. D's independent approval of #58, #70, #71, #72,
+#74 and #77 remains pending. The Phase 3 gate remains on hold.
+
+The [review message record](phase3_pr_review_messages.md) contains the exact
+submitted reviews, fixes and proposed text for D's independent C reviews.
+
 ## Review order
 
 1. D reviews the repaired issuer PR #58. Its diff against current main contains
    four files. The session-scoped RSA key publishes a public JWKS. Tests verify
    the signature and reject a different signing key.
-2. Complete owner reviews of D's #42, #43, #44 and #45 and B's #49, #51,
-   #52 and #59. C's acceptance stack includes these published dependencies.
+2. The owner reviews of D's #42, #43, #44 and #45 and B's #49, #51,
+   #52 and #59 are complete. C's acceptance stack includes these merged dependencies.
 3. Review C's tenant PR #70, encryption PR #71, transport PR #72, injection
    and leakage PR #74, and the RTM PR in order. Retarget each child to main
    after its predecessor merges. Confirm the remaining diff and rerun checks.
