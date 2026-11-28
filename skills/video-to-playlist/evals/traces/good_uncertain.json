@@ -1,0 +1,20 @@
+{
+  "scenario": "uncertain",
+  "events": [
+    "similar_videos:ok",
+    "propose_playlist:preview",
+    "user:confirmed",
+    "confirm_execute_playlist:accepted",
+    "operation_status:uncertain"
+  ],
+  "report": {
+    "status": "uncertain",
+    "requested": 2,
+    "inserted": null,
+    "skipped": [],
+    "reasons": [
+      "uncertain"
+    ],
+    "derived_topical_coverage": "unknown"
+  }
+}
