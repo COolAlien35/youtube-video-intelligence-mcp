@@ -6,7 +6,6 @@ import pytest
 
 from yt_intel.common.clock import FakeClock
 from yt_intel.provider.fixture import FixtureProvider
-from tests.support.fake_issuer import FakeIssuer
 
 ROOT = Path(__file__).resolve().parent
 
@@ -44,32 +43,3 @@ def settings_factory() -> Any:
         return Settings(**({"_env_file": None, "environment": "test"} | overrides))
 
     return make
-
-
-@pytest.fixture
-def issuer() -> FakeIssuer:
-    return FakeIssuer()
-
-
-@pytest.fixture
-def principal_a() -> Any:
-    from yt_intel.common import Principal
-
-    return Principal("https://fake-issuer.example.invalid", "user_alpha")
-
-
-@pytest.fixture
-def principal_b() -> Any:
-    from yt_intel.common import Principal
-
-    return Principal("https://fake-issuer.example.invalid", "user_beta")
-
-
-@pytest.fixture
-def auth_headers_a(issuer: FakeIssuer) -> dict[str, str]:
-    return {"Authorization": f"Bearer {issuer.mint('user_alpha')}"}
-
-
-@pytest.fixture
-def auth_headers_b(issuer: FakeIssuer) -> dict[str, str]:
-    return {"Authorization": f"Bearer {issuer.mint('user_beta')}"}

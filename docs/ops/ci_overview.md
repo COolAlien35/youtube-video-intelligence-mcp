@@ -12,7 +12,7 @@
 |---|---|---|---|
 | `lint` | `ubuntu-latest` | `ruff check .` + `ruff format --check .` | ✅ From bootstrap |
 | `typecheck` | `ubuntu-latest` | `mypy src scripts` (strict mode) | ✅ From bootstrap |
-| `test` | `ubuntu-latest` | `pytest` | ✅ From bootstrap |
+| `test` | `ubuntu-latest` | `pytest --cov=src` + coverage summary + uploads `coverage.xml` artifact | ✅ Phase 2 (A-6) |
 | `test-windows` | `windows-latest` | `pytest` (two developers use Windows) | ✅ From bootstrap (D7) |
 | `secret-scan` | `ubuntu-latest` | gitleaks over full history (`fetch-depth: 0`) | ✅ From bootstrap |
 | `rtm-check` | `ubuntu-latest` | RTM validator (see below) | ✅ After C's validator merges |
@@ -23,6 +23,14 @@
 1. **After bootstrap push:** `lint`, `typecheck`, `test`, `test-windows`, `secret-scan`
 2. **After the first PR:** `pr-title`
 3. **After C's validator merges and `rtm-check` runs (not skipping):** `rtm-check`
+
+## Coverage Summary (Phase 2, A-6)
+
+The `test` job now runs `pytest --cov=src --cov-report=term-missing --cov-report=xml:coverage.xml`.
+
+- **Job summary:** A markdown table is appended to the GitHub Actions job summary on every run (including failures), so coverage is visible without downloading the artifact.
+- **Artifact:** `coverage.xml` is uploaded as a GitHub Actions artifact named `coverage-xml` (retained for the default 90 days) for tooling integration.
+- **Non-blocking:** A coverage dip does **not** fail CI — only test failures do. Coverage enforcement (minimum threshold) is deferred to Phase 3 when the codebase stabilises.
 
 ## Shared Setup
 
