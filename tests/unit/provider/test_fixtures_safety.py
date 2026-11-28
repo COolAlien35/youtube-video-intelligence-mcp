@@ -35,7 +35,7 @@ def inspect_value(value: Any, key: str, resource: str) -> None:
         if key == "id":
             if resource.startswith("videos.list") or resource == "likes":
                 pattern = ID_PATTERNS["videoId"]
-            elif resource in {"channel", "channels.list"}:
+            elif resource in {"channel", "channels.list", "channels.synthetic"}:
                 pattern = ID_PATTERNS["channelId"]
             elif resource == "playlists":
                 pattern = ID_PATTERNS["playlistId"]
