@@ -134,6 +134,15 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Fail if .env or private keys are tracked
+        run: |
+          bad=$(git ls-files | grep -E '(^\.env$|\.(pem|key|p12|pfx)$)' || true)
+          if [ -n "$bad" ]; then
+            echo "::error::Tracked secret or key files found:"
+            echo "$bad"
+            exit 1
+          fi
+
   # ── RTM check ─────────────────────────────────────────────────────────────
   rtm-check:
     name: rtm-check
