@@ -17,7 +17,7 @@ class ErrorCode(StrEnum):
     STALE_APPROVAL = "STALE_APPROVAL"
     WRITE_UNCERTAIN = "WRITE_UNCERTAIN"
     FORBIDDEN = "FORBIDDEN"
-    POLICY_GATE_CLOSED = "POLICY_GATE_CLOSED"
+    POLICY_GATE_CLOSED = "policy_gate_closed"
     UPSTREAM_ERROR = "UPSTREAM_ERROR"
     NOT_IMPLEMENTED = "NOT_IMPLEMENTED"
     INTERNAL_ERROR = "INTERNAL_ERROR"
@@ -51,3 +51,33 @@ class AppError(Exception):
             "retry_after": self.retry_after,
             "request_id": redact_text(request_id) if request_id else request_id,
         }
+
+
+class AuthRequiredError(AppError):
+    def __init__(self) -> None:
+        super().__init__(ErrorCode.AUTH_REQUIRED, "Authentication required")
+
+
+class InvalidTokenError(AppError):
+    def __init__(self) -> None:
+        super().__init__(ErrorCode.AUTH_REQUIRED, "Invalid service access token")
+
+
+class ForbiddenOriginError(AppError):
+    def __init__(self) -> None:
+        super().__init__(ErrorCode.FORBIDDEN, "Origin is not allowed")
+
+
+class ReauthorizationRequiredError(AppError):
+    def __init__(self) -> None:
+        super().__init__(ErrorCode.AUTH_EXPIRED_OR_REVOKED, "Reconnect the Google account")
+
+
+class TenantViolationError(AppError):
+    def __init__(self) -> None:
+        super().__init__(ErrorCode.FORBIDDEN, "Access denied")
+
+
+class PolicyGateClosedError(AppError):
+    def __init__(self) -> None:
+        super().__init__(ErrorCode.POLICY_GATE_CLOSED, "Policy clearance is required")
