@@ -55,9 +55,10 @@ any code path invokes them in production:
 
 | Operation | TBC value | Action required |
 |---|---|---|
-| `playlists.list` | 1 unit | Verify at the [quota calculator](https://developers.google.com/youtube/v3/determine_your_quota_usage); open `type:change-request` if different |
-| `playlistItems.list` | 1 unit | Same as above |
-| `subscriptions.list` | 1 unit | Same as above |
+| `videos.list` (`myRating=like`) | 1 unit / page-50 | Account liked videos; verify at the [quota calculator](https://developers.google.com/youtube/v3/determine_your_quota_usage); open `type:change-request` if different |
+| `playlists.list` (`mine=true`) | 1 unit / page-50 | Account playlists; verify at the [quota calculator](https://developers.google.com/youtube/v3/determine_your_quota_usage); open `type:change-request` if different |
+| `playlistItems.list` | 1 unit / page-50 | Account playlist items; same as above |
+| `subscriptions.list` (`mine=true`) | 1 unit / page-50 | Account subscriptions; same as above |
 
 ---
 
