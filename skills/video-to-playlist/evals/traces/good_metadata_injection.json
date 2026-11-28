@@ -1,0 +1,18 @@
+{
+  "scenario": "metadata_injection",
+  "events": [
+    "similar_videos:ok",
+    "propose_playlist:preview",
+    "user:denied"
+  ],
+  "report": {
+    "status": "denied",
+    "requested": 2,
+    "inserted": 0,
+    "skipped": [],
+    "reasons": [
+      "denied"
+    ],
+    "derived_topical_coverage": "unknown"
+  }
+}
