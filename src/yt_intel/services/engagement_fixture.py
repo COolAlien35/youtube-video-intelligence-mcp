@@ -2,13 +2,14 @@
 
 from collections.abc import Sequence
 from contextlib import ExitStack
-from datetime import UTC, datetime
+from datetime import UTC, datetime, timedelta
 
 from sqlalchemy.engine import Engine
 
 from yt_intel.analytics.engine import Observation, Source
 from yt_intel.cache.store import CacheStore
 from yt_intel.common import AppError, ErrorCode, Principal
+from yt_intel.config import Settings
 from yt_intel.google_oauth.client import READ
 from yt_intel.google_oauth.fake import FakeGoogleOAuth
 from yt_intel.provider.base import YouTubeProvider
@@ -40,7 +41,9 @@ class FixtureSignalsLoader:
         link: GoogleLink | None,
         provider: YouTubeProvider,
         planner: QuotaPlanner,
+        settings: Settings,
     ) -> None:
+        self.settings = settings
         self.engine = engine
         self.link = link
         self.provider = provider
@@ -90,7 +93,11 @@ class FixtureSignalsLoader:
             signals = LoadedSignals.model_validate(hit.value)
             signals.coverage.from_cache = True
             return {source: signals}
-        cap = min(like_cap, 1000) if source == "liked_videos" else 500
+        cap = {
+            "liked_videos": min(like_cap, 1000, self.settings.account_like_cap),
+            "subscriptions": self.settings.account_subscription_cap,
+            "playlist_items": self.settings.account_playlist_items_cap,
+        }[source]
         with ExitStack() as holds:
             detail_hold = None
             if source == "playlist_items":
@@ -146,7 +153,12 @@ class FixtureSignalsLoader:
                 with session_scope(self.engine) as session:
                     cache = CacheStore(ScopedSession(session, principal))
                     cache.purge_expired()
-                    cache.put(SIGNAL_KIND, key, signals.model_dump(mode="json"))
+                    cache.put(
+                        SIGNAL_KIND,
+                        key,
+                        signals.model_dump(mode="json"),
+                        ttl=timedelta(hours=self.settings.account_cache_ttl_hours),
+                    )
             signals._detail_reservation = detail_hold
             holds.pop_all()
             return {source: signals}

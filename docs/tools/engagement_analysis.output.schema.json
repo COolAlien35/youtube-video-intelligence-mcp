@@ -106,9 +106,16 @@
           "title": "Reported Total"
         },
         "cap": {
-          "minimum": 0,
-          "title": "Cap",
-          "type": "integer"
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Cap"
         },
         "truncated": {
           "title": "Truncated",

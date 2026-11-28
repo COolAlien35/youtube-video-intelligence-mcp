@@ -8,12 +8,14 @@ from mcp.server import MCPServer
 from mcp.server.transport_security import TransportSecuritySettings
 
 from yt_intel import __version__
+from yt_intel.account.loader import AccountSignalsLoader
 from yt_intel.common import AppError
 from yt_intel.common.logging import configure_logging
 from yt_intel.config import Settings, get_settings, validate_settings
 from yt_intel.provider.factory import build_provider
 from yt_intel.quota import PrincipalLimiter, QuotaPlanner, QuotaService
-from yt_intel.services.engagement import AccountSignalsLoader, EngagementService
+from yt_intel.services.account_signal_adapter import AccountSignalAdapter
+from yt_intel.services.engagement import EngagementService
 from yt_intel.services.engagement_fixture import FixtureSignalsLoader
 from yt_intel.storage import get_engine, init_db
 from yt_intel.tools.registry import register_tools
@@ -75,7 +77,9 @@ def create_app(
                 provider = build_provider(config)
                 planner = QuotaPlanner(QuotaService(engine, config))
                 app.state.engagement = EngagementService(
-                    account_loader or FixtureSignalsLoader(engine, link, provider, planner),
+                    AccountSignalAdapter(account_loader)
+                    if account_loader is not None
+                    else FixtureSignalsLoader(engine, link, provider, planner, config),
                     provider,
                     engine,
                     planner,
