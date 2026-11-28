@@ -1,4 +1,4 @@
-"""Offline channel ranker implementing the proposed shared ranking contract."""
+"""Offline TF-IDF ranker implementing the proposed shared ranking contract."""
 
 import math
 import re
@@ -67,6 +67,13 @@ class RankingEngine:
                 overlap = {t: weight * v * seed_vec[t] for t, v in other.items() if t in seed_vec}
                 factors[i][field] = sum(overlap.values())
                 terms[i].update(overlap)
+        if weights.category:
+            for i, candidate in enumerate(candidates):
+                factors[i]["category"] = (
+                    weights.category
+                    if seed.category and candidate.category == seed.category
+                    else 0.0
+                )
         items = [
             RankedItem(
                 d.id, sum(f.values()), f, tuple(sorted(t, key=lambda term: (-t[term], term))[:3])
@@ -74,3 +81,12 @@ class RankingEngine:
             for d, f, t in zip(candidates, factors, terms, strict=True)
         ]
         return sorted(items, key=lambda item: (-item.score, item.id))[:top_k]
+
+
+class VideoRankingEngine(RankingEngine):
+    """Apply the video profile and renormalize when the seed supplies no tags."""
+
+    def weights_for(self, seed: Document) -> WeightProfile:
+        if any(tag.strip() for tag in seed.tags):
+            return WeightProfile(0.50, 0.30, 0.15, 0.05)
+        return WeightProfile(0.50 / 0.85, 0.30 / 0.85, 0, 0.05 / 0.85)

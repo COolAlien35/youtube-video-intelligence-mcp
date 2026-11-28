@@ -21,6 +21,7 @@ def video(raw: dict[str, Any]) -> VideoMetadata:
         snippet.get("defaultAudioLanguage"),
         snippet.get("categoryId"),
         None if count is None else int(count),
+        snippet.get("channelTitle"),
     )
 
 

@@ -19,6 +19,7 @@ class VideoMetadata:
     default_audio_language: str | None
     category_id: str | None
     view_count: int | None
+    channel_title: str | None = None
 
 
 @dataclass(frozen=True)
