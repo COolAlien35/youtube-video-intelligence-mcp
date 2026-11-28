@@ -1,0 +1,205 @@
+{
+  "$defs": {
+    "RankedVideo": {
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "canonical_link": {
+          "title": "Canonical Link",
+          "type": "string"
+        },
+        "channel_title": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Channel Title"
+        },
+        "duration_seconds": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Duration Seconds"
+        },
+        "score": {
+          "title": "Score",
+          "type": "number"
+        },
+        "explanation": {
+          "title": "Explanation",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "canonical_link",
+        "channel_title",
+        "duration_seconds",
+        "score",
+        "explanation"
+      ],
+      "title": "RankedVideo",
+      "type": "object"
+    },
+    "SimilarVideosResult": {
+      "properties": {
+        "seed": {
+          "$ref": "#/$defs/VideoRef"
+        },
+        "items": {
+          "items": {
+            "$ref": "#/$defs/RankedVideo"
+          },
+          "title": "Items",
+          "type": "array"
+        },
+        "candidates_considered": {
+          "title": "Candidates Considered",
+          "type": "integer"
+        },
+        "pool_limit": {
+          "default": 50,
+          "title": "Pool Limit",
+          "type": "integer"
+        },
+        "pool_limited": {
+          "default": true,
+          "title": "Pool Limited",
+          "type": "boolean"
+        },
+        "weights_applied": {
+          "additionalProperties": {
+            "type": "number"
+          },
+          "title": "Weights Applied",
+          "type": "object"
+        },
+        "empty_reason": {
+          "anyOf": [
+            {
+              "enum": [
+                "no_candidates_found",
+                "all_candidates_excluded"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Empty Reason"
+        },
+        "empty_explanation": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Empty Explanation"
+        },
+        "source": {
+          "default": "YouTube (synthetic fixture data)",
+          "title": "Source",
+          "type": "string"
+        },
+        "provenance": {
+          "default": "Similarity measures metadata overlap. Quality and accuracy are not assessed.",
+          "title": "Provenance",
+          "type": "string"
+        }
+      },
+      "required": [
+        "seed",
+        "items",
+        "candidates_considered",
+        "weights_applied"
+      ],
+      "title": "SimilarVideosResult",
+      "type": "object"
+    },
+    "VideoRef": {
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "canonical_link": {
+          "title": "Canonical Link",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "canonical_link"
+      ],
+      "title": "VideoRef",
+      "type": "object"
+    }
+  },
+  "properties": {
+    "ok": {
+      "title": "Ok",
+      "type": "boolean"
+    },
+    "data": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/SimilarVideosResult"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "error": {
+      "anyOf": [
+        {
+          "additionalProperties": true,
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Error"
+    },
+    "request_id": {
+      "title": "Request Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "ok",
+    "data",
+    "error",
+    "request_id"
+  ],
+  "title": "SimilarVideosEnvelope",
+  "type": "object"
+}

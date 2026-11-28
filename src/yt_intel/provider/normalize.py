@@ -21,9 +21,16 @@ def video(raw: dict[str, Any]) -> VideoMetadata:
         snippet.get("defaultAudioLanguage"),
         snippet.get("categoryId"),
         None if count is None else int(count),
+        snippet.get("channelTitle"),
     )
 
 
 def channel(raw: dict[str, Any]) -> Channel:
     snippet = raw["snippet"]
-    return Channel(raw["id"], snippet["title"], snippet["description"], snippet.get("customUrl"))
+    return Channel(
+        raw["id"],
+        snippet["title"],
+        snippet["description"],
+        snippet.get("customUrl"),
+        keywords=tuple(raw.get("keywords", ())),
+    )

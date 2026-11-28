@@ -3,7 +3,7 @@
 import json
 from collections import Counter
 from collections.abc import Sequence
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from pathlib import Path
 from typing import Any
 
@@ -17,6 +17,7 @@ from .models import (
     AccountRef,
     Channel,
     ChannelBatch,
+    ChannelSearchPage,
     PlaylistItem,
     PlaylistSummary,
     SearchPage,
@@ -49,8 +50,22 @@ class FixtureProvider:
             for item in page["items"]
         }
         self.channels = {
-            item["id"]: normalize.channel(item) for item in self.raw["channels.list"]["items"]
+            item["id"]: normalize.channel(item)
+            for page in (self.raw["channels.list"], self.raw.get("fr2/channels.synthetic", {}))
+            for item in page.get("items", [])
         }
+        for vid, video in self.videos.items():
+            channel = self.channels.get(video.channel_id)
+            if video.channel_title is None and channel is not None:
+                self.videos[vid] = replace(video, channel_title=channel.title)
+        self.video_search_topics = sorted(
+            (
+                key.removeprefix("search.list/").removesuffix("-1")
+                for key in self.raw
+                if key.startswith("search.list/") and key.endswith("-1")
+            ),
+            key=lambda topic: (-len(topic), topic),
+        )
         self.faults = faults
         self.calls: Counter[str] = Counter()
         self.playlists: dict[str, dict[str, PlaylistSummary]] = {}
@@ -114,12 +129,28 @@ class FixtureProvider:
                 c
                 for c in self.channels.values()
                 if (
-                    c.handle == "@" + ref.value.removeprefix("@")
+                    (c.handle or "").casefold() == ref.value.casefold()
                     if ref.kind == "handle"
                     else c.username == ref.value
                 )
             ),
             None,
+        )
+
+    async def search_channels(
+        self, query: str, *, max_results: int = 50, page_token: str | None = None
+    ) -> ChannelSearchPage:
+        self._call("search_channels")
+        if not 1 <= max_results <= 50:
+            raise map_api_error(400, "invalidParameter")
+        ids = self.raw.get("fr2/search.synthetic", {}).get(query.casefold(), [])
+        tokens = {f"FAKE_channel_{i}": i for i in range(1, len(ids))}
+        if page_token is not None and page_token not in tokens:
+            raise map_api_error(400, "invalidParameter")
+        start = tokens[page_token] if page_token else 0
+        end = start + max_results
+        return ChannelSearchPage(
+            tuple(ids[start:end]), f"FAKE_channel_{end}" if end < len(ids) else None
         )
 
     async def search_videos(
@@ -128,7 +159,15 @@ class FixtureProvider:
         self._call("search_videos")
         if not 0 <= max_results <= 50:
             raise map_api_error(400, "invalidParameter")
-        topic = query.strip().lower()
+        normalized = query.strip().casefold()
+        topic = next(
+            (
+                topic
+                for topic in self.video_search_topics
+                if normalized == topic or normalized.startswith(topic + " ")
+            ),
+            normalized,
+        )
         first = self.raw.get(f"search.list/{topic}-1", {})
         second = self.raw.get(f"search.list/{topic}-2", {}) if first.get("nextPageToken") else {}
         ids = [item["id"]["videoId"] for page in (first, second) for item in page.get("items", [])]

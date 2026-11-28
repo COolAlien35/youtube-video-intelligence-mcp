@@ -4,6 +4,7 @@ import httpx2
 import pytest
 from mcp.client import ClientSession
 from mcp.client.streamable_http import streamable_http_client
+from tests.support.b_auth import FakeIssuer
 
 from yt_intel.config import Settings
 from yt_intel.server.app import create_app
@@ -12,9 +13,13 @@ pytestmark = pytest.mark.e2e
 
 
 @pytest.mark.parametrize("legacy", [False, True], ids=["july-discovery", "legacy-initialize"])
-def test_mcp_smoke(legacy):
+def test_mcp_smoke(legacy, tmp_path):
     origin = "http://localhost:8000"
-    app = create_app(Settings(_env_file=None, allowed_origins=[origin]))
+    issuer = FakeIssuer()
+    app = create_app(
+        Settings(data_dir=tmp_path, _env_file=None, allowed_origins=[origin]),
+        verifier=issuer.verifier(),
+    )
     responses = []
 
     async def remember(response):
@@ -26,7 +31,7 @@ def test_mcp_smoke(legacy):
             httpx2.AsyncClient(
                 transport=httpx2.ASGITransport(app=app),
                 base_url=origin,
-                headers={"Origin": origin},
+                headers={"Origin": origin, "Authorization": "Bearer " + issuer.mint()},
                 event_hooks={"response": [remember]},
             ) as http,
             streamable_http_client(origin + "/mcp", http_client=http) as streams,
@@ -38,10 +43,10 @@ def test_mcp_smoke(legacy):
                 result = await session.discover()
                 assert "2026-07-28" in result.supported_versions
             catalogue = await session.list_tools()
-            assert len(catalogue.tools) == 9
+            assert len(catalogue.tools) == 10
             response = await session.call_tool("similar_videos", {"seed": "FAKE_vid-01"})
             data = response.structured_content
-            assert data and data["error"]["code"] == "NOT_IMPLEMENTED"
+            assert data and data["error"]["code"] == "NOT_FOUND_OR_UNAVAILABLE"
             assert data["request_id"] == data["error"]["request_id"] == responses[-1]
 
     asyncio.run(run())

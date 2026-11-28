@@ -11,7 +11,7 @@ from typing import TYPE_CHECKING
 from sqlalchemy import text
 
 from yt_intel.common.clock import Clock, SystemClock
-from yt_intel.common.errors import AppError, ErrorCode
+from yt_intel.common.errors import RateLimitedError
 
 if TYPE_CHECKING:
     from collections.abc import Iterator
@@ -69,12 +69,10 @@ class PrincipalLimiter:
                 {"pk": principal.key},
             ).scalar_one()
             if active_count >= self._max_concurrent:
-                raise AppError(
-                    ErrorCode.RATE_LIMITED,
+                raise RateLimitedError(
                     "Too many concurrent workflows for principal",
                     details={"max_concurrent": self._max_concurrent},
-                    retryable=True,
-                    retry_after=5,
+                    retry_after_seconds=5,
                 )
 
             recent_rows = conn.execute(
@@ -93,12 +91,10 @@ class PrincipalLimiter:
                     oldest_dt = oldest_dt.replace(tzinfo=UTC)
                 elapsed = (now - oldest_dt).total_seconds()
                 retry_after = max(1, math.ceil(_RATE_WINDOW_SECONDS - elapsed))
-                raise AppError(
-                    ErrorCode.RATE_LIMITED,
+                raise RateLimitedError(
                     "Workflow start rate limit exceeded for principal",
                     details={"max_starts_per_minute": self._max_starts_per_minute},
-                    retryable=True,
-                    retry_after=retry_after,
+                    retry_after_seconds=retry_after,
                 )
 
             conn.execute(

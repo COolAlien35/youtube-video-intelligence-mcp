@@ -19,6 +19,7 @@ class VideoMetadata:
     default_audio_language: str | None
     category_id: str | None
     view_count: int | None
+    channel_title: str | None = None
 
 
 @dataclass(frozen=True)
@@ -28,6 +29,7 @@ class Channel:
     description: str
     handle: str | None
     username: str | None = None
+    keywords: tuple[str, ...] = ()
 
 
 @dataclass(frozen=True)
@@ -69,3 +71,9 @@ class PlaylistItem:
     video_id: str
     position: int
     playlist_item_added_at: datetime | None
+
+
+@dataclass(frozen=True)
+class ChannelSearchPage:
+    channel_ids: tuple[str, ...]
+    next_page_token: str | None
