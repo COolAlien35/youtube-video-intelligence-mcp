@@ -2,7 +2,7 @@
 
 ## For users
 
-1. Sign in to the MCP service as the owner of the connected account. Choose disconnect to withdraw authorization, or delete_data to request removal of the local data associated with your principal. In the Phase 3 development build these tools return NOT_IMPLEMENTED. Contact the deployment operator privately if you need a development record removed.
+1. Sign in to the MCP service as the owner of the connected account. Use disconnect or disconnect_google with the selected account_ref to revoke and remove that account's grant. The response reports whether Google confirmed revocation. The delete_data tool remains a stub in this development build. Contact the deployment operator privately to request deletion of other associated local records and obtain a receipt.
 2. To revoke the Google grant yourself, remove the app in [Google Account permissions](https://security.google.com/settings/security/permissions). You do not need a working Google grant to request deletion of local records.
 3. Keep the request reference or private acknowledgment. The operator must confirm completion within seven calendar days. A failed tool call is not a receipt. Manage any playlist or video on YouTube directly if you also want it removed there.
 
