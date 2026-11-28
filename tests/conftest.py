@@ -4,6 +4,7 @@ from typing import Any
 
 import pytest
 
+from tests.support.fake_issuer import FakeIssuer
 from yt_intel.common.clock import FakeClock
 from yt_intel.provider.fixture import FixtureProvider
 
@@ -43,3 +44,32 @@ def settings_factory() -> Any:
         return Settings(**({"_env_file": None, "environment": "test"} | overrides))
 
     return make
+
+
+@pytest.fixture(scope="session")
+def issuer() -> FakeIssuer:
+    return FakeIssuer()
+
+
+@pytest.fixture
+def principal_a(issuer: FakeIssuer) -> Any:
+    from yt_intel.common import Principal
+
+    return Principal(issuer.issuer, "user_alpha")
+
+
+@pytest.fixture
+def principal_b(issuer: FakeIssuer) -> Any:
+    from yt_intel.common import Principal
+
+    return Principal(issuer.issuer, "user_beta")
+
+
+@pytest.fixture
+def auth_headers_a(issuer: FakeIssuer) -> dict[str, str]:
+    return {"Authorization": f"Bearer {issuer.mint('user_alpha')}"}
+
+
+@pytest.fixture
+def auth_headers_b(issuer: FakeIssuer) -> dict[str, str]:
+    return {"Authorization": f"Bearer {issuer.mint('user_beta')}"}
