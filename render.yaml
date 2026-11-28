@@ -1,0 +1,36 @@
+services:
+  - type: web
+    name: youtube-video-intelligence-mcp
+    runtime: python
+    buildCommand: uv sync --locked --no-dev
+    startCommand: uv run uvicorn yt_intel.server.app:create_app --factory --host 0.0.0.0 --port $PORT --proxy-headers
+    healthCheckPath: /health
+    envVars:
+      - key: YT_INTEL_ENVIRONMENT
+        value: prod
+      - key: YT_INTEL_DATA_DIR
+        value: /var/lib/yt_intel
+      - key: YT_INTEL_REQUIRE_HTTPS
+        value: "true"
+      - key: YT_INTEL_TRUST_PROXY_HEADERS
+        value: "true"
+      - key: YT_INTEL_ACTIVE_TOKEN_KEY_VERSION
+        value: "1"
+      - key: YT_INTEL_LIVE_YOUTUBE_ENABLED
+        value: "false"
+      - key: YT_INTEL_ALLOWED_ORIGINS
+        sync: false
+      - key: YT_INTEL_SUPABASE_ISSUER
+        sync: false
+      - key: YT_INTEL_SUPABASE_JWKS_URL
+        sync: false
+      - key: YT_INTEL_SUPABASE_AUDIENCE
+        value: authenticated
+      - key: YT_INTEL_GOOGLE_CLIENT_ID
+        sync: false
+      - key: YT_INTEL_GOOGLE_CLIENT_SECRET
+        sync: false
+      - key: YT_INTEL_GOOGLE_REDIRECT_URI
+        sync: false
+      - key: YT_INTEL_TOKEN_KEYS
+        sync: false
