@@ -51,3 +51,17 @@ class AppError(Exception):
             "retry_after": self.retry_after,
             "request_id": redact_text(request_id) if request_id else request_id,
         }
+
+
+class RateLimitedError(AppError):
+    def __init__(
+        self, message: str, *, retry_after_seconds: int, details: dict[str, Any] | None = None
+    ) -> None:
+        self.retry_after_seconds = retry_after_seconds
+        super().__init__(
+            ErrorCode.RATE_LIMITED,
+            message,
+            details=details,
+            retryable=True,
+            retry_after=retry_after_seconds,
+        )

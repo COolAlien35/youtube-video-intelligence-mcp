@@ -7,6 +7,7 @@ from .models import (
     AccountRef,
     Channel,
     ChannelBatch,
+    ChannelSearchPage,
     PlaylistItem,
     PlaylistSummary,
     SearchPage,
@@ -24,6 +25,10 @@ class YouTubeProvider(Protocol):
     async def get_videos(self, video_ids: Sequence[str]) -> VideoBatch:
         """Return available videos in requested order and identify absent IDs."""
         ...
+
+    async def search_channels(
+        self, query: str, *, max_results: int = 50, page_token: str | None = None
+    ) -> ChannelSearchPage: ...
 
     async def search_videos(
         self, query: str, *, max_results: int = 50, page_token: str | None = None
