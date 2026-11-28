@@ -8,25 +8,25 @@ loop starts. No live account is required.
 ## Review status after dependency merges
 
 The Phase 3 owner dependencies #42, #43, #44, #45, #46, #47, #49, #51,
-#52, #59 and #60 are merged. The C stack has been synchronized with main
-6f5c4a0. All 315 combined tests, lint, formatting, strict typing and RTM
-validation pass locally. D's independent approval of #58, #70, #71, #72,
-#74 and #77 remains pending. The Phase 3 gate remains on hold.
+#52, #59 and #60 are merged. C's children #77, #74, #72, #71 and #70
+were subsequently squash-merged into their feature-branch bases. All of
+their changes are now present in the root PR #58, which still targets main.
+The root has been synchronized with main c874300. All 324 combined tests,
+lint, formatting, strict typing and RTM validation pass locally. D's paired
+approval of the aggregate #58 and its merge to main remain pending.
+The Phase 3 gate remains on hold.
 
 The [review message record](phase3_pr_review_messages.md) contains the exact
 submitted reviews, fixes and proposed text for D's independent C reviews.
 
 ## Review order
 
-1. D reviews the repaired issuer PR #58. Its diff against current main contains
-   four files. The session-scoped RSA key publishes a public JWKS. Tests verify
-   the signature and reject a different signing key.
-2. The owner reviews of D's #42, #43, #44 and #45 and B's #49, #51,
-   #52 and #59 are complete. C's acceptance stack includes these merged dependencies.
-3. Review C's tenant PR #70, encryption PR #71, transport PR #72, injection
-   and leakage PR #74, and the RTM PR in order. Retarget each child to main
-   after its predecessor merges. Confirm the remaining diff and rerun checks.
-   The workflow currently triggers automatically for PRs targeting main.
+1. D reviews aggregate PR #58, including the issuer, five security suites and
+   traceability documents. Its public-key fingerprint now hashes DER-encoded
+   SubjectPublicKeyInfo and is reproducible from the public JWKS.
+2. After paired approval and passing current-head CI, squash-merge #58 into
+   main. The closed child PRs need no further merge operations.
+3. Confirm the root commit is on main and its GitHub author is Harsh.
 4. D updates the joint stage review only after integrated main passes and
    human reviews are recorded. The phase gate remains a team decision.
 

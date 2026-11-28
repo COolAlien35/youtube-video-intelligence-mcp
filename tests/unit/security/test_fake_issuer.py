@@ -1,9 +1,10 @@
 import base64
+import hashlib
 import json
 
 import pytest
 from cryptography.exceptions import InvalidSignature
-from cryptography.hazmat.primitives import hashes
+from cryptography.hazmat.primitives import hashes, serialization
 from cryptography.hazmat.primitives.asymmetric import padding, rsa
 from tests.support.fake_issuer import FakeIssuer
 
@@ -61,3 +62,20 @@ def test_expired_claim_and_unsigned_signature(issuer: FakeIssuer) -> None:
     claims = json.loads(base64.urlsafe_b64decode(issuer.expired().split(".")[1] + "=="))
     assert claims["exp"] < time.time()
     assert issuer.alg_none().endswith(".")
+
+
+def test_fingerprint_is_reproducible_from_public_jwks(issuer: FakeIssuer, monkeypatch) -> None:
+    jwk = issuer.jwks["keys"][0]
+    numbers = [int.from_bytes(base64.urlsafe_b64decode(jwk[k] + "=="), "big") for k in ("e", "n")]
+    public = rsa.RSAPublicNumbers(*numbers).public_key()
+    encoded = public.public_bytes(
+        serialization.Encoding.DER, serialization.PublicFormat.SubjectPublicKeyInfo
+    )
+    expected = hashlib.sha256(encoded).hexdigest()
+
+    def private_export_forbidden():
+        raise AssertionError("Fingerprinting must use public key material")
+
+    monkeypatch.setattr(issuer, "private_key_pem", private_export_forbidden)
+    assert issuer.key_fingerprint == expected == issuer.key_fingerprint
+    assert FakeIssuer().key_fingerprint != expected

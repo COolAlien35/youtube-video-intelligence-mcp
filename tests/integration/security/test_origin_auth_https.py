@@ -60,6 +60,19 @@ async def test_origin_and_open_health(security_app, auth_headers_a):
     assert duplicate.status_code == 403
 
 
+async def test_privacy_and_deletion_guidance_are_public(security_app):
+    ctx = security_app
+    for path, heading in (
+        ("/privacy", "Privacy policy for YouTube Video Intelligence"),
+        ("/data-deletion", "Disconnecting an account and deleting data"),
+    ):
+        response = await ctx.browser.get(path)
+        assert response.status_code == 200
+        assert heading in response.text
+        assert response.headers["content-type"].startswith("text/plain")
+        assert response.headers["x-request-id"]
+
+
 async def test_production_rejects_http_even_with_valid_bearer(security_app, tmp_path):
     ctx = security_app
     config = Settings(

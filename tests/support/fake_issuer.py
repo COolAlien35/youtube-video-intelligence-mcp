@@ -108,4 +108,8 @@ class FakeIssuer:
 
     @property
     def key_fingerprint(self) -> str:
-        return hashlib.sha256(self.private_key_pem()).hexdigest()
+        public_der = self._key.public_key().public_bytes(
+            serialization.Encoding.DER,
+            serialization.PublicFormat.SubjectPublicKeyInfo,
+        )
+        return hashlib.sha256(public_der).hexdigest()
