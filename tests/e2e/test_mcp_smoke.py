@@ -40,7 +40,7 @@ def test_mcp_smoke(legacy):
                 result = await session.discover()
                 assert "2026-07-28" in result.supported_versions
             catalogue = await session.list_tools()
-            assert len(catalogue.tools) == 9
+            assert len(catalogue.tools) == 10
             response = await session.call_tool("similar_videos", {"seed": "FAKE_vid-01"})
             data = response.structured_content
             assert data and data["error"]["code"] == "NOT_IMPLEMENTED"

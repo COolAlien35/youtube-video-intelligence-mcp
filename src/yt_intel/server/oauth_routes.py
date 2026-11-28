@@ -10,6 +10,7 @@ from urllib.parse import urlsplit
 
 from anyio import to_thread
 from fastapi import FastAPI, Request
+from starlette.datastructures import State
 from starlette.responses import FileResponse, JSONResponse, RedirectResponse
 
 from yt_intel.common import AppError, ErrorCode, Principal
@@ -34,8 +35,8 @@ class GrantStorage(Protocol):
     def save(
         self, principal: Principal, sub: str, scopes: frozenset[str], blob: EncryptedBlob
     ) -> None: ...
-    def get(self, principal: Principal) -> tuple[str, EncryptedBlob] | None: ...
-    def delete(self, principal: Principal) -> None: ...
+    def get(self, principal: Principal, account_ref: str) -> tuple[str, EncryptedBlob] | None: ...
+    def delete(self, principal: Principal, account_ref: str) -> None: ...
 
 
 @dataclass(frozen=True)
@@ -126,7 +127,7 @@ class GoogleLink:
 
     async def disconnect(self, principal: Principal, account_ref: str) -> dict[str, bool]:
         async with self.lock:
-            row = await to_thread.run_sync(self.store.get, principal)
+            row = await to_thread.run_sync(self.store.get, principal, account_ref)
             if not row or row[0] != account_ref:
                 raise AppError(ErrorCode.NOT_FOUND_OR_UNAVAILABLE, "Account unavailable")
             revoked = False
@@ -137,7 +138,7 @@ class GoogleLink:
             except AppError:
                 pass  # The response reports unconfirmed remote revocation.
             finally:
-                await to_thread.run_sync(self.store.delete, principal)
+                await to_thread.run_sync(self.store.delete, principal, account_ref)
                 await to_thread.run_sync(self.audit, "consent_revoked", principal)
         return {"disconnected": True, "remote_revocation_confirmed": revoked}
 
@@ -167,15 +168,15 @@ def install_routes(app: FastAPI, settings: Settings) -> None:
     async def start(request: Request) -> RedirectResponse:
         if request.query_params.get("write") not in (None, "false", "0"):
             raise AppError(ErrorCode.POLICY_GATE_CLOSED, "Playlist writes are unavailable")
-        return get_link(request).start(request.state.principal)
+        return get_link(request.app.state).start(request.state.principal)
 
     @app.get(_CALLBACK)
     async def callback(request: Request) -> JSONResponse:
-        return await get_link(request).callback(request)
+        return await get_link(request.app.state).callback(request)
 
 
-def get_link(request: Request) -> GoogleLink:
-    link = getattr(request.app.state, "google_link", None)
+def get_link(state: State) -> GoogleLink:
+    link = getattr(state, "google_link", None)
     if not isinstance(link, GoogleLink):
         raise AppError(ErrorCode.NOT_IMPLEMENTED, "Google linking is not configured")
     return link

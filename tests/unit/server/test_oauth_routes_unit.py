@@ -24,10 +24,10 @@ class MemoryGrants:
     def save(self, principal, sub, scopes, blob):
         self.rows[principal] = (sub, blob)
 
-    def get(self, principal):
+    def get(self, principal, account_ref):
         return self.rows.get(principal)
 
-    def delete(self, principal):
+    def delete(self, principal, account_ref):
         self.rows.pop(principal, None)
 
 
@@ -74,7 +74,7 @@ async def test_google_binding(failure):
             return
         assert result.status_code == 200 and events == [("consent_granted", owner)]
         assert (await c.get("/oauth/google/callback", params=params)).status_code == 401
-        sub, blob = store.get(owner)
+        sub, blob = store.rows[owner]
         assert decrypt_token(blob, principal=owner, keyring=ring)
         google.revoked = True
         assert await flow.disconnect(owner, sub) == {
