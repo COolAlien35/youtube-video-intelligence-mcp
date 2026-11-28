@@ -11,13 +11,21 @@ from yt_intel.common.logging import configure_logging
 from yt_intel.config import Settings, get_settings, validate_settings
 from yt_intel.tools.registry import register_tools
 
+from .auth import AuthMiddleware, JwtVerifier
 from .errors import handle_app_error
+from .grant_binding import configured_link
 from .guards import require_local_environment
+from .oauth_routes import GoogleLink, install_routes
 from .origin import OriginMiddleware
 from .request_id import RequestIDMiddleware
 
 
-def create_app(settings: Settings | None = None) -> FastAPI:
+def create_app(
+    settings: Settings | None = None,
+    *,
+    verifier: JwtVerifier | None = None,
+    google_link: GoogleLink | None = None,
+) -> FastAPI:
     config = get_settings() if settings is None else settings
     require_local_environment(config.environment)
     validate_settings(config)
@@ -36,11 +44,18 @@ def create_app(settings: Settings | None = None) -> FastAPI:
 
     @asynccontextmanager
     async def lifespan(_: FastAPI) -> AsyncIterator[None]:
-        async with transport.router.lifespan_context(transport):
+        async with (
+            configured_link(config, google_link) as link,
+            transport.router.lifespan_context(transport),
+        ):
+            app.state.google_link = link
             yield
 
     app = FastAPI(lifespan=lifespan, docs_url=None, redoc_url=None, openapi_url=None)
     app.add_exception_handler(AppError, handle_app_error)
+    app.add_middleware(
+        AuthMiddleware, verifier=verifier or JwtVerifier.from_settings(config), config=config
+    )
     app.add_middleware(OriginMiddleware, allowed=config.allowed_origins)
     app.add_middleware(RequestIDMiddleware)
 
@@ -48,5 +63,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     async def health() -> dict[str, str]:
         return {"status": "ok", "version": __version__}
 
+    app.state.google_link = google_link
+    install_routes(app, config)
     app.mount("/", transport)
     return app
