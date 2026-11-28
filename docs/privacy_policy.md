@@ -18,6 +18,6 @@ Only your authorized operations may use your account data. Platform-wide quotas 
 
 ## Disconnecting or requesting deletion
 
-The intended authenticated MCP controls are disconnect and delete_data. They are stubs in the development build. A successful tool response or an operator receipt is required to establish that a request was received. For a private development deployment, contact its operator directly for a receipt and completion confirmation. Keep account identifiers and credentials out of public project issues. See the [deletion guide](data_deletion.md).
+The authenticated disconnect and disconnect_google tools revoke and remove the selected account grant, and report whether Google confirmed revocation. The delete_data tool remains a stub in this development build. Contact the deployment operator privately for a receipt and completion confirmation when requesting removal of other associated local records. Keep account identifiers and credentials out of public project issues. See the [deletion guide](data_deletion.md).
 
 You can independently revoke access in [Google Account permissions](https://security.google.com/settings/security/permissions). The live service uses YouTube API Services and is subject to the [YouTube Terms of Service](https://www.youtube.com/t/terms) and [Google Privacy Policy](https://policies.google.com/privacy). Before taking real accounts, the operator must publish a private contact channel and verify the deletion flow.
