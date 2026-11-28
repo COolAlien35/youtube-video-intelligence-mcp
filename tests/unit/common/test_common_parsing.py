@@ -92,7 +92,7 @@ def test_invalid_playlist(ref):
         ("@FAKE.handle", ChannelRef("handle", "@FAKE.handle")),
         (f"{Y}/@FAKE-handle/", ChannelRef("handle", "@FAKE-handle")),
         (f"{Y}/@caf%C3%A9", ChannelRef("handle", "@café")),
-        (f"{Y}/user/Fake_User", ChannelRef("username", "Fake_User")),
+        (f"{Y}/@Fake_User/videos", ChannelRef("handle", "@Fake_User")),
     ],
 )
 def test_channel(ref, expected):
@@ -110,6 +110,7 @@ def test_channel(ref, expected):
         C[:-1],
         f"{Y}/c/legacy",
         f"{Y}/channel/oops",
+        f"{Y}/user/Fake_User",
         f"{Y}/user/",
         f"{Y}/user/a/b",
         f"{Y}/@fake%2Fextra",
