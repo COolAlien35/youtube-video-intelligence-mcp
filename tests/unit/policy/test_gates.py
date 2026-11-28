@@ -69,3 +69,16 @@ def test_no_live_adapter_even_after_clearance():
     with pytest.raises(AppError) as exc:
         build_provider(SimpleNamespace(live_youtube_enabled=True), gates=gates)
     assert exc.value.code == ErrorCode.NOT_IMPLEMENTED
+
+
+def test_playlist_write_capability_requires_gates_and_setting():
+    gates = make()
+    assert not gates.playlist_write_allowed()
+    for n in [4, 5, 7, 8]:
+        setattr(gates.settings, f"pol_{n:02d}_open", True)
+        setattr(gates.settings, f"pol_{n:02d}_evidence", "docs/policy/write_gating.md")
+    # Gates alone are insufficient while playlist_writes_enabled defaults closed.
+    assert gates.live_youtube_allowed(Capability.PLAYLIST_WRITE)
+    assert not gates.playlist_write_allowed()
+    gates.settings.playlist_writes_enabled = True
+    assert gates.playlist_write_allowed()

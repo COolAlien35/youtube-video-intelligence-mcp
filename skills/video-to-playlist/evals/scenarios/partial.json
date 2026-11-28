@@ -1,0 +1,21 @@
+{
+  "events": [
+    "similar_videos:ok",
+    "propose_playlist:preview",
+    "user:confirmed",
+    "confirm_execute_playlist:accepted",
+    "operation_status:partial"
+  ],
+  "forbidden_before_confirmation": [
+    "confirm_execute_playlist"
+  ],
+  "required_fields": [
+    "status",
+    "requested",
+    "inserted",
+    "skipped",
+    "reasons",
+    "derived_topical_coverage"
+  ],
+  "outcome": "partial"
+}
