@@ -21,6 +21,40 @@ concurrency:
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
+  # Stable aggregate required check. Report failures even if a dependency fails.
+  check:
+    name: check
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    if: ${{ always() }}
+    needs: [lint, typecheck, test, test-windows, secret-scan, rtm-check, pr-title]
+    steps:
+      - name: Verify required job results
+        env:
+          JOB_RESULTS: ${{ toJSON(needs) }}
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+
+          results = json.loads(os.environ["JOB_RESULTS"])
+          failures = [
+              name
+              for name, job in results.items()
+              if job["result"] != "success"
+              and not (
+                  name == "pr-title"
+                  and job["result"] == "skipped"
+                  and os.environ["EVENT_NAME"] != "pull_request"
+              )
+          ]
+          for name, job in results.items():
+              print(f"{name}: {job['result']}")
+          if failures:
+              raise SystemExit("Required jobs did not pass: " + ", ".join(failures))
+          PY
+
   # ── Lint ──────────────────────────────────────────────────────────────────
   lint:
     name: lint

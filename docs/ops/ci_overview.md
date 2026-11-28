@@ -10,6 +10,7 @@
 
 | Job (= check name) | Runs on | What it does | Required |
 |---|---|---|---|
+| `check` | `ubuntu-latest` | Aggregates all seven validation jobs and fails when a required job fails, is cancelled or is unexpectedly skipped | Stable aggregate required by the repository |
 | `lint` | `ubuntu-latest` | `ruff check .` + `ruff format --check .` | ✅ From bootstrap |
 | `typecheck` | `ubuntu-latest` | `mypy src scripts` (strict mode) | ✅ From bootstrap |
 | `test` | `ubuntu-latest` | `pytest --cov=src` + coverage summary + uploads `coverage.xml` artifact | ✅ Phase 2 (A-6) |
@@ -23,6 +24,11 @@
 1. **After bootstrap push:** `lint`, `typecheck`, `test`, `test-windows`, `secret-scan`
 2. **After the first PR:** `pr-title`
 3. **After C's validator merges and `rtm-check` runs (not skipping):** `rtm-check`
+
+The repository also expects the aggregate status named `check`. This job runs
+after every validation job, even when a dependency fails, so it always reports
+a verdict. All seven dependencies must succeed on a pull request. On pushes
+and manual runs, only `pr-title` may be skipped because it requires a PR event.
 
 ## Coverage Summary (Phase 2, A-6)
 
