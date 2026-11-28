@@ -74,3 +74,20 @@ Validate non-secret configuration at startup. Keep raw credentials, user payload
 The [server skeleton](https://github.com/COolAlien35/youtube-video-intelligence-mcp/pull/14) mounts /mcp and exposes /health. Its outer request-ID middleware wraps Origin rejection, tool dispatch and HTTP errors. The factory refuses production startup before auth exists. Phase 3 replaces server.guards.get_principal; the SDK injects the principal without adding it to tool input schemas.
 
 The [tool registry](https://github.com/COolAlien35/youtube-video-intelligence-mcp/pull/15) preserves all nine catalogue names. Each stub returns the same typed envelope with NOT_IMPLEMENTED. The SDK smoke tests exercise July discovery and legacy initialize separately. Neither flow invokes the provider. The frozen package dependency and real config integration await A. [SDK verification](https://github.com/COolAlien35/youtube-video-intelligence-mcp/pull/13)
+
+## FR-1 video discovery
+
+```mermaid
+flowchart LR
+  A[Verified principal and canonical seed] --> B[Workflow limiter]
+  B --> C{Scoped cache hit?}
+  C -->|Yes| R[Return result]
+  C -->|No| Q[Reserve both quota buckets]
+  Q --> S[Resolve exact seed]
+  S --> P[Search one page and batch candidate details]
+  P --> F[Exclude seed, duplicates and unavailable IDs]
+  F --> T[Rank, explain and cache]
+  T --> R
+```
+
+The one-page bound matches FR-2. A cold request reserves up to 102 common units and one search call under the repository cost table. Settlement charges attempted operations and returns the unused reservation. The principal-scoped result cache defaults to 24 hours. Descriptions contribute to similarity only. Explanation text uses bounded ranking terms and numeric field contributions. Equal scores sort by canonical ID. The fixture implementation extends the FR-2 ranker pending C's shared engine. [Tool contract](../tools/similar_videos.md)
