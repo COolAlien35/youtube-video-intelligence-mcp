@@ -50,7 +50,7 @@ class Coverage(BaseModel):
     time_basis: str
     fetched_count: int = Field(ge=0)
     reported_total: int | None = Field(ge=0)
-    cap: int = Field(ge=0)
+    cap: int | None = Field(ge=0)
     truncated: bool
     truncation_reason: str | None
     fetched_at: datetime
