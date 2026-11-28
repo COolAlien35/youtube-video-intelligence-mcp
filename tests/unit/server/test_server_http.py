@@ -3,6 +3,7 @@ import asyncio
 import httpx
 import pytest
 from starlette.routing import Route
+from tests.support.b_auth import FakeIssuer
 
 from yt_intel import __version__
 from yt_intel.common import AppError, ErrorCode
@@ -19,7 +20,8 @@ def settings(**kwargs):
 
 
 def test_health_errors_and_request_ids():
-    app = create_app(settings())
+    issuer = FakeIssuer()
+    app = create_app(settings(), verifier=issuer.verifier())
 
     async def unexpected(_):
         raise ValueError("private diagnostic FAKE_only")
@@ -31,6 +33,11 @@ def test_health_errors_and_request_ids():
 
     async def run():
         async with httpx.AsyncClient(transport=httpx.ASGITransport(app), base_url=ORIGIN) as c:
+            denied = await c.post("/mcp")
+            assert (
+                denied.status_code == 401
+                and "resource_metadata" in denied.headers["www-authenticate"]
+            )
             first = await c.get("/health")
             second = await c.get("/health", headers={"Origin": ORIGIN})
             assert first.json() == second.json() == {"status": "ok", "version": __version__}
@@ -39,7 +46,7 @@ def test_health_errors_and_request_ids():
                 ("/unexpected", 500, "INTERNAL_ERROR"),
                 ("/expected", 400, "INVALID_INPUT"),
             ]:
-                response = await c.get(path)
+                response = await c.get(path, headers={"Authorization": "Bearer " + issuer.mint()})
                 assert response.status_code == status and response.json()["code"] == code
                 assert response.json()["request_id"] == response.headers["x-request-id"]
                 assert "FAKE_only" not in response.text and "Traceback" not in response.text
