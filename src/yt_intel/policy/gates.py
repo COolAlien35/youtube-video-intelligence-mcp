@@ -16,6 +16,7 @@ class Capability(StrEnum):
     ACCOUNT = "account"
     CROSS_OWNER = "cross_owner"
     PRESENTATION = "presentation"
+    PLAYLIST_WRITE = "playlist_write"
 
 
 _REQUIRED = {
@@ -23,6 +24,7 @@ _REQUIRED = {
     Capability.ACCOUNT: (GateId.POL_04, GateId.POL_05),
     Capability.CROSS_OWNER: (GateId.POL_06,),
     Capability.PRESENTATION: (GateId.POL_07,),
+    Capability.PLAYLIST_WRITE: (GateId.POL_04, GateId.POL_05),
 }
 
 
@@ -68,3 +70,9 @@ class PolicyGates:
         for capability in capabilities or tuple(Capability):
             required.update(_REQUIRED[Capability(capability)])
         return all(self.is_open(g, principal=principal) for g in sorted(required))
+
+    def playlist_write_allowed(self, *, principal: Principal | None = None) -> bool:
+        """Return True only when write policy gates and PLAYLIST_WRITES_ENABLED are both open."""
+        if getattr(self.settings, "playlist_writes_enabled", False) is not True:
+            return False
+        return self.live_youtube_allowed(Capability.PLAYLIST_WRITE, principal=principal)
