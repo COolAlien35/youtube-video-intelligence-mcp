@@ -10,6 +10,7 @@ from urllib.parse import urlsplit
 
 from anyio import to_thread
 from fastapi import FastAPI, Request
+from starlette.datastructures import State
 from starlette.responses import FileResponse, JSONResponse, RedirectResponse
 
 from yt_intel.common import AppError, ErrorCode, Principal
@@ -167,15 +168,15 @@ def install_routes(app: FastAPI, settings: Settings) -> None:
     async def start(request: Request) -> RedirectResponse:
         if request.query_params.get("write") not in (None, "false", "0"):
             raise AppError(ErrorCode.POLICY_GATE_CLOSED, "Playlist writes are unavailable")
-        return get_link(request).start(request.state.principal)
+        return get_link(request.app.state).start(request.state.principal)
 
     @app.get(_CALLBACK)
     async def callback(request: Request) -> JSONResponse:
-        return await get_link(request).callback(request)
+        return await get_link(request.app.state).callback(request)
 
 
-def get_link(request: Request) -> GoogleLink:
-    link = getattr(request.app.state, "google_link", None)
+def get_link(state: State) -> GoogleLink:
+    link = getattr(state, "google_link", None)
     if not isinstance(link, GoogleLink):
         raise AppError(ErrorCode.NOT_IMPLEMENTED, "Google linking is not configured")
     return link
