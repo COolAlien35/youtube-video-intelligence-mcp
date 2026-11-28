@@ -6,6 +6,13 @@ from ._redaction import redact, redact_text
 
 
 class ErrorCode(StrEnum):
+    RECONCILIATION_AMBIGUOUS = "RECONCILIATION_AMBIGUOUS"
+    CONSTRAINT_VIOLATION = "CONSTRAINT_VIOLATION"
+    INVALID_TRANSITION = "INVALID_TRANSITION"
+    APPROVAL_INVALID = "APPROVAL_INVALID"
+    PROPOSAL_EXPIRED = "PROPOSAL_EXPIRED"
+    PROPOSAL_NOT_FOUND = "PROPOSAL_NOT_FOUND"
+    WRITE_SCOPE_REQUIRED = "WRITE_SCOPE_REQUIRED"
     INVALID_INPUT = "INVALID_INPUT"
     NOT_FOUND_OR_UNAVAILABLE = "NOT_FOUND_OR_UNAVAILABLE"
     AUTH_REQUIRED = "AUTH_REQUIRED"
@@ -81,3 +88,60 @@ class TenantViolationError(AppError):
 class PolicyGateClosedError(AppError):
     def __init__(self) -> None:
         super().__init__(ErrorCode.POLICY_GATE_CLOSED, "Policy clearance is required")
+
+
+class ChannelRequiredError(AppError):
+    def __init__(self) -> None:
+        super().__init__(
+            ErrorCode.CHANNEL_REQUIRED,
+            "A YouTube channel is required",
+            details={"next_step": "Create a YouTube channel and start a new proposal"},
+        )
+
+
+class WriteScopeRequiredError(AppError):
+    def __init__(self) -> None:
+        super().__init__(
+            ErrorCode.WRITE_SCOPE_REQUIRED,
+            "Playlist write scope is required",
+            details={"next_step": "Request incremental consent for playlist writes"},
+        )
+
+
+class ProposalNotFoundError(AppError):
+    def __init__(self) -> None:
+        super().__init__(ErrorCode.PROPOSAL_NOT_FOUND, "Proposal unavailable")
+
+
+class ProposalExpiredError(AppError):
+    def __init__(self) -> None:
+        super().__init__(ErrorCode.PROPOSAL_EXPIRED, "Proposal expired")
+
+
+class ApprovalInvalidError(AppError):
+    def __init__(self) -> None:
+        super().__init__(ErrorCode.APPROVAL_INVALID, "Approval is invalid")
+
+
+class InvalidTransitionError(AppError):
+    def __init__(self) -> None:
+        super().__init__(
+            ErrorCode.INVALID_TRANSITION, "Operation state does not permit this transition"
+        )
+
+
+class ConstraintViolationError(AppError):
+    def __init__(self) -> None:
+        super().__init__(ErrorCode.CONSTRAINT_VIOLATION, "Playlist constraints cannot be satisfied")
+
+
+class OutcomeUncertainError(AppError):
+    def __init__(self) -> None:
+        super().__init__(ErrorCode.WRITE_UNCERTAIN, "Write outcome is uncertain")
+
+
+class ReconciliationAmbiguousError(AppError):
+    def __init__(self) -> None:
+        super().__init__(
+            ErrorCode.RECONCILIATION_AMBIGUOUS, "Reconciliation found multiple possible matches"
+        )

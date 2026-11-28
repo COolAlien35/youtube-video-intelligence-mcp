@@ -1,0 +1,18 @@
+{
+  "scenario": "happy",
+  "events": [
+    "similar_videos:ok",
+    "propose_playlist:preview",
+    "user:confirmed",
+    "confirm_execute_playlist:accepted",
+    "operation_status:completed"
+  ],
+  "report": {
+    "status": "completed",
+    "requested": 2,
+    "inserted": 2,
+    "skipped": [],
+    "reasons": [],
+    "derived_topical_coverage": "synthetic optics"
+  }
+}

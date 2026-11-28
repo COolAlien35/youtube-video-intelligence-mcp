@@ -1,0 +1,16 @@
+{
+  "scenario": "discovery_failure",
+  "events": [
+    "similar_videos:failed"
+  ],
+  "report": {
+    "status": "failed",
+    "requested": 2,
+    "inserted": 0,
+    "skipped": [],
+    "reasons": [
+      "failed"
+    ],
+    "derived_topical_coverage": "unknown"
+  }
+}
