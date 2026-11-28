@@ -13,8 +13,9 @@ from yt_intel.common.logging import configure_logging
 from yt_intel.config import Settings, get_settings, validate_settings
 from yt_intel.provider.factory import build_provider
 from yt_intel.quota import PrincipalLimiter, QuotaPlanner, QuotaService
-from yt_intel.services.channel_ranking import RankingEngine
+from yt_intel.services.channel_ranking import RankingEngine, VideoRankingEngine
 from yt_intel.services.similar_channels import ChannelResultCache, SimilarChannelsService
+from yt_intel.services.similar_videos import SimilarVideosService
 from yt_intel.storage import get_engine, init_db
 from yt_intel.tools.registry import register_tools
 
@@ -71,10 +72,16 @@ def create_app(
             engine = get_engine(config)
             try:
                 init_db(engine)
+                provider = build_provider(config)
+                planner = QuotaPlanner(QuotaService(engine, config))
+                limiter = PrincipalLimiter(engine, config)
+                app.state.similar_videos = SimilarVideosService(
+                    provider, planner, limiter, engine, VideoRankingEngine()
+                )
                 app.state.similar_channels = SimilarChannelsService(
-                    build_provider(config),
-                    QuotaPlanner(QuotaService(engine, config)),
-                    PrincipalLimiter(engine, config),
+                    provider,
+                    planner,
+                    limiter,
                     ChannelResultCache(engine),
                     RankingEngine(),
                 )

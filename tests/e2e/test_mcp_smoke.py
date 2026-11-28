@@ -13,10 +13,13 @@ pytestmark = pytest.mark.e2e
 
 
 @pytest.mark.parametrize("legacy", [False, True], ids=["july-discovery", "legacy-initialize"])
-def test_mcp_smoke(legacy):
+def test_mcp_smoke(legacy, tmp_path):
     origin = "http://localhost:8000"
     issuer = FakeIssuer()
-    app = create_app(Settings(_env_file=None, allowed_origins=[origin]), verifier=issuer.verifier())
+    app = create_app(
+        Settings(data_dir=tmp_path, _env_file=None, allowed_origins=[origin]),
+        verifier=issuer.verifier(),
+    )
     responses = []
 
     async def remember(response):
@@ -43,7 +46,7 @@ def test_mcp_smoke(legacy):
             assert len(catalogue.tools) == 10
             response = await session.call_tool("similar_videos", {"seed": "FAKE_vid-01"})
             data = response.structured_content
-            assert data and data["error"]["code"] == "NOT_IMPLEMENTED"
+            assert data and data["error"]["code"] == "NOT_FOUND_OR_UNAVAILABLE"
             assert data["request_id"] == data["error"]["request_id"] == responses[-1]
 
     asyncio.run(run())

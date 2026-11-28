@@ -1,0 +1,13 @@
+{
+  "properties": {
+    "seed": {
+      "title": "Seed",
+      "type": "string"
+    }
+  },
+  "required": [
+    "seed"
+  ],
+  "title": "similar_videosArguments",
+  "type": "object"
+}

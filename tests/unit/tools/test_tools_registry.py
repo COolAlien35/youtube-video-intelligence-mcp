@@ -38,7 +38,7 @@ def test_tool_catalogue():
     [
         handler
         for handler in TOOLS
-        if handler.__name__ not in {"disconnect_google", "similar_channels"}
+        if handler.__name__ not in {"disconnect_google", "similar_channels", "similar_videos"}
     ],
 )
 def test_stub(handler):
