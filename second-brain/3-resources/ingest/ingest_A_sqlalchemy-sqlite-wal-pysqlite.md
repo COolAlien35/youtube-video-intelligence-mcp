@@ -149,5 +149,5 @@ workloads should use Postgres instead.
 - Serializable isolation workaround: <https://docs.sqlalchemy.org/en/20/dialects/sqlite.html#serializable-isolation-savepoints-transactional-ddl>
 - SQLite WAL mode: <https://www.sqlite.org/wal.html>
 - SQLite locking and concurrency: <https://www.sqlite.org/lockingv3.html>
-- Implementation: [`src/yt_intel/storage/db.py`](../../src/yt_intel/storage/db.py)
-- Implementation: [`src/yt_intel/quota/service.py`](../../src/yt_intel/quota/service.py)
+- Implementation: [`src/yt_intel/storage/db.py`](../../../src/yt_intel/storage/db.py)
+- Implementation: [`src/yt_intel/quota/service.py`](../../../src/yt_intel/quota/service.py)
