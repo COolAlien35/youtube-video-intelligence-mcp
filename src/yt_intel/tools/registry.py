@@ -2,7 +2,7 @@ from mcp.server import MCPServer
 
 from .confirm_execute_playlist import confirm_execute_playlist
 from .delete_data import delete_data
-from .disconnect import disconnect
+from .disconnect import disconnect_google
 from .engagement_analysis import engagement_analysis
 from .operation_status import operation_status
 from .propose_playlist import propose_playlist
@@ -18,7 +18,7 @@ TOOLS = (
     propose_playlist,
     confirm_execute_playlist,
     operation_status,
-    disconnect,
+    disconnect_google,
     delete_data,
 )
 
@@ -26,3 +26,4 @@ TOOLS = (
 def register_tools(server: MCPServer[None]) -> None:
     for handler in TOOLS:
         server.add_tool(handler, structured_output=True)
+    server.add_tool(disconnect_google, name="disconnect", structured_output=True)

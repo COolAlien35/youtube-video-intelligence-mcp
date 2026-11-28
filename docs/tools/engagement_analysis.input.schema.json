@@ -1,0 +1,60 @@
+{
+  "$defs": {
+    "Period": {
+      "properties": {
+        "start": {
+          "title": "Start",
+          "type": "string"
+        },
+        "end": {
+          "title": "End",
+          "type": "string"
+        }
+      },
+      "required": [
+        "start",
+        "end"
+      ],
+      "title": "Period",
+      "type": "object"
+    }
+  },
+  "properties": {
+    "source": {
+      "title": "Source",
+      "type": "string"
+    },
+    "period": {
+      "$ref": "#/$defs/Period"
+    },
+    "playlist_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Playlist Id"
+    },
+    "compare_to": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Period"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    }
+  },
+  "required": [
+    "source",
+    "period"
+  ],
+  "title": "engagement_analysisArguments",
+  "type": "object"
+}

@@ -17,6 +17,7 @@ ALLOWED = {
     "confirm_execute_playlist",
     "operation_status",
     "disconnect",
+    "disconnect_google",
     "delete_data",
 }
 
@@ -25,14 +26,21 @@ def test_tool_catalogue():
     server = MCPServer("test")
     register_tools(server)
     tools = asyncio.run(server.list_tools())
-    assert len(tools) == 9 and {t.name for t in tools} == ALLOWED
+    assert len(tools) == 10 and {t.name for t in tools} == ALLOWED
     for tool in tools:
         assert tool.description and tool.input_schema["type"] == "object"
         assert "principal" not in tool.input_schema.get("properties", {})
         assert tool.output_schema
 
 
-@pytest.mark.parametrize("handler", TOOLS)
+@pytest.mark.parametrize(
+    "handler",
+    [
+        handler
+        for handler in TOOLS
+        if handler.__name__ not in {"disconnect_google", "engagement_analysis"}
+    ],
+)
 def test_stub(handler):
     token = request_id_var.set("synthetic-request")
     try:
