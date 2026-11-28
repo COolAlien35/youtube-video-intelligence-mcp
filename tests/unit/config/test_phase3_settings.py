@@ -23,7 +23,7 @@ def _prod_settings(**overrides: object) -> Settings:
     defaults: dict[str, object] = {
         "_env_file": None,
         "environment": "prod",
-        "data_dir": Path("/var/lib/yt_intel"),
+        "data_dir": Path("/var/lib/yt_intel").resolve(),
         "allowed_origins": ["https://app.example.com"],
         "require_https": True,
         "supabase_issuer": "https://proj.supabase.co/auth/v1",
